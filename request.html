@@ -44,14 +44,125 @@
 <script>
 const SUPABASE_URL='https://gschubeifhlbxxrdlwo.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_FXBhsGpZ2R73HV1G--uByw_D041l7pz';
-const COPY={en:{back:'← Back to website',title:'Request a service',intro:'Tell me what is happening and where. The details will open directly in WhatsApp so I can assess the job and reply quickly.',formTitle:'Job details',formHint:'No booking is confirmed until I reply and agree the visit with you.',name:'Name',phone:'Phone / WhatsApp',area:'Locality / area',areaPh:'e.g. Sliema',service:'Service needed',urgency:'When do you need it?',problem:'Describe the problem / work needed',problemPh:'What happened? What needs repairing, installing or checking?',photo:'📎 After WhatsApp opens, you can attach photos or videos directly in the chat. They often help me identify the problem faster.',send:'Send request on WhatsApp',privacy:'Your request details are stored securely by DB Plumbing Services to manage your enquiry, then WhatsApp opens so you can continue the conversation. No booking is confirmed until I reply.',call:'Call',wa:'Open WhatsApp',services:[['Plumbing','Plumbing'],['Air conditioning / HVAC','Air conditioning / HVAC'],['Heating','Heating'],['Bathroom / sanitary','Bathroom / sanitary'],['Repair / maintenance','Repair / maintenance'],['Other','Other']],urgencies:[['This evening / urgent','This evening / urgent'],['Today if possible','Today if possible'],['Within 24–48 hours','Within 24–48 hours'],['Flexible / arrange a date','Flexible / arrange a date']],msg:'SERVICE REQUEST'},it:{back:'← Torna al sito',title:'Richiedi un intervento',intro:'Dimmi cosa sta succedendo e dove. I dettagli si apriranno direttamente su WhatsApp così posso valutare il lavoro e risponderti rapidamente.',formTitle:'Dettagli intervento',formHint:'La visita non è confermata finché non ti rispondo e concordiamo insieme l’orario.',name:'Nome',phone:'Telefono / WhatsApp',area:'Località / zona',areaPh:'es. Sliema',service:'Servizio richiesto',urgency:'Quando serve?',problem:'Descrivi il problema / lavoro richiesto',problemPh:'Cosa è successo? Cosa bisogna riparare, installare o controllare?',photo:'📎 Quando si apre WhatsApp puoi allegare direttamente foto o video. Spesso mi aiutano a capire il problema più velocemente.',send:'Invia richiesta su WhatsApp',privacy:'I dettagli della richiesta vengono salvati in modo sicuro da DB Plumbing Services per gestire il contatto; poi si apre WhatsApp per continuare la conversazione. La visita non è confermata finché non ti rispondo.',call:'Chiama',wa:'Apri WhatsApp',services:[['Idraulica','Plumbing'],['Climatizzazione / HVAC','Air conditioning / HVAC'],['Riscaldamento','Heating'],['Bagno / sanitari','Bathroom / sanitary'],['Riparazione / manutenzione','Repair / maintenance'],['Altro','Other']],urgencies:[['Questa sera / urgente','This evening / urgent'],['Oggi se possibile','Today if possible'],['Entro 24–48 ore','Within 24–48 hours'],['Flessibile / concordiamo una data','Flexible / arrange a date']],msg:'RICHIESTA INTERVENTO'},mt:{back:'← Lura għas-sit',title:'Itlob servizz',intro:'Għidli x’inhi l-problema u fejn tinsab. Id-dettalji jinfetħu direttament fuq WhatsApp biex inkun nista’ nivvaluta x-xogħol u nwieġbek malajr.',formTitle:'Dettalji tax-xogħol',formHint:'L-appuntament ma jkunx ikkonfermat sakemm inwieġbek u naqblu fuq il-ħin.',name:'Isem',phone:'Telefon / WhatsApp',area:'Lokalità / żona',areaPh:'eż. Sliema',service:'Servizz meħtieġ',urgency:'Meta għandek bżonnu?',problem:'Iddeskrivi l-problema / ix-xogħol meħtieġ',problemPh:'X’ġara? X’jeħtieġ tiswija, installazzjoni jew kontroll?',photo:'📎 Meta jinfetaħ WhatsApp tista’ tehmeż ritratti jew videos direttament fiċ-chat. Dan spiss jgħinni nifhem il-problema aktar malajr.',send:'Ibgħat it-talba fuq WhatsApp',privacy:'Id-dettalji tat-talba tiegħek jinħażnu b’mod sigur minn DB Plumbing Services biex tiġi ġestita t-talba; imbagħad jinfetaħ WhatsApp biex tkompli l-konversazzjoni. L-appuntament ma jkunx ikkonfermat sakemm inwieġbek.',call:'Ċempel',wa:'Iftaħ WhatsApp',services:[['Sistemi tal-ilma','Plumbing'],['Arja kkundizzjonata / HVAC','Air conditioning / HVAC'],['Tisħin','Heating'],['Kamra tal-banju / sanitarji','Bathroom / sanitary'],['Tiswija / manutenzjoni','Repair / maintenance'],['Oħrajn','Other']],urgencies:[['Illejla / urġenti','This evening / urgent'],['Illum jekk possibbli','Today if possible'],['Fi żmien 24–48 siegħa','Within 24–48 hours'],['Flessibbli / naqblu fuq data','Flexible / arrange a date']],msg:'TALBA GĦAL SERVIZZ'}};
+
+const COPY={
+ en:{back:'← Back to website',title:'Request a service',intro:'Tell me what is happening and where. The details will open directly in WhatsApp so I can assess the job and reply quickly.',formTitle:'Job details',formHint:'No booking is confirmed until I reply and agree the visit with you.',name:'Name',phone:'Phone / WhatsApp',area:'Locality / area',areaPh:'e.g. Sliema',service:'Service needed',urgency:'When do you need it?',problem:'Describe the problem / work needed',problemPh:'What happened? What needs repairing, installing or checking?',photo:'📎 After WhatsApp opens, you can attach photos or videos directly in the chat. They often help me identify the problem faster.',send:'Send request on WhatsApp',privacy:'Your request details are stored securely by DB Plumbing Services to manage your enquiry, then WhatsApp opens so you can continue the conversation. No booking is confirmed until I reply.',call:'Call',wa:'Open WhatsApp',services:[['Plumbing','Plumbing'],['Air conditioning / HVAC','Air conditioning / HVAC'],['Heating','Heating'],['Bathroom / sanitary','Bathroom / sanitary'],['Repair / maintenance','Repair / maintenance'],['Other','Other']],urgencies:[['This evening / urgent','This evening / urgent'],['Today if possible','Today if possible'],['Within 24–48 hours','Within 24–48 hours'],['Flexible / arrange a date','Flexible / arrange a date']],msg:'SERVICE REQUEST'},
+ it:{back:'← Torna al sito',title:'Richiedi un intervento',intro:'Dimmi cosa sta succedendo e dove. I dettagli si apriranno direttamente su WhatsApp così posso valutare il lavoro e risponderti rapidamente.',formTitle:'Dettagli intervento',formHint:'La visita non è confermata finché non ti rispondo e concordiamo insieme l’orario.',name:'Nome',phone:'Telefono / WhatsApp',area:'Località / zona',areaPh:'es. Sliema',service:'Servizio richiesto',urgency:'Quando serve?',problem:'Descrivi il problema / lavoro richiesto',problemPh:'Cosa è successo? Cosa bisogna riparare, installare o controllare?',photo:'📎 Quando si apre WhatsApp puoi allegare direttamente foto o video. Spesso mi aiutano a capire il problema più velocemente.',send:'Invia richiesta su WhatsApp',privacy:'I dettagli della richiesta vengono salvati in modo sicuro da DB Plumbing Services per gestire il contatto; poi si apre WhatsApp per continuare la conversazione. La visita non è confermata finché non ti rispondo.',call:'Chiama',wa:'Apri WhatsApp',services:[['Idraulica','Plumbing'],['Climatizzazione / HVAC','Air conditioning / HVAC'],['Riscaldamento','Heating'],['Bagno / sanitari','Bathroom / sanitary'],['Riparazione / manutenzione','Repair / maintenance'],['Altro','Other']],urgencies:[['Questa sera / urgente','This evening / urgent'],['Oggi se possibile','Today if possible'],['Entro 24–48 ore','Within 24–48 hours'],['Flessibile / concordiamo una data','Flexible / arrange a date']],msg:'RICHIESTA INTERVENTO'},
+ mt:{back:'← Lura għas-sit',title:'Itlob servizz',intro:'Għidli x’inhi l-problema u fejn tinsab. Id-dettalji jinfetħu direttament fuq WhatsApp biex inkun nista’ nivvaluta x-xogħol u nwieġbek malajr.',formTitle:'Dettalji tax-xogħol',formHint:'L-appuntament ma jkunx ikkonfermat sakemm inwieġbek u naqblu fuq il-ħin.',name:'Isem',phone:'Telefon / WhatsApp',area:'Lokalità / żona',areaPh:'eż. Sliema',service:'Servizz meħtieġ',urgency:'Meta għandek bżonnu?',problem:'Iddeskrivi l-problema / ix-xogħol meħtieġ',problemPh:'X’ġara? X’jeħtieġ tiswija, installazzjoni jew kontroll?',photo:'📎 Meta jinfetaħ WhatsApp tista’ tehmeż ritratti jew videos direttament fiċ-chat. Dan spiss jgħinni nifhem il-problema aktar malajr.',send:'Ibgħat it-talba fuq WhatsApp',privacy:'Id-dettalji tat-talba tiegħek jinħażnu b’mod sigur minn DB Plumbing Services biex tiġi ġestita t-talba; imbagħad jinfetaħ WhatsApp biex tkompli l-konversazzjoni. L-appuntament ma jkunx ikkonfermat sakemm inwieġbek.',call:'Ċempel',wa:'Iftaħ WhatsApp',services:[['Sistemi tal-ilma','Plumbing'],['Arja kkundizzjonata / HVAC','Air conditioning / HVAC'],['Tisħin','Heating'],['Kamra tal-banju / sanitarji','Bathroom / sanitary'],['Tiswija / manutenzjoni','Repair / maintenance'],['Oħrajn','Other']],urgencies:[['Illejla / urġenti','This evening / urgent'],['Illum jekk possibbli','Today if possible'],['Fi żmien 24–48 siegħa','Within 24–48 hours'],['Flessibbli / naqblu fuq data','Flexible / arrange a date']],msg:'TALBA GĦAL SERVIZZ'}
+};
 let lang=(navigator.language||'en').toLowerCase().startsWith('it')?'it':(navigator.language||'en').toLowerCase().startsWith('mt')?'mt':'en';
-function setLang(next){lang=next;const c=COPY[lang];document.documentElement.lang=lang;document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));back.textContent=c.back;title.textContent=c.title;intro.textContent=c.intro;formTitle.textContent=c.formTitle;formHint.textContent=c.formHint;labName.textContent=c.name;labPhone.textContent=c.phone;labArea.textContent=c.area;area.placeholder=c.areaPh;labService.textContent=c.service;labUrgency.textContent=c.urgency;labProblem.textContent=c.problem;problem.placeholder=c.problemPh;photoNote.textContent=c.photo;sendBtn.textContent=c.send;privacy.textContent=c.privacy;callBtn.textContent=c.call;waBtn.textContent=c.wa;service.innerHTML=c.services.map(x=>`<option value="${x[1]}">${x[0]}</option>`).join('');urgency.innerHTML=c.urgencies.map(x=>`<option value="${x[1]}">${x[0]}</option>`).join('');}
-function attribution(){const q=new URLSearchParams(window.location.search);return{campaign:q.get('campaign')||q.get('utm_campaign')||null,utm_source:q.get('utm_source')||null,utm_medium:q.get('utm_medium')||null,utm_campaign:q.get('utm_campaign')||null};}
-async function saveRequest(payload){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),2500);try{const response=await fetch(`${SUPABASE_URL}/rest/v1/rpc/submit_service_request`,{method:'POST',headers:{'apikey':SUPABASE_PUBLISHABLE_KEY,'Content-Type':'application/json'},body:JSON.stringify(payload),signal:controller.signal,cache:'no-store'});if(!response.ok){const detail=await response.text().catch(()=>String(response.status));console.error('Request Inbox save failed',response.status,detail);return false;}return true;}catch(err){console.error('Request Inbox save failed',err);return false;}finally{clearTimeout(timer);}}
+
+function setLang(next){
+  lang=next;
+  const c=COPY[lang];
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  back.textContent=c.back;title.textContent=c.title;intro.textContent=c.intro;formTitle.textContent=c.formTitle;formHint.textContent=c.formHint;
+  labName.textContent=c.name;labPhone.textContent=c.phone;labArea.textContent=c.area;area.placeholder=c.areaPh;labService.textContent=c.service;labUrgency.textContent=c.urgency;labProblem.textContent=c.problem;problem.placeholder=c.problemPh;photoNote.textContent=c.photo;sendBtn.textContent=c.send;privacy.textContent=c.privacy;callBtn.textContent=c.call;waBtn.textContent=c.wa;
+  service.innerHTML=c.services.map(x=>`<option value="${x[1]}">${x[0]}</option>`).join('');
+  urgency.innerHTML=c.urgencies.map(x=>`<option value="${x[1]}">${x[0]}</option>`).join('');
+}
+
+function attribution(){
+  const q=new URLSearchParams(window.location.search);
+  return {
+    campaign:q.get('campaign')||q.get('utm_campaign')||null,
+    utm_source:q.get('utm_source')||null,
+    utm_medium:q.get('utm_medium')||null,
+    utm_campaign:q.get('utm_campaign')||null
+  };
+}
+
+async function saveRequest(payload){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),12000);
+  try{
+    const response=await fetch(`${SUPABASE_URL}/rest/v1/rpc/submit_service_request`,{
+      method:'POST',
+      headers:{
+        'apikey':SUPABASE_PUBLISHABLE_KEY,
+        'Content-Type':'application/json',
+        'Accept':'application/json'
+      },
+      body:JSON.stringify(payload),
+      signal:controller.signal,
+      cache:'no-store'
+    });
+    const detail=await response.text().catch(()=> '');
+    if(!response.ok){
+      console.error('Request Inbox save failed',response.status,detail);
+      return {ok:false,status:response.status,detail};
+    }
+    return {ok:true,status:response.status,detail};
+  }catch(err){
+    console.error('Request Inbox save failed',err);
+    return {ok:false,status:0,detail:(err && err.name==='AbortError')?'timeout after 12s':String(err)};
+  }finally{
+    clearTimeout(timer);
+  }
+}
+
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-const requestFormEl=document.getElementById('requestForm');const nameEl=document.getElementById('name');const phoneEl=document.getElementById('phone');const areaEl=document.getElementById('area');const serviceEl=document.getElementById('service');const urgencyEl=document.getElementById('urgency');const problemEl=document.getElementById('problem');
-requestFormEl.addEventListener('submit',async e=>{e.preventDefault();const c=COPY[lang];const attr=attribution();const text=`${c.msg} – DB Plumbing Services\n\nName: ${nameEl.value.trim()}\nPhone: ${phoneEl.value.trim()}\nArea: ${areaEl.value.trim()}\nService: ${serviceEl.value}\nWhen: ${urgencyEl.value}\n\nProblem / work needed:\n${problemEl.value.trim()}\n\nSource: website request form\n\nI can attach photos/videos here in WhatsApp if useful.`;const waUrl=`https://wa.me/35677532068?text=${encodeURIComponent(text)}`;const waWindow=window.open('about:blank','_blank');await saveRequest({p_name:nameEl.value.trim(),p_phone:phoneEl.value.trim(),p_area:areaEl.value.trim(),p_service:serviceEl.value,p_urgency:urgencyEl.value,p_problem:problemEl.value.trim(),p_language:lang,p_source:'website_request',p_campaign:attr.campaign,p_utm_source:attr.utm_source,p_utm_medium:attr.utm_medium,p_utm_campaign:attr.utm_campaign,p_client_submitted_at:new Date().toISOString()});if(waWindow){waWindow.location.href=waUrl;}else{window.location.href=waUrl;}});
+
+const requestFormEl=document.getElementById('requestForm');
+const nameEl=document.getElementById('name');
+const phoneEl=document.getElementById('phone');
+const areaEl=document.getElementById('area');
+const serviceEl=document.getElementById('service');
+const urgencyEl=document.getElementById('urgency');
+const problemEl=document.getElementById('problem');
+
+requestFormEl.addEventListener('submit',async e=>{
+  e.preventDefault();
+
+  const c=COPY[lang];
+  const attr=attribution();
+  const text=`${c.msg} – DB Plumbing Services
+
+Name: ${nameEl.value.trim()}
+Phone: ${phoneEl.value.trim()}
+Area: ${areaEl.value.trim()}
+Service: ${serviceEl.value}
+When: ${urgencyEl.value}
+
+Problem / work needed:
+${problemEl.value.trim()}
+
+Source: website request form
+
+I can attach photos/videos here in WhatsApp if useful.`;
+  const waUrl=`https://wa.me/35677532068?text=${encodeURIComponent(text)}`;
+
+  const waWindow=window.open('about:blank','_blank');
+
+  const inboxResult=await saveRequest({
+    p_name:nameEl.value.trim(),
+    p_phone:phoneEl.value.trim(),
+    p_area:areaEl.value.trim(),
+    p_service:serviceEl.value,
+    p_urgency:urgencyEl.value,
+    p_problem:problemEl.value.trim(),
+    p_language:lang,
+    p_source:'website_request',
+    p_campaign:attr.campaign,
+    p_utm_source:attr.utm_source,
+    p_utm_medium:attr.utm_medium,
+    p_utm_campaign:attr.utm_campaign,
+    p_client_submitted_at:new Date().toISOString(),
+    p_website:null
+  });
+
+  if(!inboxResult.ok){
+    alert(`Request Inbox diagnostic: ${inboxResult.status || 'NETWORK'} ${inboxResult.detail || ''}`);
+  }
+
+  if(waWindow){
+    waWindow.location.href=waUrl;
+  }else{
+    window.location.href=waUrl;
+  }
+});
+
 setLang(lang);
 </script>
 </body>
