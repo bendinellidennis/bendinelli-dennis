@@ -88,25 +88,45 @@ function saveRequest(payload){
   });
 }
 
-document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
 
-requestForm.onsubmit=e=>{
+const requestFormEl=document.getElementById('requestForm');
+const nameEl=document.getElementById('name');
+const phoneEl=document.getElementById('phone');
+const areaEl=document.getElementById('area');
+const serviceEl=document.getElementById('service');
+const urgencyEl=document.getElementById('urgency');
+const problemEl=document.getElementById('problem');
+const websiteEl=document.getElementById('website');
+
+requestFormEl.addEventListener('submit',e=>{
   e.preventDefault();
-  if(sendBtn.disabled)return;
-  sendBtn.disabled=true;
 
   const c=COPY[lang];
   const attr=attribution();
-  const text=`${c.msg} – DB Plumbing Services\n\nName: ${name.value.trim()}\nPhone: ${phone.value.trim()}\nArea: ${area.value.trim()}\nService: ${service.value}\nWhen: ${urgency.value}\n\nProblem / work needed:\n${problem.value.trim()}\n\nSource: website request form\n\nI can attach photos/videos here in WhatsApp if useful.`;
+  const text=`${c.msg} – DB Plumbing Services
+
+Name: ${nameEl.value.trim()}
+Phone: ${phoneEl.value.trim()}
+Area: ${areaEl.value.trim()}
+Service: ${serviceEl.value}
+When: ${urgencyEl.value}
+
+Problem / work needed:
+${problemEl.value.trim()}
+
+Source: website request form
+
+I can attach photos/videos here in WhatsApp if useful.`;
   const waUrl=`https://wa.me/35677532068?text=${encodeURIComponent(text)}`;
 
   saveRequest({
-    p_name:name.value.trim(),
-    p_phone:phone.value.trim(),
-    p_area:area.value.trim(),
-    p_service:service.value,
-    p_urgency:urgency.value,
-    p_problem:problem.value.trim(),
+    p_name:nameEl.value.trim(),
+    p_phone:phoneEl.value.trim(),
+    p_area:areaEl.value.trim(),
+    p_service:serviceEl.value,
+    p_urgency:urgencyEl.value,
+    p_problem:problemEl.value.trim(),
     p_language:lang,
     p_source:'website_request',
     p_campaign:attr.campaign,
@@ -114,11 +134,18 @@ requestForm.onsubmit=e=>{
     p_utm_medium:attr.utm_medium,
     p_utm_campaign:attr.utm_campaign,
     p_client_submitted_at:new Date().toISOString(),
-    p_website:website.value.trim()
+    p_website:websiteEl.value.trim()
   });
 
-  window.location.assign(waUrl);
-};
+  const waLink=document.createElement('a');
+  waLink.href=waUrl;
+  waLink.target='_self';
+  waLink.rel='noopener';
+  waLink.style.display='none';
+  document.body.appendChild(waLink);
+  waLink.click();
+  setTimeout(()=>waLink.remove(),1000);
+});
 
 setLang(lang);
 </script>
