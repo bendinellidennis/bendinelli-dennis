@@ -152,9 +152,7 @@ I can attach photos/videos here in WhatsApp if useful.`;
     p_website:null
   });
 
-  if(!inboxResult.ok){
-    alert(`Request Inbox diagnostic: ${inboxResult.status || 'NETWORK'} ${inboxResult.detail || ''}`);
-  }
+  alert(`Request Inbox diagnostic: ${inboxResult.status || 'NETWORK'} ${inboxResult.detail || ''}`);
 
   if(waWindow){
     waWindow.location.href=waUrl;
