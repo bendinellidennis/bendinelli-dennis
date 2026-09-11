@@ -74,30 +74,23 @@ function attribution(){
   };
 }
 
-async function saveRequest(payload){
-  const controller=new AbortController();
-  const timer=setTimeout(()=>controller.abort(),1600);
-  try{
-    await fetch(`${SUPABASE_URL}/rest/v1/rpc/submit_service_request`,{
-      method:'POST',
-      headers:{
-        'apikey':SUPABASE_PUBLISHABLE_KEY,
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify(payload),
-      signal:controller.signal,
-      keepalive:true
-    });
-  }catch(_err){
+function saveRequest(payload){
+  fetch(`${SUPABASE_URL}/rest/v1/rpc/submit_service_request`,{
+    method:'POST',
+    headers:{
+      'apikey':SUPABASE_PUBLISHABLE_KEY,
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(payload),
+    keepalive:true
+  }).catch(()=>{
     // WhatsApp remains the fallback if the inbox is temporarily unavailable.
-  }finally{
-    clearTimeout(timer);
-  }
+  });
 }
 
 document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 
-requestForm.onsubmit=async e=>{
+requestForm.onsubmit=e=>{
   e.preventDefault();
   if(sendBtn.disabled)return;
   sendBtn.disabled=true;
@@ -107,7 +100,7 @@ requestForm.onsubmit=async e=>{
   const text=`${c.msg} – DB Plumbing Services\n\nName: ${name.value.trim()}\nPhone: ${phone.value.trim()}\nArea: ${area.value.trim()}\nService: ${service.value}\nWhen: ${urgency.value}\n\nProblem / work needed:\n${problem.value.trim()}\n\nSource: website request form\n\nI can attach photos/videos here in WhatsApp if useful.`;
   const waUrl=`https://wa.me/35677532068?text=${encodeURIComponent(text)}`;
 
-  await saveRequest({
+  saveRequest({
     p_name:name.value.trim(),
     p_phone:phone.value.trim(),
     p_area:area.value.trim(),
@@ -124,8 +117,7 @@ requestForm.onsubmit=async e=>{
     p_website:website.value.trim()
   });
 
-  window.location.href=waUrl;
-  setTimeout(()=>{sendBtn.disabled=false},2500);
+  window.location.assign(waUrl);
 };
 
 setLang(lang);
