@@ -74,18 +74,32 @@ function attribution(){
   };
 }
 
-function saveRequest(payload){
-  fetch(`${SUPABASE_URL}/rest/v1/rpc/submit_service_request`,{
-    method:'POST',
-    headers:{
-      'apikey':SUPABASE_PUBLISHABLE_KEY,
-      'Content-Type':'application/json'
-    },
-    body:JSON.stringify(payload),
-    keepalive:true
-  }).catch(()=>{
-    // WhatsApp remains the fallback if the inbox is temporarily unavailable.
-  });
+async function saveRequest(payload){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),2500);
+  try{
+    const response=await fetch(`${SUPABASE_URL}/rest/v1/rpc/submit_service_request`,{
+      method:'POST',
+      headers:{
+        'apikey':SUPABASE_PUBLISHABLE_KEY,
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(payload),
+      signal:controller.signal,
+      cache:'no-store'
+    });
+    if(!response.ok){
+      const detail=await response.text().catch(()=>String(response.status));
+      console.error('Request Inbox save failed',response.status,detail);
+      return false;
+    }
+    return true;
+  }catch(err){
+    console.error('Request Inbox save failed',err);
+    return false;
+  }finally{
+    clearTimeout(timer);
+  }
 }
 
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
@@ -99,7 +113,7 @@ const urgencyEl=document.getElementById('urgency');
 const problemEl=document.getElementById('problem');
 const websiteEl=document.getElementById('website');
 
-requestFormEl.addEventListener('submit',e=>{
+requestFormEl.addEventListener('submit',async e=>{
   e.preventDefault();
 
   const c=COPY[lang];
@@ -120,7 +134,12 @@ Source: website request form
 I can attach photos/videos here in WhatsApp if useful.`;
   const waUrl=`https://wa.me/35677532068?text=${encodeURIComponent(text)}`;
 
-  saveRequest({
+  // Reserve the new window during the user's tap, then finish the inbox save
+  // before sending that window to WhatsApp. This avoids iPhone/Safari cancelling
+  // the network request when WhatsApp takes focus.
+  const waWindow=window.open('about:blank','_blank');
+
+  await saveRequest({
     p_name:nameEl.value.trim(),
     p_phone:phoneEl.value.trim(),
     p_area:areaEl.value.trim(),
@@ -137,14 +156,11 @@ I can attach photos/videos here in WhatsApp if useful.`;
     p_website:websiteEl.value.trim()
   });
 
-  const waLink=document.createElement('a');
-  waLink.href=waUrl;
-  waLink.target='_blank';
-  waLink.rel='noopener';
-  waLink.style.display='none';
-  document.body.appendChild(waLink);
-  waLink.click();
-  setTimeout(()=>waLink.remove(),1000);
+  if(waWindow){
+    waWindow.location.href=waUrl;
+  }else{
+    window.location.href=waUrl;
+  }
 });
 
 setLang(lang);
