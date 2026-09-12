@@ -42,7 +42,7 @@
   <div class="foot">© 2026 DB Plumbing Services · Malta</div>
 </div>
 <script>
-const SUPABASE_URL='https://gschubeifhlbxxrdlwo.supabase.co';
+const SUPABASE_URL='https://gscrhubeifhlbxxrdlwo.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_FXBhsGpZ2R73HV1G--uByw_D041l7pz';
 
 const COPY={
@@ -75,7 +75,7 @@ function attribution(){
 
 async function saveRequest(payload){
   const controller=new AbortController();
-  const timer=setTimeout(()=>controller.abort(),12000);
+  const timer=setTimeout(()=>controller.abort(),5000);
   try{
     const response=await fetch(`${SUPABASE_URL}/rest/v1/rpc/submit_service_request`,{
       method:'POST',
@@ -96,7 +96,7 @@ async function saveRequest(payload){
     return {ok:true,status:response.status,detail};
   }catch(err){
     console.error('Request Inbox save failed',err);
-    return {ok:false,status:0,detail:(err && err.name==='AbortError')?'timeout after 12s':String(err)};
+    return {ok:false,status:0,detail:(err && err.name==='AbortError')?'timeout after 5s':String(err)};
   }finally{
     clearTimeout(timer);
   }
@@ -133,6 +133,9 @@ Source: website request form
 I can attach photos/videos here in WhatsApp if useful.`;
   const waUrl=`https://wa.me/35677532068?text=${encodeURIComponent(text)}`;
 
+  // Reserve the new window during the user's tap, then finish the inbox save
+  // before sending that window to WhatsApp. This avoids iPhone/Safari cancelling
+  // the network request when WhatsApp takes focus.
   const waWindow=window.open('about:blank','_blank');
 
   const inboxResult=await saveRequest({
@@ -151,8 +154,6 @@ I can attach photos/videos here in WhatsApp if useful.`;
     p_client_submitted_at:new Date().toISOString(),
     p_website:null
   });
-
-  alert(`Request Inbox diagnostic: ${inboxResult.status || 'NETWORK'} ${inboxResult.detail || ''}`);
 
   if(waWindow){
     waWindow.location.href=waUrl;
