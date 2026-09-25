@@ -108,7 +108,7 @@ COPY={
 "l6":"Nel progetto DB la filtrazione usa tre rami di aspirazione distinti verso C-F-SUCT e quattro rami di ritorno distinti da C-F-RET. Questa architettura permette isolamento e bilanciamento senza confondere filtrazione e idromassaggio.",
 "k7":"06 - BILANCIAMENTO E MESSA IN SERVIZIO",
 "t7":"La portata non si 'indovina' dalla bocchetta: si verifica nel sistema",
-"l7":"Il componente terminale pone limiti e vincoli, ma la distribuzione reale dipende da perdite di carico, regolazioni, posizione dei rami e punto di lavoro della pompa. Il commissioning deve verificare il comportamento del circuito completo.",
+"l7":"Il componente terminale pone limiti e vincoli, ma la distribuzione reale dipende da perdite di carico, regolazioni, posizione dei rami e punto di lavoro della pompa. La messa in servizio deve verificare il comportamento del circuito completo.",
 "checks":[("1","Identita dei rami","Etichettare SCOPA, FONDO, BT e R1-R4 prima dell'avviamento."),
 ("2","Valvole","Aprire/regolare un ramo alla volta e registrare la posizione finale."),
 ("3","Aria","Nessuna aspirazione d'aria o cavitazione percepibile nel circuito filtrazione."),
@@ -267,7 +267,7 @@ def page2(c,L,p):
 
 def page3(c,L,p):
     header(c,L["k3"],p,L["edition"]); title(c,L["t3"],L["l3"])
-    img_panel(c,ASSETS["main"],42,270,260,290,"ASTRALPOOL NORM 56379 - REAL PRODUCT")
+    img_panel(c,ASSETS["main"],42,270,260,290,("ASTRALPOOL NORM 56379 - REAL PRODUCT" if L["edition"].startswith("EN") else "ASTRALPOOL NORM 56379 - PRODOTTO REALE"))
     x=322; y=560
     for a,b in L["main_specs"]:
         c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(x,y-43,231,38,7,fill=1,stroke=1)
@@ -353,7 +353,7 @@ def page6(c,L,p):
           if L["edition"].startswith("EN") else
           "Ogni ramo mantiene la propria valvola di intercettazione/bilanciamento. SCARICO/CONTROLAVAGGIO resta una linea Ø63 separata.")
     draw_text(c,note,78,205,425,"Helvetica-Bold",9.2,11.5,TEXT,4)
-    source(c,("[S6] DB Plumbing Services handoff 22-09-2026 - filtration suction/return manifold architecture." if L["edition"].startswith("EN") else "[S6] Handoff DB Plumbing Services 22-09-2026 - architettura collettori di aspirazione e ritorno filtrazione."))
+    source(c,("[S6] DB Plumbing Services handoff 22-09-2026 - filtration suction/return manifold architecture." if L["edition"].startswith("EN") else "[S6] Documento tecnico DB Plumbing Services 22-09-2026 - architettura collettori di aspirazione e ritorno filtrazione."))
     c.showPage()
 
 def page7(c,L,p):
@@ -369,7 +369,7 @@ def page7(c,L,p):
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,92,511,38,7,fill=1,stroke=1)
     msg=("Commissioning confirms system behaviour; it does not replace product certification or regulatory compliance."
          if L["edition"].startswith("EN") else
-         "Il commissioning conferma il comportamento dell'impianto; non sostituisce certificazione del prodotto o conformita normativa.")
+         "La messa in servizio conferma il comportamento dell'impianto; non sostituisce certificazione del prodotto o conformita normativa.")
     draw_text(c,msg,57,116,480,"Helvetica-Bold",8.5,10.5,NAVY,3)
     source(c,("Manufacturer component limits + DB project architecture. Entrapment-safety review remains a separate design verification." if L["edition"].startswith("EN") else "Limiti dichiarati dei componenti + architettura del progetto DB. La verifica anti-intrappolamento resta un controllo progettuale separato."))
     c.showPage()
@@ -395,7 +395,7 @@ def page8(c,L,p):
     img_panel(c,ASSETS["wall"],438,160,115,130,"15661")
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,94,511,45,8,fill=1,stroke=1)
     draw_text(c,L["rights"],57,122,480,"Helvetica",7.8,9.5,MUTED,3)
-    source(c,("Sources: AstralPool/Fluidra official product pages & manuals; AstralPool 2026 catalogue for 20140; DB handoff 22-09-2026." if L["edition"].startswith("EN") else "Fonti: pagine prodotto e manuali ufficiali AstralPool/Fluidra; catalogo AstralPool 2026 per 20140; handoff DB 22-09-2026."))
+    source(c,("Sources: AstralPool/Fluidra official product pages & manuals; AstralPool 2026 catalogue for 20140; DB handoff 22-09-2026." if L["edition"].startswith("EN") else "Fonti: pagine prodotto e manuali ufficiali AstralPool/Fluidra; catalogo AstralPool 2026 per 20140; documento tecnico DB 22-09-2026."))
     c.showPage()
 
 def build(lang):
