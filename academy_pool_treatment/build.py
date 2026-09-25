@@ -255,7 +255,7 @@ def card(c,x,y,w,h,head,body,accent=CYAN):
     c.setFillColor(WHITE); c.setStrokeColor(MID); c.roundRect(x,y,w,h,9,fill=1,stroke=1)
     c.setFillColor(accent); c.rect(x,y,w,5,fill=1,stroke=0)
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",11); c.drawString(x+14,y+h-28,head)
-    draw_text(c,body,x+14,y+h-52,w-28,"Helvetica",9.6,12.6,TEXT,8)
+    draw_text(c,body,x+14,y+h-52,w-28,"Helvetica",10.6,13.8,TEXT,8)
 
 def cover(c,L):
     c.setFillColor(NAVY); c.rect(0,0,W,H,fill=1,stroke=0); c.setFillColor(CYAN); c.rect(0,0,10,H,fill=1,stroke=0)
@@ -297,13 +297,39 @@ def page3(c,L,p):
 
 def page4(c,L,p):
     header(c,L["k4"],p,L["edition"]); title(c,L["t4"],L["l4"])
-    ph=ASSETS["en_ph"] if L["edition"].startswith("EN") else ASSETS["it_ph"]
-    orp=ASSETS["en_orp"] if L["edition"].startswith("EN") else ASSETS["it_orp"]
-    img_panel(c,ph,42,305,245,305,L["phcal"])
-    img_panel(c,orp,308,305,245,305,L["orpcal"])
-    c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,145,511,120,10,fill=1,stroke=1)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10); c.drawString(60,238,"MANUAL LOGIC" if L["edition"].startswith("EN") else "LOGICA DEL MANUALE")
-    draw_text(c,L["calnote"],60,215,470,"Helvetica",9.5,12.6,TEXT,6)
+    en=L["edition"].startswith("EN")
+    ph=ASSETS["en_ph"] if en else ASSETS["it_ph"]
+    orp=ASSETS["en_orp"] if en else ASSETS["it_orp"]
+
+    # Large student-readable procedure panels.
+    c.setFillColor(WHITE); c.setStrokeColor(MID); c.roundRect(42,300,245,320,10,fill=1,stroke=1)
+    c.setFillColor(CYAN_D); c.rect(42,300,245,5,fill=1,stroke=0)
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",12); c.drawString(58,590,L["phcal"])
+    phsteps=(["1. Rinse the probe.","2. Place in pH 7 buffer.","3. Hold CAL for 3 seconds.","4. Wait 60 seconds and check probe quality.","5. Rinse the probe.","6. Place in pH 4 buffer (two-point mode).","7. Calibrate again for 60 seconds.","8. Rinse, save and return to normal status."]
+             if en else
+             ["1. Risciacquare la sonda.","2. Immergere nella soluzione pH 7.","3. Tenere CAL premuto per 3 secondi.","4. Attendere 60 secondi e controllare la qualita sonda.","5. Risciacquare la sonda.","6. Immergere nella soluzione pH 4 (modalita due punti).","7. Calibrare di nuovo per 60 secondi.","8. Risciacquare, salvare e tornare allo stato normale."])
+    yy=558
+    for s in phsteps:
+        c.setFillColor(CYAN); c.circle(61,yy+3,2.5,fill=1,stroke=0)
+        yy=draw_text(c,s,72,yy+6,195,"Helvetica",10.0,12.5,TEXT,2)-8
+
+    c.setFillColor(WHITE); c.setStrokeColor(MID); c.roundRect(308,300,245,320,10,fill=1,stroke=1)
+    c.setFillColor(GREEN); c.rect(308,300,245,5,fill=1,stroke=0)
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",12); c.drawString(324,590,L["orpcal"])
+    orpsteps=(["1. Rinse the probe.","2. Place in 465 mV buffer.","3. Hold CAL for 3 seconds.","4. Wait 60 seconds.","5. Check the displayed probe quality.","6. Rinse the probe.","7. Return to normal measurement/control status."]
+              if en else
+              ["1. Risciacquare la sonda.","2. Immergere nella soluzione 465 mV.","3. Tenere CAL premuto per 3 secondi.","4. Attendere 60 secondi.","5. Controllare la qualita sonda visualizzata.","6. Risciacquare la sonda.","7. Tornare allo stato normale di misura/controllo."])
+    yy=558
+    for s in orpsteps:
+        c.setFillColor(GREEN); c.circle(327,yy+3,2.5,fill=1,stroke=0)
+        yy=draw_text(c,s,338,yy+6,195,"Helvetica",10.0,12.5,TEXT,2)-10
+
+    # Small official-source extracts: evidence, not primary reading material.
+    img_panel(c,ph,42,160,245,105,"OFFICIAL MANUAL EXTRACT" if en else "ESTRATTO MANUALE UFFICIALE")
+    img_panel(c,orp,308,160,245,105,"OFFICIAL MANUAL EXTRACT" if en else "ESTRATTO MANUALE UFFICIALE")
+
+    c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,92,511,48,8,fill=1,stroke=1)
+    draw_text(c,L["calnote"],57,122,480,"Helvetica",8.8,10.6,TEXT,3)
     source(c,"[S2] AstralPool Control Basic Next installation manual, Code 0000137847 Rev 2.0 - calibration sections.")
     c.showPage()
 
@@ -376,7 +402,7 @@ def page8(c,L,p):
         c.setFillColor(CYAN); c.circle(62,y-4,9,fill=1,stroke=0)
         c.setFillColor(WHITE); c.setFont("Helvetica-Bold",7.5); c.drawCentredString(62,y-7,n)
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.5); c.drawString(82,y,h)
-        draw_text(c,b,82,y-15,445,"Helvetica",8.7,10.9,MUTED,2)
+        draw_text(c,b,82,y-15,445,"Helvetica",9.4,11.8,MUTED,2)
         y-=47
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,102,511,50,8,fill=1,stroke=1)
     draw_text(c,L["footer"],57,132,480,"Helvetica",7.3,9,MUTED,3)
