@@ -76,7 +76,7 @@ COPY={
 "edition":"EDIZIONE ITALIANA",
 "cover_title":"CHIMICA DELL'ACQUA + DOSAGGIO AUTOMATICO",
 "cover_sub":"pH, ORP, sonde, dosaggio e interblocco di flusso",
-"cover_desc":"Control Basic Next 66162 / 66163 - principi corretti per studenti e case study DB Plumbing Services",
+"cover_desc":"Control Basic Next 66162 / 66163 - principi corretti per studenti e caso reale DB Plumbing Services",
 "k2":"01 - DUE MISURE DIVERSE",
 "t2":"pH e ORP non sono la stessa cosa e non vanno letti allo stesso modo",
 "l2":"Il pH descrive l'acidita/alcalinita dell'acqua. L'ORP (redox) misura un potenziale elettrico in millivolt legato alla capacita ossidante del sistema. Un valore ORP non e' una concentrazione di cloro in ppm.",
@@ -88,42 +88,42 @@ COPY={
 "k3":"02 - COMPONENTI REALI",
 "t3":"Control Basic Next: due apparecchi separati nel progetto DB",
 "l3":"AstralPool Control Basic Next e' un sistema automatico di misura e dosaggio. Nel progetto DB sono previsti un controllo pH e un controllo ORP distinti, entrambi nella versione 1.5 L/h.",
-"rows3":[("66162","Control Basic Next pH","1.5 L/h","1.5 bar","sonda pH + buffer pH 4 / pH 7"),
-("66163","Control Basic Next ORP","1.5 L/h","1.5 bar","sonda ORP + buffer 465 mV")],
+"rows3":[("66162","Control Basic Next pH","1.5 L/h","1.5 bar","sonda pH + soluzioni tampone pH 4 / pH 7"),
+("66163","Control Basic Next ORP","1.5 L/h","1.5 bar","sonda ORP + soluzione tampone 465 mV")],
 "note3":"Il catalogo Fluidra 2025 associa il modello pH a dosaggio acido o basico e il modello ORP a cloro liquido. La selezione del prodotto chimico reale deve seguire manuale, SDS e condizioni dell'impianto.",
 "k4":"03 - CALIBRAZIONE",
 "t4":"Una sonda non si 'crede': si calibra e si verifica",
 "l4":"Il manuale AstralPool prevede calibrazione pH a due punti (pH 7 e pH 4), oppure un solo punto pH 7 se configurato. Per Redox e' previsto il riferimento 465 mV. Le sonde vanno risciacquate tra le soluzioni.",
 "phcal":"CALIBRAZIONE pH",
 "orpcal":"CALIBRAZIONE ORP",
-"calnote":"Il display mostra anche una qualita della sonda durante la calibrazione. In caso di errore il manuale indica di controllare/sostituire sonda o soluzione tampone e ripetere la procedura.",
-"k5":"04 - INTERLOCK DI FLUSSO",
+"calnote":"Lo schermo mostra anche una valutazione della qualita della sonda durante la calibrazione. In caso di errore il manuale indica di controllare o sostituire la sonda o la soluzione tampone e ripetere la procedura.",
+"k5":"04 - INTERBLOCCO DI FLUSSO",
 "t5":"Nessun dosaggio automatico senza circolazione verificata",
-"l5":"Il Control Basic Next dispone di un ingresso di flusso collegabile alla circolazione. Nel progetto DB l'interlock di flusso e' un requisito importante: il dosaggio non deve proseguire quando manca la condizione di ricircolo prevista.",
+"l5":"Il Control Basic Next dispone di un ingresso di flusso collegabile alla circolazione. Nel progetto DB l'interblocco di flusso e' un requisito importante: il dosaggio non deve proseguire quando manca la condizione di ricircolo prevista.",
 "flowsteps":[("1","RICIRCOLO ATTIVO","La pompa di filtrazione e' in servizio e la portata e' disponibile."),
 ("2","CONSENSO FLUSSO","Il controller riceve il segnale previsto dal sistema."),
 ("3","MISURA","La sonda legge pH oppure ORP."),
 ("4","CONFRONTO VALORE IMPOSTATO","Il controller confronta misura e valore impostato."),
 ("5","DOSAGGIO","La pompa peristaltica dosa solo quando la logica lo richiede.")],
-"flowhold":"DA CONFERMARE: la posizione esatta di sonde, punti di prelievo e punti di iniezione del progetto DB deve essere definita solo dopo verifica del kit realmente fornito e del manuale di installazione.",
+"flowhold":"DA CONFERMARE: la posizione esatta di sonde, punti di prelievo e punti di iniezione del progetto DB deve essere definita solo dopo verifica del corredo realmente fornito e del manuale di installazione.",
 "k6":"05 - VALORI IMPOSTATI E CHIMICA",
 "t6":"Il valore di fabbrica non e' automaticamente il valore di progetto",
-"l6":"Il manuale riporta come default 7.4 pH e 750 mV (Rx), ma sono parametri iniziali del controller, non una prescrizione universale. La chimica reale dipende da acqua, disinfettante, stabilizzante, temperatura, carico bagnanti e obiettivi operativi.",
+"l6":"Il manuale riporta come valori predefiniti 7.4 pH e 750 mV (Rx), ma sono parametri iniziali del regolatore, non una prescrizione universale. La chimica reale dipende da acqua, disinfettante, stabilizzante, temperatura, carico bagnanti e obiettivi operativi.",
 "facts6":[("CDC - piscina domestica","pH 7.0-7.8; almeno 1 ppm cloro libero senza acido cianurico, almeno 2 ppm se si usa acido cianurico/stabilizzato."),
 ("WHO - piscine a cloro","pH 7.2-7.8 come guida generale."),
 ("WHO - ORP","Valori >720 mV con elettrodo Ag/AgCl o >680 mV con calomel possono indicare buona condizione microbiologica, ma il valore appropriato va definito caso per caso."),
-("AstralPool - default controller","7.4 pH e 750 mV; impostabili, quindi non confondere default software con target obbligatorio.")],
+("AstralPool - valori predefiniti del regolatore","7.4 pH e 750 mV; impostabili, quindi non confondere i valori predefiniti del software con obiettivi obbligatori.")],
 "k7":"06 - CASO REALE DB",
 "t7":"Dove entra il trattamento nella catena reale della piscina",
 "l7":"Nel progetto DB la filtrazione e' separata dall'idromassaggio. Il trattamento pH/ORP e' previsto dopo Victoria + valvola 6 vie/Vesubio e prima del collettore ritorni C-F-RET.",
 "confirmed":"CONFERMATO",
 "conf7":["Control Basic Next pH 1.5 L/h - 66162.","Control Basic Next ORP 1.5 L/h - 66163.","Zona trattamento sulla parete destra, circa X 4300-5200 mm.","Catena: Victoria -> 6 vie/Vesubio -> pH/ORP -> C-F-RET -> R1-R4.","Flussostato/interblocco considerato importante.","Vaschetta di contenimento chimici considerata prudente."],
 "hold":"DA VERIFICARE / NON CONFERMARE",
-"hold7":["Cella di derivazione sonde: opzione da confermare, non componente definitivo.","Posizione esatta dei porta-sonda e dei punti di iniezione.","Prodotti chimici finali e concentrazioni fornite.","Valori operativi definitivi.","Sequenza e distanze fisiche dei punti di iniezione secondo kit e manuali reali."],
+"hold7":["Cella di derivazione sonde: opzione da confermare, non componente definitivo.","Posizione esatta dei porta-sonda e dei punti di iniezione.","Prodotti chimici finali e concentrazioni fornite.","Valori operativi definitivi.","Sequenza e distanze fisiche dei punti di iniezione secondo corredo e manuali reali."],
 "k8":"07 - MESSA IN SERVIZIO",
 "t8":"Avviamento e manutenzione: misurare con un riferimento indipendente",
 "l8":"L'automazione non elimina il controllo umano. Durante avviamento e manutenzione le letture delle sonde devono essere confrontate con un metodo indipendente appropriato, e gli allarmi non devono essere ignorati.",
-"checks8":[("1","Identita apparecchi","Confermare 66162 e 66163 e il contenuto reale dei kit."),
+"checks8":[("1","Identita apparecchi","Confermare 66162 e 66163 e il contenuto reale dei corredi."),
 ("2","Installazione sonde","Verificare immersione, tenuta, cablaggio e orientamento secondo manuale."),
 ("3","Calibrazione","pH con soluzioni tampone pH7/pH4 secondo configurazione; ORP con 465 mV."),
 ("4","Flusso","Provare l'interblocco: la perdita di ricircolo deve impedire il dosaggio previsto."),
@@ -131,11 +131,11 @@ COPY={
 ("6","Confronto indipendente","Verificare pH e disinfettante con strumento o prova adeguata."),
 ("7","Allarmi e OFA","Provare gli allarmi previsti e registrare gli interventi."),
 ("8","Sicurezza chimica","Mai miscelare prodotti; seguire SDS, etichette e istruzioni del produttore.")],
-"footer":"Fonti: AstralPool/Fluidra Control Basic Next, manuale 0000137847 Rev 2.0, brochure Fluidra, CDC Healthy Swimming, WHO recreational-water guidance, DB handoff 22-09-2026."
+"footer":"Fonti: AstralPool/Fluidra Control Basic Next, manuale 0000137847 Rev 2.0, opuscolo Fluidra, indicazioni CDC per la balneazione sicura, linee guida WHO sulle acque ricreative, documento tecnico DB 22-09-2026."
 },
 "EN":{
 "edition":"ENGLISH EDITION",
-"cover_title":"CHIMICA DELL'ACQUA + DOSAGGIO AUTOMATICO",
+"cover_title":"WATER CHEMISTRY + AUTOMATIC DOSING",
 "cover_sub":"pH, ORP, probes, dosing and flow interlock",
 "cover_desc":"Control Basic Next 66162 / 66163 - technically verified principles and DB Plumbing Services case study",
 "k2":"01 - TWO DIFFERENT MEASUREMENTS",
@@ -181,7 +181,7 @@ COPY={
 "conf7":["Control Basic Next pH 1.5 L/h - 66162.","Control Basic Next ORP 1.5 L/h - 66163.","Treatment zone on the right wall, approximately X 4300-5200 mm.","Chain: Victoria -> six-way/Vesubio -> pH/ORP -> C-F-RET -> R1-R4.","Flow switch/interlock is considered important.","Chemical containment tray is considered prudent."],
 "hold":"TO VERIFY / DO NOT FREEZE",
 "hold7":["Probe bypass cell is optional and not a frozen project component.","Exact probe-holder and injection-point positions.","Final chemical products and supplied concentrations.","Final operating setpoints.","Physical spacing/order of injection points per actual kit and manuals."],
-"k8":"07 - MESSA IN SERVIZIO",
+"k8":"07 - COMMISSIONING",
 "t8":"Start-up and maintenance: compare automation with an independent reference",
 "l8":"Automation does not remove operator verification. During commissioning and maintenance, probe readings should be compared with an appropriate independent method, and alarms must not be ignored.",
 "checks8":[("1","Equipment identity","Confirm 66162 and 66163 and the actual kit contents."),
@@ -307,7 +307,7 @@ def page4(c,L,p):
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",12); c.drawString(58,590,L["phcal"])
     phsteps=(["1. Rinse the probe.","2. Place in pH 7 buffer.","3. Hold CAL for 3 seconds.","4. Wait 60 seconds and check probe quality.","5. Rinse the probe.","6. Place in pH 4 buffer (two-point mode).","7. Calibrate again for 60 seconds.","8. Rinse, save and return to normal status."]
              if en else
-             ["1. Risciacquare la sonda.","2. Immergere nella soluzione pH 7.","3. Tenere CAL premuto per 3 secondi.","4. Attendere 60 secondi e controllare la qualita sonda.","5. Risciacquare la sonda.","6. Immergere nella soluzione pH 4 (modalita due punti).","7. Calibrare di nuovo per 60 secondi.","8. Risciacquare, salvare e tornare allo stato normale."])
+             ["1. Risciacquare la sonda.","2. Immergere nella soluzione pH 7.","3. Tenere premuto per 3 secondi il tasto CAL (calibrazione).","4. Attendere 60 secondi e controllare la qualita sonda.","5. Risciacquare la sonda.","6. Immergere nella soluzione pH 4 (modalita due punti).","7. Ripetere la calibrazione per 60 secondi.","8. Risciacquare, salvare e tornare allo stato normale."])
     yy=558
     for s in phsteps:
         c.setFillColor(CYAN); c.circle(61,yy+3,2.5,fill=1,stroke=0)
@@ -318,7 +318,7 @@ def page4(c,L,p):
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",12); c.drawString(324,590,L["orpcal"])
     orpsteps=(["1. Rinse the probe.","2. Place in 465 mV buffer.","3. Hold CAL for 3 seconds.","4. Wait 60 seconds.","5. Check the displayed probe quality.","6. Rinse the probe.","7. Return to normal measurement/control status."]
               if en else
-              ["1. Risciacquare la sonda.","2. Immergere nella soluzione 465 mV.","3. Tenere CAL premuto per 3 secondi.","4. Attendere 60 secondi.","5. Controllare la qualita sonda visualizzata.","6. Risciacquare la sonda.","7. Tornare allo stato normale di misura/controllo."])
+              ["1. Risciacquare la sonda.","2. Immergere nella soluzione 465 mV.","3. Tenere premuto per 3 secondi il tasto CAL (calibrazione).","4. Attendere 60 secondi.","5. Controllare la qualita sonda visualizzata.","6. Risciacquare la sonda.","7. Tornare allo stato normale di misura/controllo."])
     yy=558
     for s in orpsteps:
         c.setFillColor(GREEN); c.circle(327,yy+3,2.5,fill=1,stroke=0)
