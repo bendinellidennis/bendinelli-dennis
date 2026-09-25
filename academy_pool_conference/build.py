@@ -356,20 +356,18 @@ def page6(c,L,pno):
         yy-=62
     # elegant chain
     c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(42,232,"FUNCTIONAL CHAIN")
-    chain=["SCOPA / VACUUM","FONDO / DRAIN","BT","VICTORIA","6 VIE / 6-WAY","VESUBIO","pH / ORP","R1–R4"]
-    start=42; yline=187
-    widths=[72,67,34,68,83,65,59,48]
+    chain=["SCOPA / VACUUM","FONDO / DRAIN","BT","VICTORIA","6 VIE / 6-WAY","VESUBIO","pH / ORP","R1-R4"]
+    start=42; yline=187; stepw=55; gap=8
     x=start
-    for i,(lab,ww) in enumerate(zip(chain,widths)):
-        c.setFillColor(NAVY if i not in (2,5,6) else (GREEN if i in (2,6) else ORANGE))
-        c.setFont("Helvetica-Bold",7.0)
-        c.drawCentredString(x+ww/2,yline+13,lab)
-        c.setStrokeColor(MID); c.setLineWidth(1.2); c.line(x,yline,x+ww,yline)
+    for i,lab in enumerate(chain):
+        col = NAVY if i not in (2,5,6) else (GREEN if i in (2,6) else ORANGE)
+        c.setFillColor(col); c.setFont("Helvetica-Bold",6.1)
+        c.drawCentredString(x+stepw/2,yline+13,lab)
+        c.setStrokeColor(col); c.setLineWidth(1.8); c.line(x,yline,x+stepw,yline)
         if i < len(chain)-1:
-            c.setStrokeColor(CYAN); c.setLineWidth(1.6); c.line(x+ww,yline,x+ww+10,yline)
-            c.setFillColor(CYAN); c.circle(x+ww+10,yline,2.4,fill=1,stroke=0)
-            x += ww+12
-        else: x += ww
+            c.setStrokeColor(CYAN); c.setLineWidth(1.2); c.line(x+stepw,yline,x+stepw+gap-2,yline)
+            c.setFillColor(CYAN); c.circle(x+stepw+gap-2,yline,2.0,fill=1,stroke=0)
+        x += stepw+gap
     c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,"[S5] Fluidra spare-parts catalogue 65563   [S6] DB project handoff")
     c.showPage()
 
