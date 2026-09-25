@@ -107,16 +107,16 @@ COPY = {
 "IT": {
 "edition":"EDIZIONE ITALIANA",
 "cover_kicker":"ACADEMY DB PLUMBING SERVICES",
-"cover_title":"POOL SYSTEMS",
-"cover_sub":"FILTRATION CORE",
+"cover_title":"SISTEMI PISCINA",
+"cover_sub":"NUCLEO FILTRAZIONE",
 "cover_desc":"Valvola 6 vie • Filtro Vesubio • Victoria Plus Silent • percorso dell’acqua",
-"cover_tag":"Manuale tecnico-professionale • Visual Standard REV03",
+"cover_tag":"Manuale tecnico-professionale • Standard visivo REV03",
 "p2k":"01 • COMPONENTE REALE",
 "p2t":"Valvola 6 vie: prima capire il circuito, poi la posizione",
-"p2lead":"La leva non è il punto di partenza. Un tecnico legge prima le cinque funzioni idrauliche — PUMP, RETURN, WASTE, TOP e BOTTOM — e solo dopo associa la posizione operativa.",
+"p2lead":"La leva non è il punto di partenza. Un tecnico legge prima le cinque funzioni idrauliche — POMPA, RITORNO, SCARICO, ALTO e BASSO — e solo dopo associa la posizione operativa.",
 "rule":"REGOLA OPERATIVA",
 "ruletext":"Arrestare la pompa prima di cambiare posizione. Il percorso dell’acqua viene verificato sul componente realmente installato e sul relativo manuale.",
-"ports":[("PUMP","mandata dalla pompa"),("RETURN","ritorno verso piscina"),("WASTE","scarico / controlavaggio"),("TOP","collegamento lato alto filtro"),("BOTTOM","ritorno dal fondo filtro")],
+"ports":[("POMPA","mandata dalla pompa"),("RITORNO","ritorno verso piscina"),("SCARICO","scarico / controlavaggio"),("ALTO","collegamento lato alto filtro"),("BASSO","ritorno dal fondo filtro")],
 "real":"FOTOGRAFIA REALE",
 "p3k":"02 • ESPLOSO UFFICIALE / RICAMBI",
 "p3t":"Dentro la 20569: organi, tenute e raccordi",
@@ -127,12 +127,12 @@ COPY = {
 "p4k":"03 • SEI POSIZIONI",
 "p4t":"Seguire l’acqua: sei funzioni, una sola logica",
 "p4lead":"Le denominazioni della maniglia sono operative. La diagnosi diventa più semplice quando ogni posizione viene tradotta nel percorso reale dell’acqua.",
-"modes":[("FILTER","PUMP → TOP → letto filtrante → BOTTOM → RETURN"),
-("BACKWASH","PUMP → BOTTOM → letto filtrante → TOP → WASTE"),
-("RINSE","PUMP → TOP → letto filtrante → BOTTOM → WASTE"),
-("RECIRCULATE","PUMP → RETURN • bypass del filtro"),
-("WASTE","PUMP → WASTE • scarico diretto"),
-("CLOSED","Circuito chiuso • pompa ferma")],
+"modes":[("FILTRAZIONE","POMPA → ALTO → letto filtrante → BASSO → RITORNO"),
+("CONTROLAVAGGIO","POMPA → BASSO → letto filtrante → ALTO → SCARICO"),
+("RISCIACQUO","POMPA → ALTO → letto filtrante → BASSO → SCARICO"),
+("RICIRCOLO","POMPA → RITORNO • esclusione del filtro"),
+("SCARICO","POMPA → SCARICO • scarico diretto"),
+("CHIUSA","Circuito chiuso • pompa ferma")],
 "p5k":"04 • FILTRO REALE + ESPLOSO",
 "p5t":"Vesubio Ø600: leggere il filtro dall’interno",
 "p5lead":"Nel progetto DB il riferimento è AstralPool Vesubio 15786: Ø600, portata nominale 14 m³/h, valvola 1½”. La fotografia e l’esploso mostrano insieme involucro, diffusore, letto filtrante e collettore.",
@@ -142,19 +142,19 @@ COPY = {
 "p6t":"Victoria Plus Silent 100T: la pompa crea portata, non decide il percorso",
 "p6lead":"Il codice 65563 identifica la Victoria Plus Silent 1 HP trifase. Nel sistema la pompa genera portata e prevalenza; la valvola indirizza il flusso; il filtro separa le particelle.",
 "roles":[("POMPA","portata + prevalenza"),("VALVOLA 6 VIE","scelta del percorso"),("FILTRO","separazione particelle"),("TRATTAMENTO","correzione pH / ORP")],
-"p7k":"06 • CASE STUDY DB",
+"p7k":"06 • CASO REALE DB",
 "p7t":"Dal componente al sistema reale",
 "p7lead":"La catena seguente usa solo connessioni già confermate nell’handoff del progetto. La Balance Tank entra nella filtrazione; il circuito idromassaggio HJ resta separato.",
-"chain":["SCOPA","FONDO","BALANCE TANK","C-F-SUCT","VICTORIA 100T","6 VIE","VESUBIO Ø600","pH / ORP","C-F-RET","R1–R4"],
-"installer":"CHECK INSTALLATORE",
-"checks":["Verificare PUMP / RETURN / WASTE sulla valvola realmente fornita.","Misurare gli attacchi reali prima dell’incollaggio definitivo.","Mantenere WASTE / BACKWASH separato Ø63.","Confermare curva pompa e perdite reali prima del dimensionamento finale."],
+"chain":["SCOPA","FONDO","VASCA COMPENSO","C-F-SUCT","VICTORIA 100T","6 VIE","VESUBIO Ø600","pH / ORP","C-F-RET","R1–R4"],
+"installer":"CONTROLLO INSTALLATORE",
+"checks":["Verificare POMPA / RITORNO / SCARICO sulla valvola realmente fornita.","Misurare gli attacchi reali prima dell’incollaggio definitivo.","Mantenere SCARICO / CONTROLAVAGGIO separato Ø63.","Confermare curva pompa e perdite reali prima del dimensionamento finale."],
 "sources":"FONTI VISIVE E TECNICHE",
 },
 "EN": {
 "edition":"ENGLISH EDITION",
 "cover_kicker":"ACADEMY DB PLUMBING SERVICES",
-"cover_title":"POOL SYSTEMS",
-"cover_sub":"FILTRATION CORE",
+"cover_title":"SISTEMI PISCINA",
+"cover_sub":"NUCLEO FILTRAZIONE",
 "cover_desc":"6-way valve • Vesubio filter • Victoria Plus Silent • water-path logic",
 "cover_tag":"Technical-professional manual • Visual Standard REV03",
 "p2k":"01 • REAL COMPONENT",
@@ -236,7 +236,7 @@ def fit_img(c, path, x, y, w, h, pad=0):
 
 def header(c, kicker, page, edition):
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.3); c.drawString(42,H-30,"ACADEMY DB PLUMBING SERVICES")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7.1); c.drawRightString(W-42,H-30,"POOL SYSTEMS • FILTRATION CORE • REV03")
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7.1); c.drawRightString(W-42,H-30,("POOL SYSTEMS • FILTRATION CORE • REV03" if edition.startswith("EN") else "SISTEMI PISCINA • NUCLEO FILTRAZIONE • REV03"))
     c.setStrokeColor(MID); c.setLineWidth(.6); c.line(42,H-38,W-42,H-38)
     c.setFillColor(CYAN); c.setFont("Helvetica-Bold",9); c.drawString(42,H-62,kicker)
     c.setFillColor(MUTED); c.setFont("Helvetica",6.7); c.drawRightString(W-42,24,f"{edition} • {page}")
@@ -274,7 +274,7 @@ def cover(c,L):
     # visual hero
     image_panel(c,ASSETS["filter_crop"],315,150,230,430)
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9); c.drawString(54,115,"DB PLUMBING SERVICES • MALTA")
-    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",9); c.drawString(54,37,"REAL COMPONENTS • VERIFIED SOURCES • INSTALLER-FIRST METHOD")
+    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",9); c.drawString(54,37,("REAL COMPONENTS • VERIFIED SOURCES • INSTALLER-FIRST METHOD" if L["edition"].startswith("EN") else "COMPONENTI REALI • FONTI VERIFICATE • METODO PENSATO PER L'INSTALLATORE"))
     c.showPage()
 
 def page2(c,L,pno):
@@ -283,7 +283,7 @@ def page2(c,L,pno):
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(342,278,211,300,10,fill=1,stroke=1)
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10); c.drawString(360,550,L["rule"])
     draw_text(c,L["ruletext"],360,530,175,"Helvetica",8.6,12,TEXT,7)
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(360,456,"FIVE FUNCTIONAL CONNECTIONS")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(360,456,("FIVE FUNCTIONAL CONNECTIONS" if L["edition"].startswith("EN") else "CINQUE CONNESSIONI FUNZIONALI"))
     yy=432
     for lab,desc in L["ports"]:
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9); c.drawString(360,yy,lab)
@@ -297,7 +297,7 @@ def page2(c,L,pno):
 
 def page3(c,L,pno):
     header(c,L["p3k"],pno,L["edition"]); y=title(c,L["p3t"],L["p3lead"])
-    image_panel(c,ASSETS["valve_exploded_crop"],42,190,335,420,"REAL COMPONENT + EXPLODED SUPPORT")
+    image_panel(c,ASSETS["valve_exploded_crop"],42,190,335,420,("REAL COMPONENT + EXPLODED SUPPORT" if L["edition"].startswith("EN") else "COMPONENTE REALE + SUPPORTO ESPLOSO"))
     cy=545
     for i,(h,b) in enumerate(L["p3cards"]):
         card(c,397,cy-72,156,72,h,b,[CYAN,ORANGE,GREEN][i]); cy-=87
@@ -320,7 +320,7 @@ def page4(c,L,pno):
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9); c.drawString(x+11,y+ch-22,m)
         draw_text(c,path,x+11,y+ch-42,cw-22,"Helvetica-Bold",7.5,10,accent,3)
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,145,511,115,10,fill=1,stroke=1)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10); c.drawString(60,232,"ACADEMY METHOD")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10); c.drawString(60,232,("ACADEMY METHOD" if L["edition"].startswith("EN") else "METODO ACADEMY"))
     meth=("Read the hydraulic function → trace the water path → verify the actual port markings → only then use the handle label."
           if L["edition"].startswith("EN") else
           "Leggere la funzione idraulica → seguire il percorso dell’acqua → verificare le marcature reali → solo dopo usare la posizione della leva.")
@@ -330,7 +330,7 @@ def page4(c,L,pno):
 
 def page5(c,L,pno):
     header(c,L["p5k"],pno,L["edition"]); y=title(c,L["p5t"],L["p5lead"])
-    image_panel(c,ASSETS["filter_crop"],42,245,330,400,"REAL FILTER + EXPLODED SUPPORT")
+    image_panel(c,ASSETS["filter_crop"],42,245,330,400,("REAL FILTER + EXPLODED SUPPORT" if L["edition"].startswith("EN") else "FILTRO REALE + SUPPORTO ESPLOSO"))
     sx=394; sy=573
     for i,(v,d) in enumerate(L["filter_specs"]):
         c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(sx,sy,159,50,8,fill=1,stroke=1)
@@ -345,9 +345,9 @@ def page5(c,L,pno):
 
 def page6(c,L,pno):
     header(c,L["p6k"],pno,L["edition"]); y=title(c,L["p6t"],L["p6lead"])
-    image_panel(c,ASSETS["pump_crop"],42,285,300,330,"REAL PUMP + EXPLODED SUPPORT")
+    image_panel(c,ASSETS["pump_crop"],42,285,300,330,("REAL PUMP + EXPLODED SUPPORT" if L["edition"].startswith("EN") else "POMPA REALE + SUPPORTO ESPLOSO"))
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(362,285,191,330,10,fill=1,stroke=1)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10); c.drawString(380,584,"ROLE SEPARATION")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10); c.drawString(380,584,("ROLE SEPARATION" if L["edition"].startswith("EN") else "SEPARAZIONE DELLE FUNZIONI"))
     yy=548
     for h,b in L["roles"]:
         c.setFillColor(CYAN); c.circle(383,yy+2,3.2,fill=1,stroke=0)
@@ -355,7 +355,7 @@ def page6(c,L,pno):
         c.setFillColor(MUTED); c.setFont("Helvetica",7.4); c.drawString(395,yy-14,b)
         yy-=62
     # elegant chain
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(42,232,"FUNCTIONAL CHAIN")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(42,232,("FUNCTIONAL CHAIN" if L["edition"].startswith("EN") else "CATENA FUNZIONALE"))
     chain=["SCOPA / VACUUM","FONDO / DRAIN","BT","VICTORIA","6 VIE / 6-WAY","VESUBIO","pH / ORP","R1-R4"]
     start=42; yline=187; stepw=55; gap=8
     x=start
@@ -377,7 +377,7 @@ def page7(c,L,pno):
     image_panel(c,ASSETS["pump_photo_crop"],42,390,145,160,"65563")
     image_panel(c,ASSETS["valve_photo_crop"],207,390,145,160,"20569")
     image_panel(c,ASSETS["filter_crop"],372,390,181,160,"15786")
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(42,355,"CONFIRMED FILTRATION CHAIN")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(42,355,("CONFIRMED FILTRATION CHAIN" if L["edition"].startswith("EN") else "CATENA FILTRAZIONE CONFERMATA"))
     x=42; yline=320
     stepw=(511-9*6)/10
     for i,lab in enumerate(L["chain"]):
