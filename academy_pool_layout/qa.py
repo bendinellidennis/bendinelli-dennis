@@ -23,7 +23,7 @@ for lang in ["IT","EN"]:
         if token not in text:
             ok=False; report.append(f"FAIL {lang}: missing key datum {token}")
     if lang=="IT":
-        banned=["TECHNICAL ROOM LAYOUT + PENETRATIONS","PRE-CLOSURE CHECK","RIGHT-WALL LAYOUT","PIPE LAYERS","INSTALLATION SEQUENCE","SLEEVE SCHEDULE","THREE DIAMETERS"]
+        banned=["TECHNICAL ROOM LAYOUT + PENETRATIONS","PRE-CLOSURE CHECK","RIGHT-WALL LAYOUT","PIPE LAYERS","INSTALLATION SEQUENCE","SLEEVE SCHEDULE","THREE DIAMETERS","DB technical source:","equipment from about","left wall remains clear","confirmed 12-step"]
     else:
         banned=["POSA LOCALE TECNICO + FOROMETRIA","CONTROLLO PRIMA DELLA CHIUSURA","POSA PARETE DESTRA","STRATI DI TUBAZIONE","SEQUENZA DI INSTALLAZIONE","DISTINTA GUAINE","TRE DIAMETRI"]
     for token in banned:
