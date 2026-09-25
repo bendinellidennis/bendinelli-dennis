@@ -312,7 +312,7 @@ def page3(c,L,pno):
     c.setFillColor(HexColor("#FFF5E8")); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(397,190,156,92,9,fill=1,stroke=1)
     c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9); c.drawString(411,258,L["critical"])
     draw_text(c,L["criticaltext"],411,238,128,"Helvetica",7.8,10.5,TEXT,7)
-    c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,"[S2] Quimipool / AstralPool valve family exploded view   [S1] AstralPool 20569")
+    c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,("[S2] Quimipool / AstralPool valve family exploded view   [S1] AstralPool 20569" if L["edition"].startswith("EN") else "[S2] Quimipool / AstralPool: esploso famiglia valvole   [S1] AstralPool 20569"))
     c.showPage()
 
 def page4(c,L,pno):
