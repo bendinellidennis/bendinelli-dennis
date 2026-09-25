@@ -266,13 +266,13 @@ def page2(c,L,p):
 
 def page3(c,L,p):
     header(c,L["k3"],p,L["edition"]); title(c,L["t3"],L["l3"])
-    img_panel(c,ASSETS["main"],42,300,260,310,"ASTRALPOOL NORM 56379 - REAL PRODUCT")
-    x=322; y=585
+    img_panel(c,ASSETS["main"],42,270,260,290,"ASTRALPOOL NORM 56379 - REAL PRODUCT")
+    x=322; y=560
     for a,b in L["main_specs"]:
-        c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(x,y-54,231,47,7,fill=1,stroke=1)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10); c.drawString(x+12,y-28,a)
-        c.setFillColor(MUTED); c.setFont("Helvetica",8.2); c.drawRightString(x+219,y-28,b)
-        y-=58
+        c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(x,y-43,231,38,7,fill=1,stroke=1)
+        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.7); c.drawString(x+12,y-24,a)
+        c.setFillColor(MUTED); c.setFont("Helvetica",7.8); c.drawRightString(x+219,y-24,b)
+        y-=47
     c.setFillColor(PALE_RED); c.setStrokeColor(HexColor("#F0CAC5")); c.roundRect(42,115,511,145,10,fill=1,stroke=1)
     c.setFillColor(RED); c.setFont("Helvetica-Bold",10); c.drawString(60,235,"SAFETY BOUNDARY")
     draw_text(c,L["main_warn"],60,212,470,"Helvetica",9.7,12.8,TEXT,7)
