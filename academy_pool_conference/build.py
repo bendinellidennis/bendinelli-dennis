@@ -288,7 +288,7 @@ def page2(c,L,pno):
     for lab,desc in L["ports"]:
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9); c.drawString(360,yy,lab)
         c.setFillColor(MUTED); c.setFont("Helvetica",7.8); c.drawString(420,yy,desc)
-        c.setStrokeColor(MID); c.line(360,yy-8,535,yy-8); yy-=42
+        c.setStrokeColor(MID); c.line(360,yy-8,535,yy-8); yy-=36
     c.setFillColor(CYAN); c.rect(42,210,511,4,fill=1,stroke=0)
     draw_text(c,"20569 • Configuration 3 • 1½”",42,190,240,"Helvetica-Bold",11,14,NAVY,2)
     draw_text(c,"Use the model marking and the actual installation manual before gluing or cutting any connection." if L["edition"].startswith("EN") else "Usare la marcatura del modello e il manuale reale prima di incollare o tagliare qualsiasi collegamento.",42,160,511,"Helvetica",9.2,13,MUTED,4)
@@ -298,12 +298,12 @@ def page2(c,L,pno):
 def page3(c,L,pno):
     header(c,L["p3k"],pno,L["edition"]); y=title(c,L["p3t"],L["p3lead"])
     image_panel(c,ASSETS["valve_exploded_crop"],42,190,335,420,"REAL COMPONENT + EXPLODED SUPPORT")
-    cy=540
+    cy=545
     for i,(h,b) in enumerate(L["p3cards"]):
-        card(c,397,cy-100,156,90,h,b,[CYAN,ORANGE,GREEN][i]); cy-=115
-    c.setFillColor(HexColor("#FFF5E8")); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(397,190,156,100,9,fill=1,stroke=1)
-    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9); c.drawString(411,265,L["critical"])
-    draw_text(c,L["criticaltext"],411,245,128,"Helvetica",8.1,11,TEXT,7)
+        card(c,397,cy-72,156,72,h,b,[CYAN,ORANGE,GREEN][i]); cy-=87
+    c.setFillColor(HexColor("#FFF5E8")); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(397,190,156,92,9,fill=1,stroke=1)
+    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9); c.drawString(411,258,L["critical"])
+    draw_text(c,L["criticaltext"],411,238,128,"Helvetica",7.8,10.5,TEXT,7)
     c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,"[S2] Quimipool / AstralPool valve family exploded view   [S1] AstralPool 20569")
     c.showPage()
 
@@ -331,15 +331,15 @@ def page4(c,L,pno):
 def page5(c,L,pno):
     header(c,L["p5k"],pno,L["edition"]); y=title(c,L["p5t"],L["p5lead"])
     image_panel(c,ASSETS["filter_crop"],42,245,330,400,"REAL FILTER + EXPLODED SUPPORT")
-    sx=394; sy=545
+    sx=394; sy=573
     for i,(v,d) in enumerate(L["filter_specs"]):
-        c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(sx,sy-72,159,62,8,fill=1,stroke=1)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",15); c.drawString(sx+13,sy-34,v)
-        c.setFillColor(MUTED); c.setFont("Helvetica",7.4); c.drawString(sx+13,sy-49,d)
-        sy-=78
-    c.setFillColor(HexColor("#FFF0EF")); c.setStrokeColor(HexColor("#F0CAC5")); c.roundRect(394,245,159,85,8,fill=1,stroke=1)
-    c.setFillColor(RED); c.setFont("Helvetica-Bold",8.5); c.drawString(408,308,"ENGINEERING NOTE")
-    draw_text(c,L["filter_note"],408,289,130,"Helvetica",7.5,10,TEXT,7)
+        c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(sx,sy,159,50,8,fill=1,stroke=1)
+        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",13.2); c.drawString(sx+13,sy+24,v)
+        c.setFillColor(MUTED); c.setFont("Helvetica",6.8); c.drawString(sx+13,sy+10,d)
+        sy-=58
+    c.setFillColor(HexColor("#FFF0EF")); c.setStrokeColor(HexColor("#F0CAC5")); c.roundRect(394,245,159,92,8,fill=1,stroke=1)
+    c.setFillColor(RED); c.setFont("Helvetica-Bold",8.3); c.drawString(408,313,"ENGINEERING NOTE")
+    draw_text(c,L["filter_note"],408,294,130,"Helvetica",7.25,9.6,TEXT,8)
     c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,"[S3] AstralPool Vesubio 15786   [S4] Quimipool real filter + exploded view")
     c.showPage()
 
