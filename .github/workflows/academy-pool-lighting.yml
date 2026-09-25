@@ -1,0 +1,43 @@
+name: Academy Pool Lighting Control REV08
+
+on:
+  push:
+    branches:
+      - academy-pool-lighting-control-rev08
+    paths:
+      - 'academy_pool_lighting/**'
+      - '.github/workflows/academy-pool-lighting.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install reportlab pillow requests pypdf pymupdf
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Build lighting and pneumatic control module
+        run: |
+          python academy_pool_lighting/build.py
+          mkdir -p academy_pool_lighting/render_it academy_pool_lighting/render_en
+          pdftoppm -png -r 190 academy_pool_lighting/output/ACADEMY_DB_POOL_SYSTEMS_LIGHTING_PNEUMATIC_CONTROL_REV08_IT.pdf academy_pool_lighting/render_it/page >/dev/null 2>&1
+          pdftoppm -png -r 190 academy_pool_lighting/output/ACADEMY_DB_POOL_SYSTEMS_LIGHTING_PNEUMATIC_CONTROL_REV08_EN.pdf academy_pool_lighting/render_en/page >/dev/null 2>&1
+          python academy_pool_lighting/qa.py
+          cd academy_pool_lighting/output
+          zip -9 ACADEMY_DB_POOL_SYSTEMS_LIGHTING_PNEUMATIC_CONTROL_REV08_IT_EN.zip *.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: academy-pool-lighting-control-rev08
+          path: |
+            academy_pool_lighting/output/*
+            academy_pool_lighting/render_it/*
+            academy_pool_lighting/render_en/*
+            academy_pool_lighting/qa_report.txt
+          retention-days: 7
