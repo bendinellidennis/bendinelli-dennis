@@ -77,7 +77,7 @@ ASSETS["floor_page"], FLOOR_PAGE = render_page_with_term(RAW["shell_manual"],"20
 COPY={
 "IT":{
 "edition":"EDIZIONE ITALIANA",
-"cover_title":"POOL SHELL HYDRAULICS",
+"cover_title":"IDRAULICA DELLA VASCA",
 "cover_sub":"Aspirazioni, passanti, bocchette e ritorni",
 "cover_desc":"NORM 56379 • 00300 • 15661 • 15863 • 20140 • architettura reale DB Plumbing Services",
 "k2":"01 - FUNZIONI DA NON CONFONDERE",
@@ -106,7 +106,7 @@ COPY={
 "k6":"05 - ARCHITETTURA DB",
 "t6":"Tre aspirazioni, quattro ritorni: ogni ramo resta identificabile e valvolabile",
 "l6":"Nel progetto DB la filtrazione usa tre rami di aspirazione distinti verso C-F-SUCT e quattro rami di ritorno distinti da C-F-RET. Questa architettura permette isolamento e bilanciamento senza confondere filtrazione e idromassaggio.",
-"k7":"06 - BILANCIAMENTO E COMMISSIONING",
+"k7":"06 - BILANCIAMENTO E MESSA IN SERVIZIO",
 "t7":"La portata non si 'indovina' dalla bocchetta: si verifica nel sistema",
 "l7":"Il componente terminale pone limiti e vincoli, ma la distribuzione reale dipende da perdite di carico, regolazioni, posizione dei rami e punto di lavoro della pompa. Il commissioning deve verificare il comportamento del circuito completo.",
 "checks":[("1","Identita dei rami","Etichettare SCOPA, FONDO, BT e R1-R4 prima dell'avviamento."),
@@ -116,18 +116,18 @@ COPY={
 ("5","Componenti","Nessun terminale deve superare i limiti dichiarati dal produttore."),
 ("6","Sicurezza","Le aspirazioni richiedono verifica specifica anti-intrappolamento; una sola portata nominale non basta."),
 ("7","Manutenzione","Tappi, griglie, bocchette e passanti devono restare accessibili e ispezionabili.")],
-"k8":"07 - CASE STUDY DB / HOLD POINTS",
+"k8":"07 - CASO REALE DB / PUNTI DA CONFERMARE",
 "t8":"Candidato non significa approvato: congelare solo cio' che e' stato verificato",
 "l8":"L'Academy usa il progetto DB come esempio reale ma conserva lo stato tecnico corretto di ogni elemento. I codici sotto sono candidati del progetto, non tutti gia' acquistati o approvati definitivamente.",
 "confirmed":"ARCHITETTURA CONFERMATA",
-"conf":["Aspirazioni filtrazione: SCOPA + FONDO + Balance Tank -> C-F-SUCT -> Victoria.","Ritorni: C-F-RET -> R1/R2/R3/R4, ciascuno con propria valvola.","R1/R2 sono ritorni parete; R3/R4 sono ritorni pavimento.","Linea WASTE/BACKWASH separata Ø63.","Filtrazione e idromassaggio restano circuiti distinti."],
-"hold":"COMPONENTI CANDIDATI / DA CONGELARE",
-"holds":["Main drain AstralPool NORM 56379.","Presa scopa AstralPool 00300 + passante 15661.","Ritorni parete AstralPool 15863 + passante 15661.","Ritorni pavimento AstralPool 20140.","Quote esatte, orientamento, numero e posa finale dei terminali nel vaso."],
+"conf":["Aspirazioni filtrazione: SCOPA + FONDO + VASCA DI COMPENSO -> C-F-SUCT -> Victoria.","Ritorni: C-F-RET -> R1/R2/R3/R4, ciascuno con propria valvola.","R1/R2 sono ritorni parete; R3/R4 sono ritorni pavimento.","Linea SCARICO/CONTROLAVAGGIO separata Ø63.","Filtrazione e idromassaggio restano circuiti distinti."],
+"hold":"COMPONENTI CANDIDATI / DA CONFERMARE",
+"holds":["Scarico di fondo AstralPool NORM 56379.","Presa scopa AstralPool 00300 + passante 15661.","Ritorni parete AstralPool 15863 + passante 15661.","Ritorni pavimento AstralPool 20140.","Quote esatte, orientamento, numero e posa finale dei terminali nel vaso."],
 "rights":"Le immagini prodotto AstralPool/Fluidra sono usate come riferimenti tecnici di studio. Prima di distribuzione commerciale/pubblica dell'Academy, verificare i diritti di riproduzione."
 },
 "EN":{
 "edition":"ENGLISH EDITION",
-"cover_title":"POOL SHELL HYDRAULICS",
+"cover_title":"IDRAULICA DELLA VASCA",
 "cover_sub":"Suction points, wall conduits, inlets and returns",
 "cover_desc":"NORM 56379 • 00300 • 15661 • 15863 • 20140 • real DB Plumbing Services architecture",
 "k2":"01 - FUNCTIONS NOT TO CONFUSE",
@@ -218,7 +218,7 @@ def img_panel(c,path,x,y,w,h,label=None,cover=False):
 
 def header(c,k,page,edition):
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.5); c.drawString(42,H-30,"ACADEMY DB PLUMBING SERVICES")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7.7); c.drawRightString(W-42,H-30,"POOL SYSTEMS - SHELL HYDRAULICS - REV07")
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7.7); c.drawRightString(W-42,H-30,("POOL SYSTEMS - SHELL HYDRAULICS - REV07" if edition.startswith("EN") else "SISTEMI PISCINA - IDRAULICA DELLA VASCA - REV07"))
     c.setStrokeColor(MID); c.line(42,H-38,W-42,H-38)
     c.setFillColor(CYAN); c.setFont("Helvetica-Bold",10.2); c.drawString(42,H-62,k)
     c.setFillColor(MUTED); c.setFont("Helvetica",7.6); c.drawRightString(W-42,24,f"{edition} - {page}")
@@ -244,9 +244,10 @@ def cover(c,L):
     fit(c,ASSETS["suction"],330,330,90,120,False)
     fit(c,ASSETS["return"],435,330,90,120,False)
     fit(c,ASSETS["wall"],330,175,195,115,False)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.8); c.drawCentredString(427,158,"REAL ASTRALPOOL / FLUIDRA COMPONENTS")
-    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",9.2); c.drawString(48,80,"VISUAL STANDARD REV07")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",8.2); c.drawString(48,60,"REAL PRODUCTS - VERIFIED DATA - PROJECT HOLD POINTS")
+    en=L["edition"].startswith("EN")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.8); c.drawCentredString(427,158,("REAL ASTRALPOOL / FLUIDRA COMPONENTS" if en else "COMPONENTI REALI ASTRALPOOL / FLUIDRA"))
+    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",9.2); c.drawString(48,80,("VISUAL STANDARD REV07" if en else "STANDARD VISIVO REV07"))
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",8.2); c.drawString(48,60,("REAL PRODUCTS - VERIFIED DATA - PROJECT HOLD POINTS" if en else "PRODOTTI REALI - DATI VERIFICATI - PUNTI DA CONFERMARE"))
     c.showPage()
 
 def page2(c,L,p):
@@ -261,7 +262,7 @@ def page2(c,L,p):
         draw_text(c,b,x+16,y+118,216,"Helvetica",10.0,13,TEXT,8)
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,78,511,46,8,fill=1,stroke=1)
     draw_text(c,L["rule2"],57,108,480,"Helvetica-Bold",9.2,11.5,NAVY,3)
-    source(c,"Academy principle - functional classification before component selection.")
+    source(c,("Academy principle - functional classification before component selection." if L["edition"].startswith("EN") else "Principio Academy - classificazione funzionale prima della selezione del componente."))
     c.showPage()
 
 def page3(c,L,p):
@@ -274,15 +275,16 @@ def page3(c,L,p):
         c.setFillColor(MUTED); c.setFont("Helvetica",7.8); c.drawRightString(x+219,y-24,b)
         y-=47
     c.setFillColor(PALE_RED); c.setStrokeColor(HexColor("#F0CAC5")); c.roundRect(42,115,511,145,10,fill=1,stroke=1)
-    c.setFillColor(RED); c.setFont("Helvetica-Bold",10); c.drawString(60,235,"SAFETY BOUNDARY")
+    c.setFillColor(RED); c.setFont("Helvetica-Bold",10); c.drawString(60,235,("SAFETY BOUNDARY" if L["edition"].startswith("EN") else "LIMITE DI SICUREZZA"))
     draw_text(c,L["main_warn"],60,212,470,"Helvetica",9.7,12.8,TEXT,7)
-    source(c,"[S1] AstralPool NORM main drain official product page - code 56379; manufacturer product description and declared standards.")
+    source(c,("[S1] AstralPool NORM main drain official product page - code 56379; manufacturer product description and declared standards." if L["edition"].startswith("EN") else "[S1] Pagina prodotto ufficiale AstralPool NORM - codice 56379; descrizione del produttore e norme dichiarate."))
     c.showPage()
 
 def page4(c,L,p):
     header(c,L["k4"],p,L["edition"]); title(c,L["t4"],L["l4"])
-    img_panel(c,ASSETS["suction"],42,320,245,290,"ASTRALPOOL 00300 - REAL PRODUCT")
-    img_panel(c,ASSETS["wall"],308,320,245,290,"ASTRALPOOL 15661 FAMILY - REAL PRODUCT")
+    en=L["edition"].startswith("EN")
+    img_panel(c,ASSETS["suction"],42,320,245,290,("ASTRALPOOL 00300 - REAL PRODUCT" if en else "ASTRALPOOL 00300 - PRODOTTO REALE"))
+    img_panel(c,ASSETS["wall"],308,320,245,290,("ASTRALPOOL 15661 FAMILY - REAL PRODUCT" if en else "ASTRALPOOL 15661 - FAMIGLIA PRODOTTO REALE"))
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,125,511,155,10,fill=1,stroke=1)
     y=252; x1=58
     for i,(a,b) in enumerate(L["vac_specs"]):
@@ -291,7 +293,7 @@ def page4(c,L,p):
         draw_text(c,b,x,yy-18,145,"Helvetica",8.2,10,MUTED,2)
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,75,511,38,7,fill=1,stroke=1)
     draw_text(c,L["vac_note"],57,99,480,"Helvetica",8.4,10.5,TEXT,3)
-    source(c,"[S2] AstralPool 00300 suction nozzle official product page   [S3] AstralPool ABS wall conduit official product page.")
+    source(c,("[S2] AstralPool 00300 suction nozzle official product page   [S3] AstralPool ABS wall conduit official product page." if L["edition"].startswith("EN") else "[S2] Pagina prodotto ufficiale AstralPool 00300, bocchetta di aspirazione   [S3] Pagina prodotto ufficiale AstralPool, passante parete in ABS."))
     c.showPage()
 
 def draw_specs(c,x,y,w,rows,accent):
@@ -305,26 +307,28 @@ def draw_specs(c,x,y,w,rows,accent):
 
 def page5(c,L,p):
     header(c,L["k5"],p,L["edition"]); title(c,L["t5"],L["l5"])
-    img_panel(c,ASSETS["return"],42,390,245,200,"15863 - REAL WALL RETURN")
-    img_panel(c,ASSETS["floor_page"],308,390,245,200,"20140 - OFFICIAL MANUAL PAGE",cover=False)
+    en=L["edition"].startswith("EN")
+    img_panel(c,ASSETS["return"],42,390,245,200,("15863 - REAL WALL RETURN" if en else "15863 - RITORNO PARETE REALE"))
+    img_panel(c,ASSETS["floor_page"],308,390,245,200,("20140 - OFFICIAL MANUAL PAGE" if en else "20140 - PAGINA MANUALE UFFICIALE"),cover=False)
     draw_specs(c,42,125,245,L["ret_wall"],CYAN_D)
     draw_specs(c,308,125,245,L["ret_floor"],GREEN)
-    source(c,"[S4] AstralPool 15863 official product page/manual   [S5] Fluidra installation manual 15863/20140 family; 2026 AstralPool catalogue data for 20140.")
+    source(c,("[S4] AstralPool 15863 official product page/manual   [S5] Fluidra installation manual 15863/20140 family; 2026 AstralPool catalogue data for 20140." if L["edition"].startswith("EN") else "[S4] Pagina prodotto/manuale ufficiale AstralPool 15863   [S5] Manuale installazione Fluidra famiglia 15863/20140; dati catalogo AstralPool 2026 per 20140."))
     c.showPage()
 
 def page6(c,L,p):
     header(c,L["k6"],p,L["edition"]); title(c,L["t6"],L["l6"])
     c.setFillColor(WHITE); c.setStrokeColor(MID); c.roundRect(42,145,511,455,10,fill=1,stroke=1)
     # Suction side
-    c.setFillColor(RED); c.setFont("Helvetica-Bold",10); c.drawString(60,565,"SUCTION / ASPIRAZIONE")
-    sucs=["SCOPA / VACUUM","FONDO / MAIN DRAIN","BALANCE TANK"]
+    en=L["edition"].startswith("EN")
+    c.setFillColor(RED); c.setFont("Helvetica-Bold",10); c.drawString(60,565,("SUCTION" if en else "ASPIRAZIONE"))
+    sucs=(["VACUUM","MAIN DRAIN","BALANCE TANK"] if en else ["SCOPA","SCARICO DI FONDO","VASCA DI COMPENSO"])
     sy=[520,460,400]
     for lab,yy in zip(sucs,sy):
         c.setFillColor(PALE_RED); c.setStrokeColor(RED); c.roundRect(62,yy,130,38,6,fill=1,stroke=1)
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.7); c.drawCentredString(127,yy+14,lab)
         c.setStrokeColor(RED); c.setLineWidth(2); c.line(192,yy+19,235,yy+19)
         c.setFillColor(WHITE); c.setStrokeColor(NAVY); c.roundRect(235,yy+4,68,30,5,fill=1,stroke=1)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7); c.drawCentredString(269,yy+15,"VALVE")
+        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7); c.drawCentredString(269,yy+15,("VALVE" if en else "VALVOLA"))
     c.setStrokeColor(NAVY); c.setLineWidth(3)
     c.line(303,539,330,539); c.line(303,479,330,479); c.line(303,419,330,419); c.line(330,419,330,539)
     c.setFillColor(BLUEW); c.setStrokeColor(NAVY); c.roundRect(346,450,90,58,8,fill=1,stroke=1)
@@ -333,11 +337,11 @@ def page6(c,L,p):
     c.setStrokeColor(NAVY); c.line(436,479,500,479)
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8); c.drawString(455,490,"VICTORIA")
     # return side
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",10); c.drawString(60,335,"RETURN / RITORNO")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",10); c.drawString(60,335,("RETURN" if en else "RITORNO"))
     c.setFillColor(BLUEW); c.setStrokeColor(CYAN_D); c.roundRect(62,255,100,60,8,fill=1,stroke=1)
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8); c.drawCentredString(112,289,"C-F-RET")
     c.setFont("Helvetica-Bold",7); c.drawCentredString(112,271,"Ø90 / 4xØ50")
-    rlabels=["R1 WALL","R2 WALL","R3 FLOOR","R4 FLOOR"]
+    rlabels=(["R1 WALL","R2 WALL","R3 FLOOR","R4 FLOOR"] if en else ["R1 PARETE","R2 PARETE","R3 PAVIMENTO","R4 PAVIMENTO"])
     x=190
     for lab in rlabels:
         c.setStrokeColor(CYAN_D); c.setLineWidth(2); c.line(162,285,x,285)
@@ -347,9 +351,9 @@ def page6(c,L,p):
     c.setFillColor(PALE_GREEN); c.setStrokeColor(HexColor("#C8DFD5")); c.roundRect(62,170,455,55,8,fill=1,stroke=1)
     note=("Each branch has its own shut-off/balancing valve. WASTE/BACKWASH remains a separate Ø63 line."
           if L["edition"].startswith("EN") else
-          "Ogni ramo mantiene la propria valvola di intercettazione/bilanciamento. WASTE/BACKWASH resta una linea Ø63 separata.")
+          "Ogni ramo mantiene la propria valvola di intercettazione/bilanciamento. SCARICO/CONTROLAVAGGIO resta una linea Ø63 separata.")
     draw_text(c,note,78,205,425,"Helvetica-Bold",9.2,11.5,TEXT,4)
-    source(c,"[S6] DB Plumbing Services handoff 22-09-2026 - filtration suction/return manifold architecture.")
+    source(c,("[S6] DB Plumbing Services handoff 22-09-2026 - filtration suction/return manifold architecture." if L["edition"].startswith("EN") else "[S6] Handoff DB Plumbing Services 22-09-2026 - architettura collettori di aspirazione e ritorno filtrazione."))
     c.showPage()
 
 def page7(c,L,p):
@@ -367,7 +371,7 @@ def page7(c,L,p):
          if L["edition"].startswith("EN") else
          "Il commissioning conferma il comportamento dell'impianto; non sostituisce certificazione del prodotto o conformita normativa.")
     draw_text(c,msg,57,116,480,"Helvetica-Bold",8.5,10.5,NAVY,3)
-    source(c,"Manufacturer component limits + DB project architecture. Entrapment-safety review remains a separate design verification.")
+    source(c,("Manufacturer component limits + DB project architecture. Entrapment-safety review remains a separate design verification." if L["edition"].startswith("EN") else "Limiti dichiarati dei componenti + architettura del progetto DB. La verifica anti-intrappolamento resta un controllo progettuale separato."))
     c.showPage()
 
 def page8(c,L,p):
@@ -391,7 +395,7 @@ def page8(c,L,p):
     img_panel(c,ASSETS["wall"],438,160,115,130,"15661")
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,94,511,45,8,fill=1,stroke=1)
     draw_text(c,L["rights"],57,122,480,"Helvetica",7.8,9.5,MUTED,3)
-    source(c,"Sources: AstralPool/Fluidra official product pages & manuals; AstralPool 2026 catalogue for 20140; DB handoff 22-09-2026.")
+    source(c,("Sources: AstralPool/Fluidra official product pages & manuals; AstralPool 2026 catalogue for 20140; DB handoff 22-09-2026." if L["edition"].startswith("EN") else "Fonti: pagine prodotto e manuali ufficiali AstralPool/Fluidra; catalogo AstralPool 2026 per 20140; handoff DB 22-09-2026."))
     c.showPage()
 
 def build(lang):
