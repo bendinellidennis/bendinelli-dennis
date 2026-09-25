@@ -329,7 +329,7 @@ def page3(c,L,p):
     for n,q in qs:
         c.setFillColor(CYAN); c.circle(62,yy+2,8,fill=1,stroke=0); c.setFillColor(WHITE); c.setFont("Helvetica-Bold",7); c.drawCentredString(62,yy,n)
         draw_text(c,q,80,yy+4,195,"Helvetica",8.1,11,TEXT,3); yy-=43
-    footer_sources(c,"[S3] Cloward H2O / blooloop - static level, drawdown, minimum operating level, surge/storage volume")
+    footer_sources(c,("[S3] Cloward H2O / blooloop - static level, drawdown, minimum operating level, surge/storage volume" if L["edition"].startswith("EN") else "[S3] Cloward H2O / blooloop - livello statico, abbassamento, livello operativo minimo, volume di compensazione"))
     c.showPage()
 
 def page4(c,L,p):
@@ -351,7 +351,7 @@ def page4(c,L,p):
           if L["edition"].startswith("EN") else
           "Un bocchello non e' 'giusto' perche' sembra comodo. Quota e diametro devono essere giustificati dalla funzione idraulica, dai livelli operativi, dalla manutenzione accessibile e dalla rete reale.")
     draw_text(c,body,60,208,470,"Helvetica",9.1,13,TEXT,6)
-    footer_sources(c,"[S4] ANCHEM tank reference   [S7] AstralPool overflow spa manual   [S8] DB handoff")
+    footer_sources(c,("[S4] ANCHEM tank reference   [S7] AstralPool overflow spa manual   [S8] DB handoff" if L["edition"].startswith("EN") else "[S4] Riferimento vasca ANCHEM   [S7] Manuale AstralPool per sistema a sfioro   [S8] Documento tecnico DB"))
     c.showPage()
 
 def page5(c,L,p):
@@ -365,7 +365,7 @@ def page5(c,L,p):
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(318,150,235,165,10,fill=1,stroke=1)
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9); c.drawString(334,288,L["g2"])
     draw_text(c,L["g2b"],334,267,202,"Helvetica",8.3,11.5,TEXT,8)
-    footer_sources(c,"[S5] AstralPool 00212   [S6] AstralPool 00302 - manufacturer data")
+    footer_sources(c,("[S5] AstralPool 00212   [S6] AstralPool 00302 - manufacturer data" if L["edition"].startswith("EN") else "[S5] AstralPool 00212   [S6] AstralPool 00302 - dati del produttore"))
     c.showPage()
 
 def page6(c,L,p):
@@ -385,7 +385,7 @@ def page6(c,L,p):
           if L["edition"].startswith("EN") else
           "Registrare insieme livello acqua e stato pompe. Un livello che sembra accettabile puo' comunque scoprire l'aspirazione, trascinare aria o consumare il margine di sicurezza durante uno sfioro.")
     draw_text(c,body,58,278,178,"Helvetica",8.1,11,TEXT,9)
-    footer_sources(c,"[S3] Cloward H2O / blooloop balance tank operating levels and design considerations")
+    footer_sources(c,("[S3] Cloward H2O / blooloop balance tank operating levels and design considerations" if L["edition"].startswith("EN") else "[S3] Cloward H2O / blooloop - livelli operativi della vasca di compenso e criteri di progetto"))
     c.showPage()
 
 def page7(c,L,p):
