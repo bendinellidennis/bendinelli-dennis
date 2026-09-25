@@ -144,7 +144,7 @@ COPY = {
 "roles":[("POMPA","portata + prevalenza"),("VALVOLA 6 VIE","scelta del percorso"),("FILTRO","separazione particelle"),("TRATTAMENTO","correzione pH / ORP")],
 "p7k":"06 • CASO REALE DB",
 "p7t":"Dal componente al sistema reale",
-"p7lead":"La catena seguente usa solo connessioni già confermate nell’handoff del progetto. La Balance Tank entra nella filtrazione; il circuito idromassaggio HJ resta separato.",
+"p7lead":"La catena seguente usa solo connessioni già confermate nel documento tecnico del progetto. La vasca di compenso entra nella filtrazione; il circuito idromassaggio HJ resta separato.",
 "chain":["SCOPA","FONDO","VASCA COMPENSO","C-F-SUCT","VICTORIA 100T","6 VIE","VESUBIO Ø600","pH / ORP","C-F-RET","R1–R4"],
 "installer":"CONTROLLO INSTALLATORE",
 "checks":["Verificare POMPA / RITORNO / SCARICO sulla valvola realmente fornita.","Misurare gli attacchi reali prima dell’incollaggio definitivo.","Mantenere SCARICO / CONTROLAVAGGIO separato Ø63.","Confermare curva pompa e perdite reali prima del dimensionamento finale."],
@@ -153,8 +153,8 @@ COPY = {
 "EN": {
 "edition":"ENGLISH EDITION",
 "cover_kicker":"ACADEMY DB PLUMBING SERVICES",
-"cover_title":"SISTEMI PISCINA",
-"cover_sub":"NUCLEO FILTRAZIONE",
+"cover_title":"POOL SYSTEMS",
+"cover_sub":"FILTRATION CORE",
 "cover_desc":"6-way valve • Vesubio filter • Victoria Plus Silent • water-path logic",
 "cover_tag":"Technical-professional manual • Visual Standard REV03",
 "p2k":"01 • REAL COMPONENT",
@@ -196,7 +196,15 @@ COPY = {
 "checks":["Verify PUMP / RETURN / WASTE on the actual supplied valve.","Measure real machine connections before final solvent welding.","Keep WASTE / BACKWASH on its own Ø63 line.","Confirm pump curve and real pressure losses before final sizing."],
 "sources":"VISUAL & TECHNICAL SOURCES",
 }}
-SOURCES = [
+SOURCES_IT = [
+("S1","Pagina prodotto AstralPool 20569 / catalogo Fluidra"),
+("S2","Quimipool: componente reale + esploso, famiglia valvole"),
+("S3","Dati prodotto AstralPool Vesubio 15786"),
+("S4","Quimipool: Vesubio reale + esploso"),
+("S5","Catalogo ricambi Fluidra 65563"),
+("S6","Documento tecnico DB Plumbing Services 22-09-2026"),
+]
+SOURCES_EN = [
 ("S1","AstralPool 20569 product page / Fluidra catalogue"),
 ("S2","Quimipool real component + exploded view, valve family"),
 ("S3","AstralPool Vesubio 15786 product data"),
@@ -356,7 +364,7 @@ def page6(c,L,pno):
         yy-=62
     # elegant chain
     c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(42,232,("FUNCTIONAL CHAIN" if L["edition"].startswith("EN") else "CATENA FUNZIONALE"))
-    chain=["SCOPA / VACUUM","FONDO / DRAIN","BT","VICTORIA","6 VIE / 6-WAY","VESUBIO","pH / ORP","R1-R4"]
+    chain=(["VACUUM","MAIN DRAIN","BT","VICTORIA","6-WAY","VESUBIO","pH / ORP","R1-R4"] if L["edition"].startswith("EN") else ["SCOPA","FONDO","V. COMP.","VICTORIA","6 VIE","VESUBIO","pH / ORP","R1-R4"])
     start=42; yline=187; stepw=55; gap=8
     x=start
     for i,lab in enumerate(chain):
@@ -368,7 +376,7 @@ def page6(c,L,pno):
             c.setStrokeColor(CYAN); c.setLineWidth(1.2); c.line(x+stepw,yline,x+stepw+gap-2,yline)
             c.setFillColor(CYAN); c.circle(x+stepw+gap-2,yline,2.0,fill=1,stroke=0)
         x += stepw+gap
-    c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,"[S5] Fluidra spare-parts catalogue 65563   [S6] DB project handoff")
+    c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,("[S5] Fluidra spare-parts catalogue 65563   [S6] DB project handoff" if L["edition"].startswith("EN") else "[S5] Catalogo ricambi Fluidra 65563   [S6] Documento tecnico DB"))
     c.showPage()
 
 def page7(c,L,pno):
@@ -397,7 +405,7 @@ def page7(c,L,pno):
         yy-=28
     c.setFillColor(MUTED); c.setFont("Helvetica-Bold",6.7); c.drawString(42,91,L["sources"])
     sx=42; sy=76
-    for ref,desc in SOURCES:
+    for ref,desc in (SOURCES_EN if L["edition"].startswith("EN") else SOURCES_IT):
         c.setFont("Helvetica",5.8); c.setFillColor(MUTED)
         c.drawString(sx,sy,f"[{ref}] {desc}")
         sy-=9
