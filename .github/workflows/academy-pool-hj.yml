@@ -3,7 +3,7 @@ name: Academy Pool HJ REV05
 on:
   push:
     branches:
-      - academy-pool-hj-rev05r
+      - academy-pool-hj-rev05
     paths:
       - 'academy_pool_hj/**'
       - '.github/workflows/academy-pool-hj.yml'
