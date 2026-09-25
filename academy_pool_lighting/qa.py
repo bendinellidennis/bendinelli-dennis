@@ -14,7 +14,7 @@ for lang in ["IT","EN"]:
     if len(r.pages)!=8 or pdf.stat().st_size<300000:
         ok=False; report.append(f"FAIL {lang}: page count or size")
     if lang=="IT":
-        banned=["REAL COMPONENT","COMMISSIONING AND","POOL LIGHTING +","DESIGN BOUNDARY","ELECTRICAL BOUNDARY","SERVICE SEPARATION","REAL PRODUCT FAMILY"]
+        banned=["REAL COMPONENT","COMMISSIONING AND","POOL LIGHTING +","DESIGN BOUNDARY","ELECTRICAL BOUNDARY","SERVICE SEPARATION","REAL PRODUCT FAMILY","commissioning","air switch","as-built","official product page","product datasheet","DB technical document","Datasheet cable","DB project:","swimming pools and fountains","Academy rule:"]
     else:
         banned=["PRODOTTO REALE","MESSA IN SERVIZIO","ILLUMINAZIONE PISCINA +","LIMITE DI PROGETTO","LIMITE ELETTRICO","SEPARAZIONE DEI SERVIZI"]
     for token in banned:
