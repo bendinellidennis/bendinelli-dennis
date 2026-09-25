@@ -254,7 +254,7 @@ def page2(c,L,p):
     for item in L["rules2"]:
         c.setFillColor(GREEN); c.circle(60,yy+2,2.4,fill=1,stroke=0)
         yy=draw_text(c,item,74,yy+5,460,"Helvetica-Bold",9.4,12,TEXT,2)-12
-    source(c,"DB technical source: technical-room layout and X/Y/Z pipe layers.")
+    source(c,("DB technical source: technical-room layout and X/Y/Z pipe layers." if L["edition"].startswith("EN") else "Fonte tecnica DB: posa del locale tecnico e strati tubazioni X/Y/Z."))
     c.showPage()
 
 def page3(c,L,p):
@@ -288,7 +288,7 @@ def page3(c,L,p):
           if L["edition"].startswith("EN") else
           "Mantenere accessibili prefiltri MAXIM/Victoria, coperchio Vesubio, valvola 6 vie e valvole collettori. Corridoio libero davanti alle MAXIM: circa 1345 mm.")
     draw_text(c,note,60,180,470,"Helvetica-Bold",9.3,12.2,NAVY,5)
-    source(c,"DB technical source: confirmed right-wall X/Y equipment zones; left wall remains clear.")
+    source(c,("DB technical source: confirmed right-wall X/Y equipment zones; left wall remains clear." if L["edition"].startswith("EN") else "Fonte tecnica DB: zone X/Y confermate sulla parete destra; parete sinistra libera."))
     c.showPage()
 
 def page4(c,L,p):
@@ -308,7 +308,7 @@ def page4(c,L,p):
         c.setFillColor(MUTED); c.setFont("Helvetica",8.4); c.drawRightString(525,py+7,f"{diam} - {desc}")
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,145,511,80,8,fill=1,stroke=1)
     draw_text(c,L["note4"],60,195,470,"Helvetica-Bold",9.5,12,NAVY,4)
-    source(c,"DB technical source: Y1 80-130, Y2 150-220, Y3 230-320, Y4 330-450 mm; equipment from about Y 350 mm forward.")
+    source(c,("DB technical source: Y1 80-130, Y2 150-220, Y3 230-320, Y4 330-450 mm; equipment from about Y 350 mm forward." if L["edition"].startswith("EN") else "Fonte tecnica DB: Y1 80-130, Y2 150-220, Y3 230-320, Y4 330-450 mm; macchine da circa Y 350 mm in avanti."))
     c.showPage()
 
 def page5(c,L,p):
@@ -337,7 +337,7 @@ def page5(c,L,p):
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9)
     for i,s in enumerate(summary):
         c.drawString(62+(i%2)*245,220-(i//2)*30,s)
-    source(c,"DB technical source: exact penetration IDs, X positions, D below ceiling, service diameters, sleeves and core sizes.")
+    source(c,("DB technical source: exact penetration IDs, X positions, D below ceiling, service diameters, sleeves and core sizes." if L["edition"].startswith("EN") else "Fonte tecnica DB: ID attraversamenti, posizioni X, distanza D dal soffitto, diametri servizio, guaine e carotaggi."))
     c.showPage()
 
 def page6(c,L,p):
@@ -368,7 +368,7 @@ def page6(c,L,p):
     for item in L["safety6"]:
         c.setFillColor(ORANGE); c.circle(61,y+2,2.5,fill=1,stroke=0)
         y=draw_text(c,item,74,y+5,460,"Helvetica",9.2,11.8,TEXT,3)-12
-    source(c,"DB technical source: total sleeves 2 x Ø125, 7 x Ø90, 4 x Ø75, 5 x Ø50; each L550; total 9.90 m.")
+    source(c,("DB technical source: total sleeves 2 x Ø125, 7 x Ø90, 4 x Ø75, 5 x Ø50; each L550; total 9.90 m." if L["edition"].startswith("EN") else "Fonte tecnica DB: guaine totali 2 x Ø125, 7 x Ø90, 4 x Ø75, 5 x Ø50; ciascuna L550; totale 9,90 m."))
     c.showPage()
 
 def page7(c,L,p):
@@ -381,7 +381,7 @@ def page7(c,L,p):
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.8); c.drawString(80,y,h)
         draw_text(c,b,190,y,330,"Helvetica",7.8,9.6,MUTED,2)
         y-=39
-    source(c,"DB technical source: confirmed 12-step installation sequence.")
+    source(c,("DB technical source: confirmed 12-step installation sequence." if L["edition"].startswith("EN") else "Fonte tecnica DB: sequenza di installazione confermata in 12 passaggi."))
     c.showPage()
 
 def page8(c,L,p):
