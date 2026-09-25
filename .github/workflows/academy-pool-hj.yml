@@ -3,7 +3,7 @@ name: Academy Pool HJ REV05
 on:
   push:
     branches:
-      - academy-pool-hj-rev05
+      - academy-pool-hj-rev05r
     paths:
       - 'academy_pool_hj/**'
       - '.github/workflows/academy-pool-hj.yml'
@@ -27,14 +27,14 @@ jobs:
         run: |
           python academy_pool_hj/build.py
           mkdir -p academy_pool_hj/render_it academy_pool_hj/render_en
-          pdftoppm -png -r 180 academy_pool_hj/output/ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05_IT.pdf academy_pool_hj/render_it/page >/dev/null 2>&1
-          pdftoppm -png -r 180 academy_pool_hj/output/ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05_EN.pdf academy_pool_hj/render_en/page >/dev/null 2>&1
+          pdftoppm -png -r 180 academy_pool_hj/output/ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05R_IT.pdf academy_pool_hj/render_it/page >/dev/null 2>&1
+          pdftoppm -png -r 180 academy_pool_hj/output/ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05R_EN.pdf academy_pool_hj/render_en/page >/dev/null 2>&1
           python academy_pool_hj/qa.py
           cd academy_pool_hj/output
-          zip -9 ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05_IT_EN.zip *.pdf
+          zip -9 ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05R_IT_EN.zip *.pdf
       - uses: actions/upload-artifact@v4
         with:
-          name: academy-pool-hj-rev05
+          name: academy-pool-hj-rev05r
           path: |
             academy_pool_hj/output/*
             academy_pool_hj/render_it/*
