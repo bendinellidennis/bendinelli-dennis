@@ -289,7 +289,7 @@ def page2(c,L,p):
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(322,105,231,195,10,fill=1,stroke=1)
     c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10.4); c.drawString(339,276,L["dbhold"])
     draw_text(c,L["dbholdtxt"],339,255,197,"Helvetica",9.0,11.8,TEXT,12)
-    source(c,"[S1] Balboa Water Group - Freedom Jets 10-FS711/10-FS715 official manual   [S5] DB project working dossier")
+    source(c,("[S1] Balboa Water Group - Freedom Jets 10-FS711/10-FS715 official manual   [S5] DB project working dossier" if L["edition"].startswith("EN") else "[S1] Manuale ufficiale Balboa Water Group Freedom Jets 10-FS711/10-FS715   [S5] Dossier tecnico di progetto DB"))
     c.showPage()
 
 def page3(c,L,p):
