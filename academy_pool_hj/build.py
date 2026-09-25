@@ -82,7 +82,14 @@ ASSETS["maxim_exploded"]=RAW["maxim_exploded"]
 ASSETS["grating"]=RAW["grating"]
 ASSETS["maxim_curve_page"]=render_pdf_page(RAW["maxim_datasheet"],1,"maxim_curve_page.png",180)
 ASSETS["maxim_data_page"]=render_pdf_page(RAW["maxim_datasheet"],2,"maxim_data_page.png",180)
-ASSETS["balboa_page"]=render_pdf_page(RAW["balboa_manual"],0,"balboa_page.png",180)
+ASSETS["balboa_page"]=render_pdf_page(RAW["balboa_manual"],0,"balboa_page.png",220)
+def crop_box(path,out_name,frac_box):
+    im=Image.open(path).convert("RGB")
+    l=int(im.width*frac_box[0]); t=int(im.height*frac_box[1]); r=int(im.width*frac_box[2]); b=int(im.height*frac_box[3])
+    out=ASSET/out_name
+    im.crop((l,t,r,b)).save(out,quality=96)
+    return out
+ASSETS["balboa_specs_crop"]=crop_box(ASSETS["balboa_page"],"balboa_specs_crop.jpg",(0.03,0.02,0.97,0.57))
 
 def crop_nonwhite(path,out_name,margin=15):
     im=Image.open(path).convert("RGB")
@@ -237,23 +244,23 @@ def img_panel(c,path,x,y,w,h,label=None,cover=False):
     fit(c,path,x+6,y+6,w-12,h-12,cover=cover); c.restoreState()
     if label:
         c.setFillColor(WHITE); c.roundRect(x+10,y+h-28,170,18,7,fill=1,stroke=0)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7); c.drawString(x+17,y+h-22,label)
+        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.0); c.drawString(x+17,y+h-22,label)
 
 def header(c,k,page,edition):
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.3); c.drawString(42,H-30,"ACADEMY DB PLUMBING SERVICES")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7); c.drawRightString(W-42,H-30,"POOL SYSTEMS • HYDROMASSAGE / VENTURI • REV05")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.6); c.drawString(42,H-30,"ACADEMY DB PLUMBING SERVICES")
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",8.0); c.drawRightString(W-42,H-30,"POOL SYSTEMS • HYDROMASSAGE / VENTURI • REV05R")
     c.setStrokeColor(MID); c.line(42,H-38,W-42,H-38)
-    c.setFillColor(CYAN); c.setFont("Helvetica-Bold",9); c.drawString(42,H-62,k)
-    c.setFillColor(MUTED); c.setFont("Helvetica",6.7); c.drawRightString(W-42,24,f"{edition} • {page}")
+    c.setFillColor(CYAN); c.setFont("Helvetica-Bold",10.5); c.drawString(42,H-62,k)
+    c.setFillColor(MUTED); c.setFont("Helvetica",7.8); c.drawRightString(W-42,24,f"{edition} • {page}")
     c.setStrokeColor(CYAN); c.setLineWidth(1.4); c.line(42,35,95,35)
 
 def title(c,t,lead):
-    yy=draw_text(c,t,42,H-101,W-84,"Helvetica-Bold",24,27,NAVY,3)
+    yy=draw_text(c,t,42,H-101,W-84,"Helvetica-Bold",27,30,NAVY,3)
     c.setStrokeColor(CYAN); c.setLineWidth(2); c.line(42,yy-3,128,yy-3)
-    draw_text(c,lead,42,yy-29,W-84,"Helvetica",10,13.5,MUTED,5)
+    draw_text(c,lead,42,yy-29,W-84,"Helvetica",11.8,15.2,MUTED,5)
 
 def source(c,txt):
-    c.setFillColor(MUTED); c.setFont("Helvetica",5.8); c.drawString(42,58,txt)
+    c.setFillColor(MUTED); draw_text(c,txt,42,60,W-84,"Helvetica",7.0,8.5,MUTED,2)
 
 def cover(c,L):
     c.setFillColor(NAVY); c.rect(0,0,W,H,fill=1,stroke=0)
@@ -263,25 +270,25 @@ def cover(c,L):
     fit(c,ASSETS["maxim_photo_crop"],320,235,210,325,cover=False)
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8); c.drawString(323,210,"ASTRALPOOL MAXIM 08005 • REAL PRODUCT")
     c.setFillColor(WHITE); c.setFont("Helvetica-Bold",8); c.drawString(48,H-62,"ACADEMY DB PLUMBING SERVICES")
-    draw_text(c,L["cover_title"],48,H-122,245,"Helvetica-Bold",28,31,WHITE,4)
-    c.setFillColor(CYAN); c.setFont("Helvetica-Bold",15); c.drawString(48,H-228,L["cover_sub"])
-    draw_text(c,L["cover_desc"],48,H-260,235,"Helvetica",10.4,14,WHITE,5)
-    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",8); c.drawString(48,80,"VISUAL STANDARD REV05")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7.6); c.drawString(48,60,"VERIFIED DATA • PROJECT HOLD POINTS • INSTALLER-FIRST METHOD")
+    draw_text(c,L["cover_title"],48,H-122,235,"Helvetica-Bold",30,33,WHITE,4)
+    c.setFillColor(CYAN); draw_text(c,L["cover_sub"],48,H-230,225,"Helvetica-Bold",13.2,16,CYAN,3)
+    draw_text(c,L["cover_desc"],48,H-290,225,"Helvetica",12.0,16,WHITE,5)
+    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",9.5); c.drawString(48,80,"VISUAL STANDARD REV05R")
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",9.6); c.drawString(48,60,"VERIFIED DATA • PROJECT HOLD POINTS • INSTALLER-FIRST METHOD")
     c.showPage()
 
 def page2(c,L,p):
     header(c,L["k2"],p,L["edition"]); title(c,L["t2"],L["l2"])
-    img_panel(c,ASSETS["balboa_page"],42,270,260,350,"BALBOA OFFICIAL FREEDOM JET MANUAL",cover=False)
+    img_panel(c,ASSETS["balboa_specs_crop"],42,300,260,320,"BALBOA - VERIFIED SPECIFICATION EXTRACT",cover=False)
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(322,350,231,270,10,fill=1,stroke=1)
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",9); c.drawString(339,592,L["bench"])
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",10.5); c.drawString(339,592,L["bench"])
     yy=562
     for a,b in L["balboa_specs"]:
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.5); c.drawString(339,yy,a)
-        c.setFillColor(MUTED); c.setFont("Helvetica",7.2); c.drawString(339,yy-14,b); yy-=39
-    c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(322,155,231,165,10,fill=1,stroke=1)
-    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9); c.drawString(339,294,L["dbhold"])
-    draw_text(c,L["dbholdtxt"],339,274,197,"Helvetica",7.7,10.4,TEXT,12)
+        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.6); c.drawString(339,yy,a)
+        c.setFillColor(MUTED); c.setFont("Helvetica",8.4); c.drawString(339,yy-15,b); yy-=42
+    c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(322,125,231,205,10,fill=1,stroke=1)
+    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10.4); c.drawString(339,300,L["dbhold"])
+    draw_text(c,L["dbholdtxt"],339,278,197,"Helvetica",9.2,12.2,TEXT,12)
     source(c,"[S1] Balboa Water Group - Freedom Jets 10-FS711/10-FS715 official manual   [S5] DB project working dossier")
     c.showPage()
 
@@ -305,18 +312,18 @@ def page3(c,L,p):
         c.circle(bx,by,r,fill=0,stroke=1)
     # labels
     en=L["edition"].startswith("EN")
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",9); c.drawString(80,447,"WATER Ø50" if en else "ACQUA Ø50")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",10.5); c.drawString(80,447,"WATER Ø50" if en else "ACQUA Ø50")
     c.setFillColor(GREEN); c.drawString(350,542,"AIR Ø32" if en else "ARIA Ø32")
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9); c.drawString(390,392,"AIR/WATER JET" if en else "JET ARIA/ACQUA")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10.5); c.drawString(390,392,"AIR/WATER JET" if en else "JET ARIA/ACQUA")
     vent_desc=("Higher local velocity through the jet body creates suction at the air port." if en else "La maggiore velocita' locale nel corpo del jet crea aspirazione sulla bocca aria.")
-    c.setFillColor(MUTED); c.setFont("Helvetica",7.2); c.drawString(80,373,vent_desc)
+    c.setFillColor(MUTED); c.setFont("Helvetica",9.2); c.drawString(80,373,vent_desc)
     c.setStrokeColor(RED); c.setLineWidth(2)
     c.line(120,300,260,300); c.line(120,300,120,340); c.line(260,300,260,340)
-    c.setFillColor(RED); c.setFont("Helvetica-Bold",8); c.drawString(128,314,"NO LOW SAG / WATER TRAP IN AIR LINE" if en else "NO SACCHE / RISTAGNI NELLA LINEA ARIA")
+    c.setFillColor(RED); c.setFont("Helvetica-Bold",9.3); c.drawString(128,314,"NO LOW SAG / WATER TRAP IN AIR LINE" if en else "NO SACCHE / RISTAGNI NELLA LINEA ARIA")
     # note
     c.setFillColor(PALE_GREEN); c.setStrokeColor(HexColor("#C8DFD5")); c.roundRect(42,125,511,95,9,fill=1,stroke=1)
-    c.setFillColor(GREEN); c.setFont("Helvetica-Bold",9); c.drawString(60,195,"MANUFACTURER NOTE" if L["edition"].startswith("EN") else "NOTA PRODUTTORE")
-    draw_text(c,L["venturi_note"],60,175,470,"Helvetica",8.7,12,TEXT,6)
+    c.setFillColor(GREEN); c.setFont("Helvetica-Bold",10.2); c.drawString(60,195,"MANUFACTURER NOTE" if L["edition"].startswith("EN") else "NOTA PRODUTTORE")
+    draw_text(c,L["venturi_note"],60,173,470,"Helvetica",10.0,13.2,TEXT,6)
     source(c,"[S1] Balboa Water Group - Freedom Jets official manual: AIR/WATER socket identification, no sagging air hoses, no air-pump boost recommended.")
     c.showPage()
 
@@ -326,14 +333,14 @@ def page4(c,L,p):
     img_panel(c,ASSETS["maxim_curve_page"],270,340,283,275,"OFFICIAL PERFORMANCE CURVES" if L["edition"].startswith("EN") else "CURVE PRESTAZIONALI UFFICIALI")
     # verified data strip
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,125,511,180,10,fill=1,stroke=1)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.2); c.drawString(58,280,"VERIFIED 08005 DATA" if L["edition"].startswith("EN") else "DATI 08005 VERIFICATI")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10.5); c.drawString(58,280,"VERIFIED 08005 DATA" if L["edition"].startswith("EN") else "DATI 08005 VERIFICATI")
     x=58; y=244
     for i,(h,q) in enumerate(L["curve_rows"]):
         col=i%3; row=i//3; xx=x+col*150; yy=y-row*58
         c.setFillColor(WHITE); c.setStrokeColor(MID); c.roundRect(xx,yy-35,132,42,6,fill=1,stroke=1)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.2); c.drawString(xx+10,yy-11,h)
-        c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",9); c.drawRightString(xx+122,yy-11,q)
-    draw_text(c,L["curve_rule"],58,155,475,"Helvetica",7.8,10.2,TEXT,5)
+        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10.3); c.drawString(xx+10,yy-11,h)
+        c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",9.7); c.drawRightString(xx+122,yy-11,q)
+    draw_text(c,L["curve_rule"],58,155,475,"Helvetica",9.2,12.2,TEXT,5)
     source(c,"[S2] AstralPool MAXIM product page + official datasheet 105.01.01   [S3] Fluidra spare-parts catalogue 08005")
     c.showPage()
 
@@ -342,17 +349,17 @@ def page5(c,L,p):
     en=L["edition"].startswith("EN")
     img_panel(c,ASSETS["grating_crop"],42,320,225,300,"ASTRALPOOL 30766 • REAL PRODUCT" if en else "ASTRALPOOL 30766 • PRODOTTO REALE")
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(287,320,266,300,10,fill=1,stroke=1)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10); c.drawString(305,590,"30766 - VERIFIED" if en else "30766 - VERIFICATA")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",11.2); c.drawString(305,590,"30766 - VERIFIED" if en else "30766 - VERIFICATA")
     specs=([("Material","AISI-316L"),("Face","400 x 400 mm"),("Max. rec. flow","83 m³/h"),("Reference velocity","0.5 m/s"),("Application","concrete pools")]
            if en else
            [("Materiale","AISI-316L"),("Dimensioni","400 x 400 mm"),("Portata max. racc.","83 m³/h"),("Velocita' rif.","0.5 m/s"),("Applicazione","piscine in calcestruzzo")])
     yy=555
     for a,b in specs:
-        c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7.5); c.drawString(305,yy,a.upper())
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10); c.drawRightString(535,yy,b); yy-=44
+        c.setFillColor(MUTED); c.setFont("Helvetica-Bold",8.6); c.drawString(305,yy,a.upper())
+        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10.8); c.drawRightString(535,yy,b); yy-=46
     c.setFillColor(PALE_RED); c.setStrokeColor(HexColor("#F0CAC5")); c.roundRect(42,125,511,155,10,fill=1,stroke=1)
-    c.setFillColor(RED); c.setFont("Helvetica-Bold",8.8); c.drawString(60,255,L["suction_check"])
-    draw_text(c,L["suction_txt"],60,234,470,"Helvetica",8.1,11.2,TEXT,9)
+    c.setFillColor(RED); c.setFont("Helvetica-Bold",9.6); c.drawString(60,255,L["suction_check"])
+    draw_text(c,L["suction_txt"],60,232,470,"Helvetica",9.3,12.4,TEXT,9)
     source(c,"[S4] AstralPool - Drain grating in stainless steel, code 30766. Safety note: rating alone is not an anti-entrapment compliance proof.")
     c.showPage()
 
@@ -362,16 +369,16 @@ def page6(c,L,p):
     c.setFillColor(WHITE); c.setStrokeColor(MID); c.roundRect(42,160,511,455,10,fill=1,stroke=1)
     # Suction grilles and pumps
     en=L["edition"].startswith("EN")
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.5); c.drawString(60,585,"POOL SUCTIONS" if en else "ASPIRAZIONI PISCINA")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.6); c.drawString(60,585,"POOL SUCTIONS" if en else "ASPIRAZIONI PISCINA")
     gy=[540,495,400,355]
     for i,y in enumerate(gy):
         c.setFillColor(WHITE); c.setStrokeColor(GREEN); c.roundRect(60,y,62,30,5,fill=1,stroke=1)
-        c.setFillColor(GREEN); c.setFont("Helvetica-Bold",7); c.drawCentredString(91,y+11,(f"GRILLE {i+1}" if en else f"GRIGLIA {i+1}"))
+        c.setFillColor(GREEN); c.setFont("Helvetica-Bold",8.0); c.drawCentredString(91,y+11,(f"GRILLE {i+1}" if en else f"GRIGLIA {i+1}"))
     # Pair lines
     c.setStrokeColor(NAVY); c.setLineWidth(3)
     c.line(122,555,170,555); c.line(122,510,170,510); c.line(170,510,170,555); c.line(170,533,220,533)
     c.line(122,415,170,415); c.line(122,370,170,370); c.line(170,370,170,415); c.line(170,393,220,393)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7); c.drawString(155,563,"ASP HJ1 Ø90"); c.drawString(155,423,"ASP HJ2 Ø90")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.0); c.drawString(155,563,"ASP HJ1 Ø90"); c.drawString(155,423,"ASP HJ2 Ø90")
     # pumps represented with real image thumbnails
     img_panel(c,ASSETS["maxim_photo_crop"],220,470,135,125,"MAXIM HJ1")
     img_panel(c,ASSETS["maxim_photo_crop"],220,330,135,125,"MAXIM HJ2")
@@ -379,7 +386,7 @@ def page6(c,L,p):
     c.setStrokeColor(CYAN_D); c.setLineWidth(4)
     c.line(355,533,390,533); c.line(355,393,390,393)
     c.setFillColor(WHITE); c.setStrokeColor(ORANGE); c.roundRect(390,518,55,30,5,fill=1,stroke=1); c.roundRect(390,378,55,30,5,fill=1,stroke=1)
-    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",7); c.drawCentredString(417,529,"NRV"); c.drawCentredString(417,389,"NRV")
+    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",8.0); c.drawCentredString(417,529,"NRV"); c.drawCentredString(417,389,"NRV")
     c.setStrokeColor(CYAN_D); c.line(445,533,470,533); c.line(445,393,470,393); c.line(470,393,470,533)
     # common header
     c.setFillColor(BLUEW); c.setStrokeColor(CYAN_D); c.setLineWidth(2); c.roundRect(452,260,70,320,14,fill=1,stroke=1)
@@ -388,14 +395,14 @@ def page6(c,L,p):
     branch_y=[480,435,390,345,300]; labs=["A1 Ø63","A2 Ø63","B1 Ø63","B2 Ø63","SCALE Ø63"]
     for yy,lab in zip(branch_y,labs):
         c.setStrokeColor(CYAN_D); c.setLineWidth(3); c.line(522,yy,545,yy)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",6.5); c.drawRightString(545,yy+7,lab)
+        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.5); c.drawRightString(545,yy+7,lab)
     # air independent at bottom
     c.setFillColor(GREEN); c.setFont("Helvetica-Bold",8); c.drawString(60,235,"VENTURI AIR - 5 INDEPENDENT Ø32 LINES" if en else "ARIA VENTURI - 5 LINEE Ø32 INDIPENDENTI")
     names=(["A1 AIR","A2 AIR","B1 AIR","B2 AIR","SCALE AIR"] if en else ["A1 ARIA","A2 ARIA","B1 ARIA","B2 ARIA","SCALE ARIA"])
     x=60
     for n in names:
         c.setStrokeColor(GREEN); c.setLineWidth(2.5); c.line(x,205,x+70,205)
-        c.setFillColor(GREEN); c.setFont("Helvetica-Bold",6.5); c.drawCentredString(x+35,215,n)
+        c.setFillColor(GREEN); c.setFont("Helvetica-Bold",7.5); c.drawCentredString(x+35,215,n)
         x+=92
     source(c,"[S5] DB Handoff 22-09-2026: 4 grilles -> 2 MAXIM -> NRV -> C-HJ Ø160 -> A1/A2/B1/B2/SCALE; five independent Ø32 air mains.")
     c.showPage()
@@ -405,14 +412,14 @@ def page7(c,L,p):
     c.setFillColor(WHITE); c.setStrokeColor(MID); c.roundRect(42,175,511,430,10,fill=1,stroke=1)
     # Two wall sectors with six fascia
     en=L["edition"].startswith("EN")
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8.5); c.drawString(60,585,"WALL JETS - 36 TOTAL" if en else "JET PARETE - 36 TOTALI")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",9.6); c.drawString(60,585,"WALL JETS - 36 TOTAL" if en else "JET PARETE - 36 TOTALI")
     x0=64; top=505; bw=70; gap=9
     labels=["4","5","6","7","8","9"]
     for i,lab in enumerate(labels):
         x=x0+i*(bw+gap)
         c.setFillColor(BLUEW); c.setStrokeColor(CYAN_D); c.roundRect(x,top,bw,60,7,fill=1,stroke=1)
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8); c.drawCentredString(x+bw/2,top+42,f"FASCIA {lab}")
-        c.setFont("Helvetica-Bold",7); c.drawCentredString(x+bw/2,top+24,"4 UPPER + 2 LOWER" if en else "4 ALTI + 2 BASSI")
+        c.setFont("Helvetica-Bold",8.0); c.drawCentredString(x+bw/2,top+24,"4 UPPER + 2 LOWER" if en else "4 ALTI + 2 BASSI")
         c.setFillColor(CYAN_D)
         for r in range(2):
             for j in range(3):
@@ -423,19 +430,19 @@ def page7(c,L,p):
     c.drawCentredString(415,477,"SECTOR B: B1 + B2 -> 7 / 8 / 9" if en else "SETTORE B: B1 + B2 -> 7 / 8 / 9")
     c.setStrokeColor(CYAN_D); c.setLineWidth(2); c.line(75,463,285,463); c.line(310,463,522,463)
     # Steps
-    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",8.5); c.drawString(60,425,"STEPS - 9 TOTAL" if en else "SCALE - 9 TOTALI")
+    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9.6); c.drawString(60,425,"STEPS - 9 TOTAL" if en else "SCALE - 9 TOTALI")
     for i in range(3):
         y=375-i*52; w=360-i*38
         c.setFillColor(PALE_ORANGE); c.setStrokeColor(ORANGE); c.roundRect(95,y,w,38,6,fill=1,stroke=1)
-        c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",7.5); c.drawString(108,y+14,(f"GROUP {i+1}" if en else f"GRUPPO {i+1}"))
+        c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",8.6); c.drawString(108,y+14,(f"GROUP {i+1}" if en else f"GRUPPO {i+1}"))
         for j in range(3): c.circle(250+j*30-i*8,y+19,3,fill=1,stroke=0)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.5); c.drawString(95,207,("SCALE Ø63 -> balanced local distributor -> 3 groups x 3 jets" if en else "SCALE Ø63 -> distributore locale bilanciato -> 3 gruppi x 3 jet"))
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.6); c.drawString(95,207,("SCALE Ø63 -> balanced local distributor -> 3 groups x 3 jets" if en else "SCALE Ø63 -> distributore locale bilanciato -> 3 gruppi x 3 jet"))
     # note on air
     c.setFillColor(PALE_GREEN); c.setStrokeColor(HexColor("#C8DFD5")); c.roundRect(60,190,465,58,7,fill=1,stroke=1)
     air_note=("The five air lines mirror the water grouping and terminate at dry points above maximum water level. Keep them independent; avoid sags/low points."
               if L["edition"].startswith("EN") else
               "Le cinque linee aria rispecchiano i gruppi acqua e terminano in punti asciutti sopra il massimo livello acqua. Restano indipendenti; evitare sacche e punti bassi.")
-    draw_text(c,air_note,76,225,430,"Helvetica",7.7,10.2,TEXT,4)
+    draw_text(c,air_note,76,225,430,"Helvetica",9.2,12.2,TEXT,4)
     source(c,"[S5] DB Handoff 22-09-2026: 36 wall jets + 9 step jets = 45; five independent Venturi-air circuits.")
     c.showPage()
 
@@ -446,21 +453,21 @@ def page8(c,L,p):
     for n,h,b in L["checks"]:
         c.setFillColor(CYAN); c.circle(62,yy-5,9,fill=1,stroke=0)
         c.setFillColor(WHITE); c.setFont("Helvetica-Bold",7.3); c.drawCentredString(62,yy-8,n)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.4); c.drawString(82,yy,h)
-        draw_text(c,b,82,yy-14,445,"Helvetica",7.3,9.5,MUTED,2)
+        c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.6); c.drawString(82,yy,h)
+        draw_text(c,b,82,yy-14,445,"Helvetica",8.5,10.8,MUTED,2)
         yy-=40
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,115,511,160,10,fill=1,stroke=1)
-    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9); c.drawString(60,248,L["holdbox"])
+    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10.2); c.drawString(60,248,L["holdbox"])
     yy=222
     for item in L["holditems"]:
         c.setFillColor(ORANGE); c.circle(63,yy+2,2.5,fill=1,stroke=0)
-        draw_text(c,item,75,yy+5,450,"Helvetica",7.8,10,TEXT,2); yy-=25
+        draw_text(c,item,75,yy+5,450,"Helvetica",8.8,11.2,TEXT,2); yy-=27
     source(c,"Sources: [S1] Balboa Freedom Jets official manual; [S2] AstralPool MAXIM datasheet; [S3] Fluidra 08005 spare parts; [S4] AstralPool 30766; [S5] DB project dossiers.")
     c.showPage()
 
 def build(lang):
     L=COPY[lang]
-    out=OUT/f"ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05_{lang}.pdf"
+    out=OUT/f"ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05R_{lang}.pdf"
     c=canvas.Canvas(str(out),pagesize=A4,pageCompression=1)
     c.setTitle("Academy DB Plumbing Services - Pool Systems - Hydromassage & Venturi")
     c.setAuthor("DB Plumbing Services - Dennis Bendinelli")
