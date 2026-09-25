@@ -264,7 +264,7 @@ def page2(c,L,p):
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,130,511,145,9,fill=1,stroke=1)
     c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10); c.drawString(60,245,L["cand"])
     draw_text(c,L["candtxt"],60,220,470,"Helvetica",9.5,12.5,TEXT,7)
-    source(c,("[S1] AstralPool LumiPlus Essential Flat official product page   [S2] Product datasheet Flat Projectors EN 2024-11   [S5] DB technical document." if L["edition"].startswith("EN") else "[S1] Pagina prodotto ufficiale AstralPool LumiPlus Essential Flat   [S2] Scheda tecnica Flat Projectors 2024-11   [S5] Documento tecnico DB."))
+    source(c,("[S1] AstralPool LumiPlus Essential Flat official product page   [S2] Product datasheet Flat Projectors EN 2024-11   [S5] DB technical document." if L["edition"].startswith("EN") else "[S1] Pagina prodotto ufficiale AstralPool LumiPlus Essential Flat   [S2] Scheda tecnica proiettori Flat 2024-11   [S5] Documento tecnico DB."))
     c.showPage()
 
 def page3(c,L,p):
