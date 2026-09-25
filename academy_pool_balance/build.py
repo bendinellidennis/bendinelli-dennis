@@ -31,7 +31,6 @@ WHITE=HexColor("#FFFFFF")
 SAND=HexColor("#E6D7B0")
 
 URLS={
-"overflow_pool":"https://www.delfin-wellness.at/referenzen/pool/projekte/detail/assets/images/3/P513-pool-schwebeflaechen-01-9f63b8e2.jpg",
 "balance_tridea":"https://www.trideaprojects.com/wp/wp-content/uploads/2020/12/IMG_3717-720x540.jpeg",
 "balance_cloward":"https://blooloop.com/media-library/balance-tank-cloward.jpg?id=56477264&quality=90&width=800",
 "balance_anchem":"https://anchem-baseny.pl/image/public/6e106af2-79df-11ec-bb4c-525400e16d32_hd_zw1-img-5273.jpeg?tag=416848",
@@ -186,7 +185,6 @@ COPY={
 }}
 
 SOURCES=[
-("S1","Delfin Wellness P513 - one-sided infinity edge project"),
 ("S2","Tridea Projects - overflow pool compensation tanks"),
 ("S3","Cloward H2O balance tank design concepts via blooloop, 2024"),
 ("S4","ANCHEM - real polypropylene overflow/balance tank installation"),
@@ -263,7 +261,7 @@ def footer_sources(c,txt):
 
 def cover(c,L):
     c.setFillColor(NAVY); c.rect(0,0,W,H,fill=1,stroke=0)
-    fit(c,ASSETS["overflow_pool"],0,H*0.40,W,H*0.60,cover=True)
+    fit(c,ASSETS["balance_cloward"],0,H*0.40,W,H*0.60,cover=True)
     c.setFillColor(HexColor("#10263F")); c.setFillAlpha(.82); c.rect(0,H*0.40,W,H*0.60,fill=1,stroke=0); c.setFillAlpha(1)
     c.setFillColor(CYAN); c.rect(0,0,10,H,fill=1,stroke=0)
     c.setFillColor(WHITE); c.setFont("Helvetica-Bold",8); c.drawString(48,H-62,"ACADEMY DB PLUMBING SERVICES")
@@ -278,8 +276,8 @@ def cover(c,L):
 
 def page2(c,L,p):
     header(c,L["k2"],p,L["edition"]); title(c,L["t2"],L["l2"])
-    image_panel(c,ASSETS["overflow_pool"],42,400,260,220,"ONE-SIDED INFINITY EDGE - REAL PROJECT",cover=True)
-    image_panel(c,ASSETS["balance_tridea"],320,400,233,220,"COMPENSATION TANKS - REAL INSTALLATION",cover=True)
+    image_panel(c,ASSETS["balance_tridea"],42,400,260,220,"COMPENSATION TANKS - REAL INSTALLATION",cover=True)
+    image_panel(c,ASSETS["balance_anchem"],320,400,233,220,"PP BALANCE TANK - REAL INSTALLATION",cover=True)
     # flow ribbon
     y=327
     c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(42,y+33,"FUNCTIONAL WATER PATH")
@@ -300,7 +298,7 @@ def page2(c,L,p):
           if L["edition"].startswith("EN") else
           "Quando gli utenti entrano in vasca, il volume spostato fa aumentare lo sfioro. La vasca di compenso riceve questo volume e lo restituisce al sistema di circolazione quando le condizioni operative cambiano.")
     draw_text(c,expl,60,212,470,"Helvetica",9.3,13,TEXT,6)
-    footer_sources(c,"[S1] Delfin Wellness P513   [S2] Tridea Projects   [S3] Cloward H2O / blooloop")
+    footer_sources(c,"[S2] Tridea Projects   [S3] Cloward H2O / blooloop   [S4] ANCHEM")
     c.showPage()
 
 def page3(c,L,p):
