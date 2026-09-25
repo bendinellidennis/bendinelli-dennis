@@ -65,10 +65,20 @@ def download_asset(key):
     for url in URLS[key]:
         try:
             r = requests.get(url, headers=HEADERS, timeout=30)
-            if r.ok and len(r.content) > 5000:
-                path.write_bytes(r.content)
-                return path
-            errs.append(f"{url} -> HTTP {r.status_code}, {len(r.content)} bytes")
+            ctype = (r.headers.get("content-type") or "").lower()
+            if r.ok and len(r.content) > 5000 and ctype.startswith("image/"):
+                tmp = path.with_suffix(".tmp")
+                tmp.write_bytes(r.content)
+                try:
+                    with Image.open(tmp) as test:
+                        test.verify()
+                    tmp.replace(path)
+                    return path
+                except Exception as e:
+                    tmp.unlink(missing_ok=True)
+                    errs.append(f"{url} -> invalid image: {e}")
+                    continue
+            errs.append(f"{url} -> HTTP {r.status_code}, type={ctype}, {len(r.content)} bytes")
         except Exception as e:
             errs.append(f"{url} -> {e}")
     raise RuntimeError("Cannot download required REAL source image " + key + ":\n" + "\n".join(errs))
