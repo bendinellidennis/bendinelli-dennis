@@ -1,0 +1,43 @@
+name: Academy Pool Shell Hydraulics REV07
+
+on:
+  push:
+    branches:
+      - academy-pool-shell-hydraulics-rev07
+    paths:
+      - 'academy_pool_shell/**'
+      - '.github/workflows/academy-pool-shell.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install reportlab pillow requests pypdf pymupdf
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Build shell hydraulics module
+        run: |
+          python academy_pool_shell/build.py
+          mkdir -p academy_pool_shell/render_it academy_pool_shell/render_en
+          pdftoppm -png -r 190 academy_pool_shell/output/ACADEMY_DB_POOL_SYSTEMS_SHELL_HYDRAULICS_REV07_IT.pdf academy_pool_shell/render_it/page >/dev/null 2>&1
+          pdftoppm -png -r 190 academy_pool_shell/output/ACADEMY_DB_POOL_SYSTEMS_SHELL_HYDRAULICS_REV07_EN.pdf academy_pool_shell/render_en/page >/dev/null 2>&1
+          python academy_pool_shell/qa.py
+          cd academy_pool_shell/output
+          zip -9 ACADEMY_DB_POOL_SYSTEMS_SHELL_HYDRAULICS_REV07_IT_EN.zip *.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: academy-pool-shell-hydraulics-rev07
+          path: |
+            academy_pool_shell/output/*
+            academy_pool_shell/render_it/*
+            academy_pool_shell/render_en/*
+            academy_pool_shell/qa_report.txt
+          retention-days: 7
