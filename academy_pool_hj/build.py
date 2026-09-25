@@ -110,16 +110,16 @@ ASSETS["grating_crop"]=crop_nonwhite(ASSETS["grating"],"grating_crop.jpg",12)
 COPY={
 "IT":{
  "edition":"EDIZIONE ITALIANA",
- "cover_title":"HYDROMASSAGE WATER + VENTURI AIR",
+ "cover_title":"IDROMASSAGGIO ACQUA + ARIA VENTURI",
  "cover_sub":"Jet, pompa, aspirazioni, bilanciamento e sicurezza",
- "cover_desc":"Componenti reali verificati • curve pompa • principio Venturi • case study DB Plumbing Services",
+ "cover_desc":"Componenti reali verificati • curve pompa • principio Venturi • caso reale DB Plumbing Services",
  "k2":"01 • IDENTITA' DEL JET",
  "t2":"Prima regola: non trasferire i dati da un jet all'altro",
  "l2":"Un jet aria/acqua puo' avere attacchi simili ma prestazioni e requisiti diversi. Nell'Academy i dati di un modello verificato restano legati a quel modello; un componente di progetto non riceve valori 'per analogia'.",
- "bench":"BENCHMARK TECNICO VERIFICATO",
+ "bench":"RIFERIMENTO TECNICO VERIFICATO",
  "balboa_specs":[("Balboa/HydroAir Freedom 10-FS715","modello verificato dal manuale ufficiale"),("Acqua Ø50 mm","attacco interno acqua"),("Aria Ø32 mm","attacco interno aria"),("3 m³/h @ 9 m H2O","portata raccomandata 10-FS711/10-FS715"),("Foro consigliato 2 5/8 in","circa 66.7 mm"),("Non drenante","10-FS715 / 10-FS715T")],
- "dbhold":"HOLD DI PROGETTO DB",
- "dbholdtxt":"Il materiale di progetto identifica BOOSPA Air/Water 50/32, ref. A-000000-00182. Gli attacchi 50/32 sono confermati nel dossier DB, ma portata, curva, foro, tenute e geometria interna NON sono congelati senza documentazione del produttore/fornitore. Il Balboa 10-FS715 e' un benchmark verificato, non un sostituto approvato automaticamente.",
+ "dbhold":"PUNTO DA CONFERMARE NEL PROGETTO DB",
+ "dbholdtxt":"Il materiale di progetto identifica BOOSPA aria/acqua 50/32, rif. A-000000-00182. Gli attacchi 50/32 sono confermati nel dossier DB, ma portata, curva, foro, tenute e geometria interna NON sono confermati senza documentazione del produttore/fornitore. Il Balboa 10-FS715 e' un riferimento verificato, non un sostituto approvato automaticamente.",
  "k3":"02 • PRINCIPIO VENTURI",
  "t3":"L'aria non viene 'spinta': il getto d'acqua la aspira",
  "l3":"Nel Freedom 10-FS715 il flusso d'acqua attraverso il corpo del jet genera la depressione che richiama aria dalla linea dedicata. Balboa specifica di collegare acqua e aria alle bocche marcate correttamente e di evitare cedimenti della linea aria che possono compromettere l'aspirazione.",
@@ -132,7 +132,7 @@ COPY={
  "k5":"04 • ASPIRAZIONI E SICUREZZA",
  "t5":"La portata della griglia non basta a dimostrare la sicurezza anti-intrappolamento",
  "l5":"AstralPool dichiara per la griglia inox AISI-316L 30766, 400x400 mm, una portata massima raccomandata di 83 m³/h a 0.5 m/s. Questo dato serve al dimensionamento idraulico, ma da solo non certifica che una configurazione sia sicura contro l'intrappolamento.",
- "suction_check":"CHECK IDRAULICO ILLUSTRATIVO - NON VERDETTO DI CONFORMITA'",
+ "suction_check":"VERIFICA IDRAULICA ILLUSTRATIVA - NON VERDETTO DI CONFORMITA'",
  "suction_txt":"Nel case study DB sono previste 4 griglie fisiche, 2 per ciascuna pompa. Se una pompa lavorasse a circa 67 m³/h, due griglie identiche e perfettamente bilanciate vedrebbero circa 33.5 m³/h ciascuna; anche una singola 30766 avrebbe nominalmente 67 < 83 m³/h. Questo NON sostituisce verifica di certificazione, spaziatura, collegamento, coperture, norme applicabili e comportamento in caso di blocco.",
  "k6":"05 • ARCHITETTURA DB",
  "t6":"Due pompe, un collettore comune e cinque dorsali acqua",
@@ -140,7 +140,7 @@ COPY={
  "k7":"06 • 45 JET + 5 CIRCUITI ARIA",
  "t7":"Bilanciare l'acqua e mantenere indipendenti le cinque linee Venturi",
  "l7":"Il progetto divide 36 jet parete in due settori da 18 e mantiene i 9 jet scale su una dorsale dedicata. Le cinque dorsali aria Ø32 restano indipendenti fino al punto asciutto; non e' previsto un collettore aria comune nel locale tecnico.",
- "k8":"07 • COMMISSIONING E PUNTI HOLD",
+ "k8":"07 • MESSA IN SERVIZIO E PUNTI DA CONFERMARE",
  "t8":"Prima dell'avviamento: misurare, provare, confrontare con le curve",
  "l8":"Un impianto idromassaggio non si approva perche' 'fa tante bolle'. L'accettazione richiede portata e pressione coerenti, aspirazioni sicure, nessuna aria indesiderata lato aspirazione, resa uniforme e dati elettrici entro targa.",
  "checks":[
@@ -152,13 +152,13 @@ COPY={
   ("6","Bilanciamento","Confrontare fasce 4-9 e scale; correggere solo con misure, non 'a occhio'."),
   ("7","Elettrico","Verificare corrente, protezioni e comando con elettricista qualificato."),
  ],
- "holdbox":"DATI NON ANCORA DA INSEGNARE COME DEFINITIVI NEL CASE STUDY",
+ "holdbox":"DATI NON ANCORA DA INSEGNARE COME DEFINITIVI NEL CASO REALE",
  "holditems":["Portata ufficiale del jet BOOSPA A-000000-00182.","Foro di posa / tenute / geometria interna BOOSPA.","Curva di sistema HJ completa e punto di lavoro finale.","Conformita' definitiva delle aspirazioni 30766 nella posa reale.","Quote esatte degli attacchi sulle macchine acquistate."],
- "footer":"Fonti tecniche: AstralPool/Fluidra, Balboa Water Group, dossier DB Plumbing Services. Dati di progetto non verificati restano HOLD."
+ "footer":"Fonti tecniche: AstralPool/Fluidra, Balboa Water Group, dossier DB Plumbing Services. I dati di progetto non verificati restano DA CONFERMARE."
 },
 "EN":{
  "edition":"ENGLISH EDITION",
- "cover_title":"HYDROMASSAGE WATER + VENTURI AIR",
+ "cover_title":"IDROMASSAGGIO ACQUA + ARIA VENTURI",
  "cover_sub":"Jets, pump, suction, balancing and safety",
  "cover_desc":"Verified real components • pump curves • Venturi principle • DB Plumbing Services case study",
  "k2":"01 • JET IDENTITY",
@@ -248,7 +248,7 @@ def img_panel(c,path,x,y,w,h,label=None,cover=False):
 
 def header(c,k,page,edition):
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.6); c.drawString(42,H-30,"ACADEMY DB PLUMBING SERVICES")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",8.0); c.drawRightString(W-42,H-30,"POOL SYSTEMS • HYDROMASSAGE / VENTURI • REV05R")
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",8.0); c.drawRightString(W-42,H-30,("POOL SYSTEMS • HYDROMASSAGE / VENTURI • REV05R" if edition.startswith("EN") else "SISTEMI PISCINA • IDROMASSAGGIO / VENTURI • REV05R"))
     c.setStrokeColor(MID); c.line(42,H-38,W-42,H-38)
     c.setFillColor(CYAN); c.setFont("Helvetica-Bold",10.5); c.drawString(42,H-62,k)
     c.setFillColor(MUTED); c.setFont("Helvetica",7.8); c.drawRightString(W-42,24,f"{edition} • {page}")
@@ -268,18 +268,18 @@ def cover(c,L):
     # Hero real pump
     c.setFillColor(WHITE); c.roundRect(305,185,240,430,16,fill=1,stroke=0)
     fit(c,ASSETS["maxim_photo_crop"],320,235,210,325,cover=False)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8); c.drawString(323,210,"ASTRALPOOL MAXIM 08005 • REAL PRODUCT")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8); c.drawString(323,210,("ASTRALPOOL MAXIM 08005 • REAL PRODUCT" if L["edition"].startswith("EN") else "ASTRALPOOL MAXIM 08005 • PRODOTTO REALE"))
     c.setFillColor(WHITE); c.setFont("Helvetica-Bold",8); c.drawString(48,H-62,"ACADEMY DB PLUMBING SERVICES")
     draw_text(c,L["cover_title"],48,H-122,235,"Helvetica-Bold",30,33,WHITE,4)
     c.setFillColor(CYAN); draw_text(c,L["cover_sub"],48,H-230,225,"Helvetica-Bold",13.2,16,CYAN,3)
     draw_text(c,L["cover_desc"],48,H-290,225,"Helvetica",12.0,16,WHITE,5)
-    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",9.5); c.drawString(48,80,"VISUAL STANDARD REV05R")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",9.6); c.drawString(48,60,"VERIFIED DATA • PROJECT HOLD POINTS • INSTALLER-FIRST METHOD")
+    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",9.5); c.drawString(48,80,("VISUAL STANDARD REV05R" if L["edition"].startswith("EN") else "STANDARD VISIVO REV05R"))
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",9.6); c.drawString(48,60,("VERIFIED DATA • PROJECT HOLD POINTS • INSTALLER-FIRST METHOD" if L["edition"].startswith("EN") else "DATI VERIFICATI • PUNTI DA CONFERMARE • METODO PENSATO PER L'INSTALLATORE"))
     c.showPage()
 
 def page2(c,L,p):
     header(c,L["k2"],p,L["edition"]); title(c,L["t2"],L["l2"])
-    img_panel(c,ASSETS["balboa_specs_crop"],42,300,260,320,"BALBOA - VERIFIED SPECIFICATION EXTRACT",cover=False)
+    img_panel(c,ASSETS["balboa_specs_crop"],42,300,260,320,("BALBOA - VERIFIED SPECIFICATION EXTRACT" if L["edition"].startswith("EN") else "BALBOA - ESTRATTO SPECIFICHE VERIFICATE"),cover=False)
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(322,320,231,300,10,fill=1,stroke=1)
     c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",10.5); c.drawString(339,592,L["bench"])
     yy=562
@@ -324,7 +324,7 @@ def page3(c,L,p):
     c.setFillColor(PALE_GREEN); c.setStrokeColor(HexColor("#C8DFD5")); c.roundRect(42,125,511,95,9,fill=1,stroke=1)
     c.setFillColor(GREEN); c.setFont("Helvetica-Bold",10.2); c.drawString(60,195,"MANUFACTURER NOTE" if L["edition"].startswith("EN") else "NOTA PRODUTTORE")
     draw_text(c,L["venturi_note"],60,173,470,"Helvetica",10.0,13.2,TEXT,6)
-    source(c,"[S1] Balboa Water Group - Freedom Jets official manual: AIR/WATER socket identification, no sagging air hoses, no air-pump boost recommended.")
+    source(c,("[S1] Balboa Water Group - Freedom Jets official manual: AIR/WATER socket identification, no sagging air hoses, no air-pump boost recommended." if L["edition"].startswith("EN") else "[S1] Manuale ufficiale Balboa Water Group Freedom Jets: identificazione attacchi aria/acqua, evitare cedimenti delle linee aria, pompa aria di rinforzo non raccomandata."))
     c.showPage()
 
 def page4(c,L,p):
@@ -341,7 +341,7 @@ def page4(c,L,p):
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10.3); c.drawString(xx+10,yy-11,h)
         c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",9.7); c.drawRightString(xx+122,yy-11,q)
     draw_text(c,L["curve_rule"],58,155,475,"Helvetica",9.2,12.2,TEXT,5)
-    source(c,"[S2] AstralPool MAXIM product page + official datasheet 105.01.01   [S3] Fluidra spare-parts catalogue 08005")
+    source(c,("[S2] AstralPool MAXIM product page + official datasheet 105.01.01   [S3] Fluidra spare-parts catalogue 08005" if L["edition"].startswith("EN") else "[S2] Pagina prodotto AstralPool MAXIM + scheda tecnica ufficiale 105.01.01   [S3] Catalogo ricambi Fluidra 08005"))
     c.showPage()
 
 def page5(c,L,p):
@@ -360,7 +360,7 @@ def page5(c,L,p):
     c.setFillColor(PALE_RED); c.setStrokeColor(HexColor("#F0CAC5")); c.roundRect(42,125,511,155,10,fill=1,stroke=1)
     c.setFillColor(RED); c.setFont("Helvetica-Bold",9.6); c.drawString(60,255,L["suction_check"])
     draw_text(c,L["suction_txt"],60,232,470,"Helvetica",9.3,12.4,TEXT,9)
-    source(c,"[S4] AstralPool - Drain grating in stainless steel, code 30766. Safety note: rating alone is not an anti-entrapment compliance proof.")
+    source(c,("[S4] AstralPool - Drain grating in stainless steel, code 30766. Safety note: rating alone is not an anti-entrapment compliance proof." if L["edition"].startswith("EN") else "[S4] AstralPool - Griglia di scarico in acciaio inox, codice 30766. Nota sicurezza: la sola portata dichiarata non dimostra la conformita anti-intrappolamento."))
     c.showPage()
 
 def page6(c,L,p):
@@ -397,14 +397,14 @@ def page6(c,L,p):
         c.setStrokeColor(CYAN_D); c.setLineWidth(3); c.line(522,yy,545,yy)
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.5); c.drawRightString(545,yy+7,lab)
     # air independent at bottom
-    c.setFillColor(GREEN); c.setFont("Helvetica-Bold",8); c.drawString(60,235,"VENTURI AIR - 5 INDEPENDENT Ø32 LINES" if en else "ARIA VENTURI - 5 LINEE Ø32 INDIPENDENTI")
+    c.setFillColor(GREEN); c.setFont("Helvetica-Bold",8); c.drawString(60,235,("VENTURI AIR - 5 INDEPENDENT Ø32 LINES" if en else "ARIA VENTURI - 5 LINEE Ø32 INDIPENDENTI"))
     names=(["A1 AIR","A2 AIR","B1 AIR","B2 AIR","SCALE AIR"] if en else ["A1 ARIA","A2 ARIA","B1 ARIA","B2 ARIA","SCALE ARIA"])
     x=60
     for n in names:
         c.setStrokeColor(GREEN); c.setLineWidth(2.5); c.line(x,205,x+70,205)
         c.setFillColor(GREEN); c.setFont("Helvetica-Bold",7.5); c.drawCentredString(x+35,215,n)
         x+=92
-    source(c,"[S5] DB Handoff 22-09-2026: 4 grilles -> 2 MAXIM -> NRV -> C-HJ Ø160 -> A1/A2/B1/B2/SCALE; five independent Ø32 air mains.")
+    source(c,("[S5] DB Handoff 22-09-2026: 4 grilles -> 2 MAXIM -> NRV -> C-HJ Ø160 -> A1/A2/B1/B2/SCALE; five independent Ø32 air mains." if L["edition"].startswith("EN") else "[S5] Documento tecnico DB 22-09-2026: 4 griglie -> 2 MAXIM -> VNR -> C-HJ Ø160 -> A1/A2/B1/B2/SCALE; cinque dorsali aria Ø32 indipendenti."))
     c.showPage()
 
 def page7(c,L,p):
@@ -412,7 +412,7 @@ def page7(c,L,p):
     c.setFillColor(WHITE); c.setStrokeColor(MID); c.roundRect(42,175,511,430,10,fill=1,stroke=1)
     # Two wall sectors with six fascia
     en=L["edition"].startswith("EN")
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",9.6); c.drawString(60,585,"WALL JETS - 36 TOTAL" if en else "JET PARETE - 36 TOTALI")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",9.6); c.drawString(60,585,("WALL JETS - 36 TOTAL" if en else "JET PARETE - 36 TOTALI"))
     x0=64; top=505; bw=70; gap=9
     labels=["4","5","6","7","8","9"]
     for i,lab in enumerate(labels):
@@ -443,7 +443,7 @@ def page7(c,L,p):
               if L["edition"].startswith("EN") else
               "Le cinque linee aria rispecchiano i gruppi acqua e terminano in punti asciutti sopra il massimo livello acqua. Restano indipendenti; evitare sacche e punti bassi.")
     draw_text(c,air_note,76,225,430,"Helvetica",9.2,12.2,TEXT,4)
-    source(c,"[S5] DB Handoff 22-09-2026: 36 wall jets + 9 step jets = 45; five independent Venturi-air circuits.")
+    source(c,("[S5] DB Handoff 22-09-2026: 36 wall jets + 9 step jets = 45; five independent Venturi-air circuits." if L["edition"].startswith("EN") else "[S5] Documento tecnico DB 22-09-2026: 36 jet parete + 9 jet scale = 45; cinque circuiti aria Venturi indipendenti."))
     c.showPage()
 
 def page8(c,L,p):
@@ -462,7 +462,7 @@ def page8(c,L,p):
     for item in L["holditems"]:
         c.setFillColor(ORANGE); c.circle(63,yy+2,2.5,fill=1,stroke=0)
         draw_text(c,item,75,yy+5,450,"Helvetica",8.8,11.2,TEXT,2); yy-=27
-    source(c,"Sources: [S1] Balboa Freedom Jets official manual; [S2] AstralPool MAXIM datasheet; [S3] Fluidra 08005 spare parts; [S4] AstralPool 30766; [S5] DB project dossiers.")
+    source(c,("Sources: [S1] Balboa Freedom Jets official manual; [S2] AstralPool MAXIM datasheet; [S3] Fluidra 08005 spare parts; [S4] AstralPool 30766; [S5] DB project dossiers." if L["edition"].startswith("EN") else "Fonti: [S1] manuale ufficiale Balboa Freedom Jets; [S2] scheda tecnica AstralPool MAXIM; [S3] ricambi Fluidra 08005; [S4] AstralPool 30766; [S5] documenti progetto DB."))
     c.showPage()
 
 def build(lang):
