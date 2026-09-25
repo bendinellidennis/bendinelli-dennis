@@ -5,7 +5,7 @@ from PIL import Image, ImageStat
 ROOT=Path(__file__).resolve().parent
 report=[]; ok=True
 for lang in ["IT","EN"]:
-    pdf=ROOT/"output"/f"ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05_{lang}.pdf"
+    pdf=ROOT/"output"/f"ACADEMY_DB_POOL_SYSTEMS_HYDROMASSAGE_VENTURI_REV05R_{lang}.pdf"
     if not pdf.exists():
         ok=False; report.append(f"FAIL {lang}: missing PDF"); continue
     r=PdfReader(str(pdf))
