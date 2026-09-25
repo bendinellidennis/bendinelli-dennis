@@ -91,17 +91,17 @@ COPY={
 "edition":"EDIZIONE ITALIANA",
 "cover_title":"SFIORO E VASCA DI COMPENSO",
 "cover_sub":"Dal bordo sfioratore al controllo del livello",
-"cover_desc":"Funzione idraulica • volumi operativi • connessioni • commissioning • case study DB",
+"cover_desc":"Funzione idraulica • volumi operativi • connessioni • messa in servizio • caso reale DB",
 "k2":"01 • PRINCIPIO DI FUNZIONAMENTO",
-"t2":"Dallo sfioro alla Balance Tank: il percorso che stabilizza il livello",
-"l2":"In una piscina a sfioro l'acqua che supera il bordo non viene persa: viene raccolta, trasferita alla vasca di compenso e rimessa nel circuito di filtrazione. La Balance Tank assorbe le variazioni di volume e rende possibile un livello d'acqua visivamente stabile.",
+"t2":"Dallo sfioro alla vasca di compenso: il percorso che stabilizza il livello",
+"l2":"In una piscina a sfioro l'acqua che supera il bordo non viene persa: viene raccolta, trasferita alla vasca di compenso e rimessa nel circuito di filtrazione. La vasca di compenso assorbe le variazioni di volume e rende possibile un livello d'acqua visivamente stabile.",
 "k3":"02 • LIVELLI E VOLUMI",
-"t3":"Dentro la Balance Tank: non esiste un solo livello",
+"t3":"Dentro la vasca di compenso: non esiste un solo livello",
 "l3":"Per leggere correttamente una vasca di compenso bisogna distinguere livello statico, livello operativo minimo, volume disponibile per lo sfioro e margine di sicurezza. Le quote esatte dipendono dal progetto reale: il diagramma qui sotto e' didattico, non una quota universale.",
 "k4":"03 • CONNESSIONI",
 "t4":"Cinque funzioni da riconoscere prima di progettare i bocchelli",
-"l4":"Le connessioni della vasca devono essere lette per funzione, non per posizione. Nel case study DB tre collegamenti sono gia' certi; troppo pieno, scarico e controllo livello restano da rilevare e definire.",
-"conn":[("ARRIVO SFIORO","Ingresso per gravita' dall'overflow della piscina.","CONFIRMATO DB"),
+"l4":"Le connessioni della vasca devono essere lette per funzione, non per posizione. Nel caso reale DB tre collegamenti sono gia' certi; troppo pieno, scarico e controllo livello restano da rilevare e definire.",
+"conn":[("ARRIVO SFIORO","Ingresso per gravita' dallo sfioro della piscina.","CONFERMATO DB"),
 ("ASPIRAZIONE FILTRAZIONE","Uscita verso il collettore di aspirazione filtrazione.","CONFIRMATO DB"),
 ("RIEMPIMENTO / REINTEGRO","Linea di reintegro acqua.","CONFERMATO DB: PPR VERDE"),
 ("TROPPO PIENO / SCARICO","Protezione contro sovrariempimento e svuotamento manutentivo.","DA RILEVARE DB"),
@@ -115,29 +115,29 @@ COPY={
 "g2b":"Corpo e griglia in ABS, incollaggio su tubo Ø63. Portata massima dichiarata 4.5 m3/h. Applicazione a parete / canale di sfioro.",
 "k6":"05 • MESSA IN SERVIZIO",
 "t6":"Avviamento: osservare livelli, aria e ritorno dell'acqua prima di regolare",
-"l6":"Una Balance Tank puo' essere geometricamente grande ma idraulicamente mal utilizzata. Il commissioning serve a verificare cosa accade realmente quando la pompa parte, il livello scende, l'acqua ritorna e lo sfioro riprende.",
+"l6":"Una vasca di compenso puo' essere geometricamente grande ma idraulicamente mal utilizzata. La messa in servizio serve a verificare cosa accade realmente quando la pompa parte, il livello scende, l'acqua ritorna e lo sfioro riprende.",
 "checks":[("1","Pompa ferma","Osservare il livello statico/equalizzato e registrarlo."),
-("2","Pompa in marcia","Controllare il drawdown e la sommersione dell'aspirazione."),
+("2","Pompa in marcia","Controllare l'abbassamento del livello e la sommersione dell'aspirazione."),
 ("3","Sfioro attivo","Verificare ritorno continuo alla vasca senza strozzature o rigurgiti."),
-("4","Reintegro","Provare il make-up e verificare che non mascheri perdite o troppo pieno."),
-("5","Transitorio","Simulare variazioni di volume e osservare margine disponibile / freeboard."),
+("4","Reintegro","Provare il reintegro e verificare che non mascheri perdite o troppo pieno."),
+("5","Transitorio","Simulare variazioni di volume e osservare il margine libero disponibile."),
 ("6","Aria e vortici","Nessun trascinamento d'aria verso la pompa e nessun vortice persistente.")],
 "k7":"06 • CASO REALE DB PLUMBING SERVICES",
 "t7":"Il progetto reale: cosa e' certo e cosa deve restare aperto",
-"l7":"La pagina usa esclusivamente i dati confermati nell'handoff del 22/09/2026. Dove il rilievo non e' completo, il dato resta volutamente NON DEFINITO.",
+"l7":"La pagina usa esclusivamente i dati confermati nel documento tecnico del 22/09/2026. Dove il rilievo non e' completo, il dato resta volutamente NON DEFINITO.",
 "confirmed":"DATI CONFERMATI",
-"confitems":["Piscina privata a Malta con sfioro continuo su un solo lato lungo.","Fessura sfioro circa 2-3 cm.","Livello acqua/sfioro circa +3.10 m dal pavimento del locale tecnico.","Balance Tank dietro la parete lunga.","Sviluppo usato nei calcoli: 4.80 m dalla parete destra = 4.50 m vasca + 0.30 m offset.","Linea PPR verde esistente = riempimento Balance Tank.","Connessioni certe: sfioro in ingresso, aspirazione filtrazione, riempimento PPR."],
+"confitems":["Piscina privata a Malta con sfioro continuo su un solo lato lungo.","Fessura sfioro circa 2-3 cm.","Livello acqua/sfioro circa +3.10 m dal pavimento del locale tecnico.","Vasca di compenso dietro la parete lunga.","Sviluppo usato nei calcoli: 4.80 m dalla parete destra = 4.50 m vasca + 0.30 m di scarto assorbito.","Linea PPR verde esistente = riempimento vasca di compenso.","Connessioni certe: sfioro in ingresso, aspirazione filtrazione, riempimento PPR."],
 "open":"DA RILEVARE / NON CONFERMARE",
-"openitems":["Profondita' interna completa della Balance Tank.","Quote e diametri reali dei bocchelli BT.","Troppo pieno / scarico.","Sistema di controllo livello.","Dettagli interni e forometria dedicata."],
+"openitems":["Profondita' interna completa della vasca di compenso.","Quote e diametri reali dei bocchelli della vasca.","Troppo pieno / scarico.","Sistema di controllo livello.","Dettagli interni e forometria dedicata."],
 "k8":"07 • SCHEDA DI RILIEVO",
-"t8":"Balance Tank: cosa misurare prima del progetto definitivo",
+"t8":"Vasca di compenso: cosa misurare prima del progetto definitivo",
 "l8":"Questa scheda chiude il metodo Academy: non si inventa cio' che il cantiere non ha ancora confermato. Il rilievo trasforma la vasca esistente in dati progettuali verificabili.",
 "fields":["Lunghezza interna utile","Larghezza interna utile","Altezza interna utile","Livello statico a pompa ferma","Livello minimo a pompa in marcia","Quota arrivo sfioro","Quota aspirazione filtrazione","Diametro aspirazione filtrazione","Quota e diametro PPR riempimento","Troppo pieno: quota + diametro","Scarico manutenzione: quota + diametro","Sistema controllo livello","Dimensione/accesso botola","Possibilita' pulizia interna","Foto di ogni parete + attacco"],
 "footer_note":"Foto esterne usate come riferimenti didattici con attribuzione. Per vendita o distribuzione commerciale occorre verificare/ottenere i relativi diritti d'uso."
 },
 "EN":{
 "edition":"ENGLISH EDITION",
-"cover_title":"SFIORO E VASCA DI COMPENSO",
+"cover_title":"OVERFLOW & BALANCE TANK",
 "cover_sub":"From the overflow edge to stable water-level control",
 "cover_desc":"Hydraulic function • operating volumes • connections • commissioning • DB case study",
 "k2":"01 • OPERATING PRINCIPLE",
@@ -161,7 +161,7 @@ COPY={
 "g1b":"UV-stabilised PP. AstralPool states that the channel should be built 5 mm wider than the grating to allow removal and expansion.",
 "g2":"ASTRALPOOL OVERFLOW SUCTION NOZZLE 00302",
 "g2b":"ABS body and grille, glued to Ø63 pipe. Manufacturer maximum flow 4.5 m3/h. Wall / overflow-channel application.",
-"k6":"05 • MESSA IN SERVIZIO",
+"k6":"05 • COMMISSIONING",
 "t6":"Start-up: observe levels, air and water return before adjusting controls",
 "l6":"A balance tank may be physically large yet poorly used hydraulically. Commissioning verifies what actually happens when the pump starts, the tank level drops, water returns and overflow resumes.",
 "checks":[("1","Pump stopped","Observe and record the static/equalised level."),
@@ -428,7 +428,7 @@ def page7(c,L,p):
     for item in L["openitems"]:
         c.setFillColor(ORANGE); c.circle(326,yy+2,2.3,fill=1,stroke=0)
         yy=draw_text(c,item,336,yy+5,198,"Helvetica",7.7,10,TEXT,3)-9
-    footer_sources(c,"[S8] DB Plumbing Services - Handoff completo progetto piscina 22/09/2026")
+    footer_sources(c,("[S8] DB Plumbing Services - complete pool project handoff 22/09/2026" if L["edition"].startswith("EN") else "[S8] DB Plumbing Services - documento tecnico completo progetto piscina 22/09/2026"))
     c.showPage()
 
 def page8(c,L,p):
@@ -449,7 +449,7 @@ def page8(c,L,p):
     c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8.5); c.drawString(58,158,("ACADEMY FIELD METHOD" if L["edition"].startswith("EN") else "METODO ACADEMY DI RILIEVO"))
     draw_text(c,note,58,140,466,"Helvetica",8.3,11,TEXT,4)
     c.setFillColor(MUTED); c.setFont("Helvetica",5.8); draw_text(c,L["footer_note"],42,78,511,"Helvetica",5.8,7.5,MUTED,3)
-    c.setFont("Helvetica",5.6); c.drawString(42,58,"[S1-S7] External references as listed in module source register   [S8] DB project handoff")
+    c.setFont("Helvetica",5.6); c.drawString(42,58,("[S1-S7] External references as listed in module source register   [S8] DB project handoff" if L["edition"].startswith("EN") else "[S1-S7] Riferimenti esterni elencati nel registro fonti del modulo   [S8] Documento tecnico DB"))
     c.showPage()
 
 def build(lang):
