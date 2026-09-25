@@ -1,0 +1,43 @@
+name: Academy Pool Manifolds REV10
+
+on:
+  push:
+    branches:
+      - academy-pool-manifolds-rev10
+    paths:
+      - 'academy_pool_manifolds/**'
+      - '.github/workflows/academy-pool-manifolds.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install reportlab pillow pypdf
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Build manifolds module
+        run: |
+          python academy_pool_manifolds/build.py
+          mkdir -p academy_pool_manifolds/render_it academy_pool_manifolds/render_en
+          pdftoppm -png -r 190 academy_pool_manifolds/output/ACADEMY_DB_POOL_SYSTEMS_MANIFOLDS_REV10_IT.pdf academy_pool_manifolds/render_it/page >/dev/null 2>&1
+          pdftoppm -png -r 190 academy_pool_manifolds/output/ACADEMY_DB_POOL_SYSTEMS_MANIFOLDS_REV10_EN.pdf academy_pool_manifolds/render_en/page >/dev/null 2>&1
+          python academy_pool_manifolds/qa.py
+          cd academy_pool_manifolds/output
+          zip -9 ACADEMY_DB_POOL_SYSTEMS_MANIFOLDS_REV10_IT_EN.zip *.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: academy-pool-manifolds-rev10
+          path: |
+            academy_pool_manifolds/output/*
+            academy_pool_manifolds/render_it/*
+            academy_pool_manifolds/render_en/*
+            academy_pool_manifolds/qa_report.txt
+          retention-days: 7
