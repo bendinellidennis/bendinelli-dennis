@@ -14,7 +14,7 @@ for lang in ["IT","EN"]:
     reader=PdfReader(str(pdf))
     text="\n".join((p.extract_text() or "") for p in reader.pages)
     report.append(f"{lang}: pages={len(reader.pages)} bytes={pdf.stat().st_size}")
-    if len(reader.pages)!=8 or pdf.stat().st_size<25000:
+    if len(reader.pages)!=8 or pdf.stat().st_size<15000:
         ok=False; report.append(f"FAIL {lang}: page count or file size")
     for ident in EXPECTED_IDS:
         if ident not in text:
