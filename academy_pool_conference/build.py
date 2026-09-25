@@ -300,7 +300,7 @@ def page2(c,L,pno):
     c.setFillColor(CYAN); c.rect(42,210,511,4,fill=1,stroke=0)
     draw_text(c,"20569 • Configuration 3 • 1½”",42,190,240,"Helvetica-Bold",11,14,NAVY,2)
     draw_text(c,"Use the model marking and the actual installation manual before gluing or cutting any connection." if L["edition"].startswith("EN") else "Usare la marcatura del modello e il manuale reale prima di incollare o tagliare qualsiasi collegamento.",42,160,511,"Helvetica",9.2,13,MUTED,4)
-    c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,"[S1] AstralPool / Fluidra 20569   [S2] Quimipool real component + exploded view")
+    c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,("[S1] AstralPool / Fluidra 20569   [S2] Quimipool real component + exploded view" if L["edition"].startswith("EN") else "[S1] AstralPool / Fluidra 20569   [S2] Quimipool: componente reale + esploso"))
     c.showPage()
 
 def page3(c,L,pno):
@@ -348,7 +348,7 @@ def page5(c,L,pno):
     c.setFillColor(HexColor("#FFF0EF")); c.setStrokeColor(HexColor("#F0CAC5")); c.roundRect(394,245,159,92,8,fill=1,stroke=1)
     c.setFillColor(RED); c.setFont("Helvetica-Bold",8.3); c.drawString(408,313,"ENGINEERING NOTE")
     draw_text(c,L["filter_note"],408,294,130,"Helvetica",7.25,9.6,TEXT,8)
-    c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,"[S3] AstralPool Vesubio 15786   [S4] Quimipool real filter + exploded view")
+    c.setFillColor(MUTED); c.setFont("Helvetica",6.5); c.drawString(42,58,("[S3] AstralPool Vesubio 15786   [S4] Quimipool real filter + exploded view" if L["edition"].startswith("EN") else "[S3] AstralPool Vesubio 15786   [S4] Quimipool: filtro reale + esploso"))
     c.showPage()
 
 def page6(c,L,pno):
