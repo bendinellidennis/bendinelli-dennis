@@ -101,9 +101,9 @@ COPY={
 "t5":"Nessun dosaggio automatico senza circolazione verificata",
 "l5":"Il Control Basic Next dispone di un ingresso di flusso collegabile alla circolazione. Nel progetto DB l'interblocco di flusso e' un requisito importante: il dosaggio non deve proseguire quando manca la condizione di ricircolo prevista.",
 "flowsteps":[("1","RICIRCOLO ATTIVO","La pompa di filtrazione e' in servizio e la portata e' disponibile."),
-("2","CONSENSO FLUSSO","Il controller riceve il segnale previsto dal sistema."),
+("2","CONSENSO FLUSSO","Il regolatore riceve il segnale previsto dal sistema."),
 ("3","MISURA","La sonda legge pH oppure ORP."),
-("4","CONFRONTO VALORE IMPOSTATO","Il controller confronta misura e valore impostato."),
+("4","CONFRONTO VALORE IMPOSTATO","Il regolatore confronta misura e valore impostato."),
 ("5","DOSAGGIO","La pompa peristaltica dosa solo quando la logica lo richiede.")],
 "flowhold":"DA CONFERMARE: la posizione esatta di sonde, punti di prelievo e punti di iniezione del progetto DB deve essere definita solo dopo verifica del corredo realmente fornito e del manuale di installazione.",
 "k6":"05 - VALORI IMPOSTATI E CHIMICA",
@@ -276,7 +276,7 @@ def page2(c,L,p):
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,160,511,115,10,fill=1,stroke=1)
     c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10.2); c.drawString(60,245,("KEY TEACHING POINT" if L["edition"].startswith("EN") else "PUNTO DIDATTICO CHIAVE"))
     draw_text(c,L["rule2"],60,220,470,"Helvetica-Bold",10.5,14,NAVY,5)
-    source(c,"[S4] CDC Healthy Swimming 2024-2025   [S5] WHO Guidelines for Safe Recreational Water Environments, Vol. 2")
+    source(c,("[S4] CDC Healthy Swimming 2024-2025   [S5] WHO Guidelines for Safe Recreational Water Environments, Vol. 2" if L["edition"].startswith("EN") else "[S4] CDC - indicazioni 2024-2025 per la balneazione sicura   [S5] WHO - linee guida per ambienti acquatici ricreativi, Vol. 2"))
     c.showPage()
 
 def page3(c,L,p):
@@ -292,7 +292,7 @@ def page3(c,L,p):
     c.setFillColor(PALE_GREEN); c.setStrokeColor(HexColor("#C8DFD5")); c.roundRect(42,140,511,115,9,fill=1,stroke=1)
     c.setFillColor(GREEN); c.setFont("Helvetica-Bold",9.7); c.drawString(60,230,("MODEL-SPECIFIC DATA" if L["edition"].startswith("EN") else "DATI SPECIFICI DEL MODELLO"))
     draw_text(c,L["note3"],60,208,470,"Helvetica",9.4,12.5,TEXT,6)
-    source(c,"[S1] AstralPool Control Basic Next product page   [S2] AstralPool/Fluidra dosing brochure   [S3] Fluidra 2025 catalogue")
+    source(c,("[S1] AstralPool Control Basic Next product page   [S2] AstralPool/Fluidra dosing brochure   [S3] Fluidra 2025 catalogue" if L["edition"].startswith("EN") else "[S1] Pagina prodotto AstralPool Control Basic Next   [S2] Opuscolo dosaggio AstralPool/Fluidra   [S3] Catalogo Fluidra 2025"))
     c.showPage()
 
 def page4(c,L,p):
@@ -330,7 +330,7 @@ def page4(c,L,p):
 
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,92,511,48,8,fill=1,stroke=1)
     draw_text(c,L["calnote"],57,122,480,"Helvetica",8.8,10.6,TEXT,3)
-    source(c,"[S2] AstralPool Control Basic Next installation manual, Code 0000137847 Rev 2.0 - calibration sections.")
+    source(c,("[S2] AstralPool Control Basic Next installation manual, Code 0000137847 Rev 2.0 - calibration sections." if L["edition"].startswith("EN") else "[S2] Manuale di installazione AstralPool Control Basic Next, codice 0000137847 Rev 2.0 - sezioni calibrazione."))
     c.showPage()
 
 def page5(c,L,p):
