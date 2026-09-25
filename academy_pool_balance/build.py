@@ -89,7 +89,7 @@ ASSETS["overflow_nozzle_crop"]=crop_product(ASSETS["overflow_nozzle"],"overflow_
 COPY={
 "IT":{
 "edition":"EDIZIONE ITALIANA",
-"cover_title":"OVERFLOW & BALANCE TANK",
+"cover_title":"SFIORO E VASCA DI COMPENSO",
 "cover_sub":"Dal bordo sfioratore al controllo del livello",
 "cover_desc":"Funzione idraulica • volumi operativi • connessioni • commissioning • case study DB",
 "k2":"01 • PRINCIPIO DI FUNZIONAMENTO",
@@ -103,7 +103,7 @@ COPY={
 "l4":"Le connessioni della vasca devono essere lette per funzione, non per posizione. Nel case study DB tre collegamenti sono gia' certi; troppo pieno, scarico e controllo livello restano da rilevare e definire.",
 "conn":[("ARRIVO SFIORO","Ingresso per gravita' dall'overflow della piscina.","CONFIRMATO DB"),
 ("ASPIRAZIONE FILTRAZIONE","Uscita verso il collettore di aspirazione filtrazione.","CONFIRMATO DB"),
-("RIEMPIMENTO / MAKE-UP","Linea di reintegro acqua.","CONFIRMATO DB: PPR VERDE"),
+("RIEMPIMENTO / REINTEGRO","Linea di reintegro acqua.","CONFERMATO DB: PPR VERDE"),
 ("TROPPO PIENO / SCARICO","Protezione contro sovrariempimento e svuotamento manutentivo.","DA RILEVARE DB"),
 ("CONTROLLO LIVELLO","Galleggiante, sonde o altra logica in base al sistema reale.","DA RILEVARE DB")],
 "k5":"04 • COMPONENTI REALI DI SFIORO",
@@ -113,7 +113,7 @@ COPY={
 "g1b":"PP stabilizzato UV. AstralPool indica di costruire il canale 5 mm piu' largo della griglia per consentire rimozione ed espansione.",
 "g2":"PRESA SFIORO ASTRALPOOL 00302",
 "g2b":"Corpo e griglia in ABS, incollaggio su tubo Ø63. Portata massima dichiarata 4.5 m3/h. Applicazione a parete / canale di sfioro.",
-"k6":"05 • COMMISSIONING",
+"k6":"05 • MESSA IN SERVIZIO",
 "t6":"Avviamento: osservare livelli, aria e ritorno dell'acqua prima di regolare",
 "l6":"Una Balance Tank puo' essere geometricamente grande ma idraulicamente mal utilizzata. Il commissioning serve a verificare cosa accade realmente quando la pompa parte, il livello scende, l'acqua ritorna e lo sfioro riprende.",
 "checks":[("1","Pompa ferma","Osservare il livello statico/equalizzato e registrarlo."),
@@ -122,12 +122,12 @@ COPY={
 ("4","Reintegro","Provare il make-up e verificare che non mascheri perdite o troppo pieno."),
 ("5","Transitorio","Simulare variazioni di volume e osservare margine disponibile / freeboard."),
 ("6","Aria e vortici","Nessun trascinamento d'aria verso la pompa e nessun vortice persistente.")],
-"k7":"06 • CASE STUDY DB PLUMBING SERVICES",
+"k7":"06 • CASO REALE DB PLUMBING SERVICES",
 "t7":"Il progetto reale: cosa e' certo e cosa deve restare aperto",
 "l7":"La pagina usa esclusivamente i dati confermati nell'handoff del 22/09/2026. Dove il rilievo non e' completo, il dato resta volutamente NON DEFINITO.",
 "confirmed":"DATI CONFERMATI",
 "confitems":["Piscina privata a Malta con sfioro continuo su un solo lato lungo.","Fessura sfioro circa 2-3 cm.","Livello acqua/sfioro circa +3.10 m dal pavimento del locale tecnico.","Balance Tank dietro la parete lunga.","Sviluppo usato nei calcoli: 4.80 m dalla parete destra = 4.50 m vasca + 0.30 m offset.","Linea PPR verde esistente = riempimento Balance Tank.","Connessioni certe: sfioro in ingresso, aspirazione filtrazione, riempimento PPR."],
-"open":"DA RILEVARE / NON CONGELARE",
+"open":"DA RILEVARE / NON CONFERMARE",
 "openitems":["Profondita' interna completa della Balance Tank.","Quote e diametri reali dei bocchelli BT.","Troppo pieno / scarico.","Sistema di controllo livello.","Dettagli interni e forometria dedicata."],
 "k8":"07 • SCHEDA DI RILIEVO",
 "t8":"Balance Tank: cosa misurare prima del progetto definitivo",
@@ -137,7 +137,7 @@ COPY={
 },
 "EN":{
 "edition":"ENGLISH EDITION",
-"cover_title":"OVERFLOW & BALANCE TANK",
+"cover_title":"SFIORO E VASCA DI COMPENSO",
 "cover_sub":"From the overflow edge to stable water-level control",
 "cover_desc":"Hydraulic function • operating volumes • connections • commissioning • DB case study",
 "k2":"01 • OPERATING PRINCIPLE",
@@ -161,7 +161,7 @@ COPY={
 "g1b":"UV-stabilised PP. AstralPool states that the channel should be built 5 mm wider than the grating to allow removal and expansion.",
 "g2":"ASTRALPOOL OVERFLOW SUCTION NOZZLE 00302",
 "g2b":"ABS body and grille, glued to Ø63 pipe. Manufacturer maximum flow 4.5 m3/h. Wall / overflow-channel application.",
-"k6":"05 • COMMISSIONING",
+"k6":"05 • MESSA IN SERVIZIO",
 "t6":"Start-up: observe levels, air and water return before adjusting controls",
 "l6":"A balance tank may be physically large yet poorly used hydraulically. Commissioning verifies what actually happens when the pump starts, the tank level drops, water returns and overflow resumes.",
 "checks":[("1","Pump stopped","Observe and record the static/equalised level."),
@@ -244,7 +244,7 @@ def image_panel(c,path,x,y,w,h,label=None,cover=False):
 
 def header(c,k,page,edition):
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",7.3); c.drawString(42,H-30,"ACADEMY DB PLUMBING SERVICES")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7); c.drawRightString(W-42,H-30,"POOL SYSTEMS • OVERFLOW / BALANCE TANK • REV04")
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7); c.drawRightString(W-42,H-30,("POOL SYSTEMS • OVERFLOW / BALANCE TANK • REV04" if edition.startswith("EN") else "SISTEMI PISCINA • SFIORO / VASCA DI COMPENSO • REV04"))
     c.setStrokeColor(MID); c.line(42,H-38,W-42,H-38)
     c.setFillColor(CYAN); c.setFont("Helvetica-Bold",9); c.drawString(42,H-62,k)
     c.setFillColor(MUTED); c.setFont("Helvetica",6.7); c.drawRightString(W-42,24,f"{edition} • {page}")
@@ -269,19 +269,19 @@ def cover(c,L):
     c.setFillColor(CYAN); c.setFont("Helvetica-Bold",15); c.drawString(48,H-188,L["cover_sub"])
     draw_text(c,L["cover_desc"],48,H-220,380,"Helvetica",10.6,14,WHITE,4)
     # bottom real tanks montage
-    image_panel(c,ASSETS["balance_tridea"],48,88,230,210,"REAL BALANCE TANK INSTALLATION",cover=True)
-    image_panel(c,ASSETS["balance_cloward"],300,88,247,210,"PROFESSIONAL AQUATIC MECHANICAL ROOM",cover=True)
-    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",8); c.drawString(48,55,"VISUAL STANDARD REV04 • REAL PHOTOGRAPHY + ORIGINAL TECHNICAL SCHEMES")
+    image_panel(c,ASSETS["balance_tridea"],48,88,230,210,("REAL BALANCE TANK INSTALLATION" if L["edition"].startswith("EN") else "INSTALLAZIONE REALE VASCA DI COMPENSO"),cover=True)
+    image_panel(c,ASSETS["balance_cloward"],300,88,247,210,("PROFESSIONAL AQUATIC MECHANICAL ROOM" if L["edition"].startswith("EN") else "LOCALE TECNICO PISCINA PROFESSIONALE"),cover=True)
+    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",8); c.drawString(48,55,("VISUAL STANDARD REV04 • REAL PHOTOGRAPHY + ORIGINAL TECHNICAL SCHEMES" if L["edition"].startswith("EN") else "STANDARD VISIVO REV04 • FOTOGRAFIE REALI + SCHEMI TECNICI ORIGINALI"))
     c.showPage()
 
 def page2(c,L,p):
     header(c,L["k2"],p,L["edition"]); title(c,L["t2"],L["l2"])
-    image_panel(c,ASSETS["balance_tridea"],42,400,260,220,"COMPENSATION TANKS - REAL INSTALLATION",cover=True)
-    image_panel(c,ASSETS["balance_anchem"],320,400,233,220,"PP BALANCE TANK - REAL INSTALLATION",cover=True)
+    image_panel(c,ASSETS["balance_tridea"],42,400,260,220,("COMPENSATION TANKS - REAL INSTALLATION" if L["edition"].startswith("EN") else "VASCHE DI COMPENSO - INSTALLAZIONE REALE"),cover=True)
+    image_panel(c,ASSETS["balance_anchem"],320,400,233,220,("PP BALANCE TANK - REAL INSTALLATION" if L["edition"].startswith("EN") else "VASCA DI COMPENSO IN PP - INSTALLAZIONE REALE"),cover=True)
     # flow ribbon
     y=327
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(42,y+33,"FUNCTIONAL WATER PATH")
-    labels=["POOL","OVERFLOW EDGE","GRAVITY RETURN","BALANCE TANK","FILTRATION SUCTION"]
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8); c.drawString(42,y+33,("FUNCTIONAL WATER PATH" if L["edition"].startswith("EN") else "PERCORSO FUNZIONALE DELL'ACQUA"))
+    labels=(["POOL","OVERFLOW EDGE","GRAVITY RETURN","BALANCE TANK","FILTRATION SUCTION"] if L["edition"].startswith("EN") else ["PISCINA","BORDO SFIORATORE","RITORNO A GRAVITA'","VASCA DI COMPENSO","ASPIRAZIONE FILTRAZIONE"])
     widths=[70,100,105,96,112]
     x=42
     for i,(lab,ww) in enumerate(zip(labels,widths)):
@@ -293,7 +293,7 @@ def page2(c,L,p):
             c.setFillColor(CYAN); c.circle(x+ww+14,y+4,2.5,fill=1,stroke=0)
         x+=ww+18
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,125,511,135,10,fill=1,stroke=1)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.5); c.drawString(60,234,"WHY THE TANK EXISTS")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.5); c.drawString(60,234,("WHY THE TANK EXISTS" if L["edition"].startswith("EN") else "PERCHE' ESISTE LA VASCA DI COMPENSO"))
     expl=("When users enter the pool, water is displaced and the overflow system transfers that extra volume to the tank. The tank then provides water back to the circulation system as operating conditions change."
           if L["edition"].startswith("EN") else
           "Quando gli utenti entrano in vasca, il volume spostato fa aumentare lo sfioro. La vasca di compenso riceve questo volume e lo restituisce al sistema di circolazione quando le condizioni operative cambiano.")
@@ -303,22 +303,22 @@ def page2(c,L,p):
 
 def page3(c,L,p):
     header(c,L["k3"],p,L["edition"]); title(c,L["t3"],L["l3"])
-    image_panel(c,ASSETS["balance_cloward"],42,390,255,225,"REAL BALANCE TANK / MECHANICAL ROOM",cover=True)
+    image_panel(c,ASSETS["balance_cloward"],42,390,255,225,("REAL BALANCE TANK / MECHANICAL ROOM" if L["edition"].startswith("EN") else "VASCA DI COMPENSO REALE / LOCALE TECNICO"),cover=True)
     # tank conceptual section
     x,y,w,h=320,270,233,345
     c.setFillColor(WHITE); c.setStrokeColor(MID); c.roundRect(x,y,w,h,10,fill=1,stroke=1)
     tx=x+38; ty=y+45; tw=w-76; th=h-100
     c.setStrokeColor(NAVY); c.setLineWidth(2); c.rect(tx,ty,tw,th,fill=0,stroke=1)
-    bands=[("SAFETY / FREEBOARD",0.80,RED),("SURGE STORAGE",0.62,ORANGE),("NORMAL OPERATING",0.38,CYAN_D),("MINIMUM OPERATING",0.18,GREEN)]
+    bands=([("SAFETY / FREEBOARD",0.80,RED),("SURGE STORAGE",0.62,ORANGE),("NORMAL OPERATING",0.38,CYAN_D),("MINIMUM OPERATING",0.18,GREEN)] if L["edition"].startswith("EN") else [("MARGINE DI SICUREZZA",0.80,RED),("VOLUME DI COMPENSAZIONE",0.62,ORANGE),("LIVELLO OPERATIVO NORMALE",0.38,CYAN_D),("LIVELLO OPERATIVO MINIMO",0.18,GREEN)])
     # water base
     c.setFillColor(HexColor("#DFF2F8")); c.rect(tx,ty,tw,th*0.62,fill=1,stroke=0)
     for label,frac,col in bands:
         yy=ty+th*frac
         c.setStrokeColor(col); c.setDash(4,3); c.line(tx,yy,tx+tw,yy); c.setDash()
         c.setFillColor(col); c.setFont("Helvetica-Bold",6.3); c.drawRightString(x+w-12,yy+2,label)
-    c.setFillColor(MUTED); c.setFont("Helvetica",6.1); c.drawString(x+14,y+18,"CONCEPT ONLY - NOT TO SCALE / NOT DB FINAL LEVELS")
+    c.setFillColor(MUTED); c.setFont("Helvetica",6.1); c.drawString(x+14,y+18,("CONCEPT ONLY - NOT TO SCALE / NOT DB FINAL LEVELS" if L["edition"].startswith("EN") else "SCHEMA CONCETTUALE - NON IN SCALA / LIVELLI DB NON DEFINITIVI"))
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,150,255,205,9,fill=1,stroke=1)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.5); c.drawString(58,330,"FOUR QUESTIONS BEFORE SIZING")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.5); c.drawString(58,330,("FOUR QUESTIONS BEFORE SIZING" if L["edition"].startswith("EN") else "QUATTRO DOMANDE PRIMA DEL DIMENSIONAMENTO"))
     qs=[
       ("1","What is the static/equalised level?" if L["edition"].startswith("EN") else "Qual e' il livello statico/equalizzato?"),
       ("2","How far does the level draw down with pumps running?" if L["edition"].startswith("EN") else "Quanto scende il livello con pompe in marcia?"),
@@ -334,7 +334,7 @@ def page3(c,L,p):
 
 def page4(c,L,p):
     header(c,L["k4"],p,L["edition"]); title(c,L["t4"],L["l4"])
-    image_panel(c,ASSETS["balance_anchem"],42,365,215,255,"REAL PP TANK INSTALLATION",cover=True)
+    image_panel(c,ASSETS["balance_anchem"],42,365,215,255,("REAL PP TANK INSTALLATION" if L["edition"].startswith("EN") else "INSTALLAZIONE REALE VASCA IN PP"),cover=True)
     # connection table
     x=278; y=604; rowh=63
     for i,(a,b,status) in enumerate(L["conn"]):
@@ -370,7 +370,7 @@ def page5(c,L,p):
 
 def page6(c,L,p):
     header(c,L["k6"],p,L["edition"]); title(c,L["t6"],L["l6"])
-    image_panel(c,ASSETS["balance_cloward"],42,380,210,250,"REFERENCE MECHANICAL ROOM",cover=True)
+    image_panel(c,ASSETS["balance_cloward"],42,380,210,250,("REFERENCE MECHANICAL ROOM" if L["edition"].startswith("EN") else "LOCALE TECNICO DI RIFERIMENTO"),cover=True)
     x=276; y=606; cw=277
     for i,(n,h,b) in enumerate(L["checks"]):
         yy=y-i*72
@@ -380,7 +380,7 @@ def page6(c,L,p):
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.3); c.drawString(x+37,yy-28,h)
         draw_text(c,b,x+37,yy-42,cw-50,"Helvetica",7.2,9.4,MUTED,2)
     c.setFillColor(HexColor("#FFF5E8")); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,122,210,205,9,fill=1,stroke=1)
-    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9); c.drawString(58,300,"DO NOT TUNE BY EYE" if L["edition"].startswith("EN") else "NON REGOLARE A OCCHIO")
+    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9); c.drawString(58,300,("DO NOT TUNE BY EYE" if L["edition"].startswith("EN") else "NON REGOLARE A OCCHIO"))
     body=("Record water levels and pump state together. A level that looks acceptable may still expose the suction, entrain air or consume the safety margin during a surge."
           if L["edition"].startswith("EN") else
           "Registrare insieme livello acqua e stato pompe. Un livello che sembra accettabile puo' comunque scoprire l'aspirazione, trascinare aria o consumare il margine di sicurezza durante uno sfioro.")
@@ -395,26 +395,26 @@ def page7(c,L,p):
     # pool
     c.setFillColor(HexColor("#DFF2F8")); c.setStrokeColor(NAVY); c.setLineWidth(1.5); c.roundRect(72,510,350,65,6,fill=1,stroke=1)
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9); c.drawString(85,548,"POOL / PISCINA")
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",7); c.drawRightString(410,548,"ONE LONG-SIDE OVERFLOW")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",7); c.drawRightString(410,548,("ONE LONG-SIDE OVERFLOW" if L["edition"].startswith("EN") else "SFIORO SU UN SOLO LATO LUNGO"))
     # overflow arrows to tank
     c.setStrokeColor(CYAN); c.setLineWidth(2)
     for ax in [120,220,320,390]:
         c.line(ax,510,ax,475); c.setFillColor(CYAN); c.circle(ax,472,2.5,fill=1,stroke=0)
     # BT
     c.setFillColor(HexColor("#E7F4F8")); c.setStrokeColor(GREEN); c.roundRect(95,410,320,58,6,fill=1,stroke=1)
-    c.setFillColor(GREEN); c.setFont("Helvetica-Bold",9); c.drawString(110,442,"BALANCE TANK - EXISTING / TO SURVEY INTERNALLY")
+    c.setFillColor(GREEN); c.setFont("Helvetica-Bold",9); c.drawString(110,442,("BALANCE TANK - EXISTING / TO SURVEY INTERNALLY" if L["edition"].startswith("EN") else "VASCA DI COMPENSO - ESISTENTE / DA RILEVARE INTERNAMENTE"))
     # tech room
     c.setFillColor(WHITE); c.setStrokeColor(NAVY); c.roundRect(80,365,350,28,5,fill=1,stroke=1)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8); c.drawString(95,375,"TECHNICAL ROOM BELOW / IN FRONT OF WALL")
+    c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8); c.drawString(95,375,("TECHNICAL ROOM BELOW / IN FRONT OF WALL" if L["edition"].startswith("EN") else "LOCALE TECNICO SOTTO / DAVANTI ALLA PARETE"))
     # suction and fill
     c.setStrokeColor(NAVY); c.setLineWidth(2); c.line(415,439,500,439); c.setFillColor(NAVY); c.circle(500,439,3,fill=1,stroke=0)
-    c.setFont("Helvetica-Bold",6.8); c.drawString(435,449,"TO FILTRATION SUCTION")
+    c.setFont("Helvetica-Bold",6.8); c.drawString(435,449,("TO FILTRATION SUCTION" if L["edition"].startswith("EN") else "VERSO ASPIRAZIONE FILTRAZIONE"))
     c.setStrokeColor(GREEN); c.line(95,420,58,420); c.setFillColor(GREEN); c.circle(58,420,3,fill=1,stroke=0)
-    c.setFont("Helvetica-Bold",6.8); c.drawString(46,430,"GREEN PPR FILL")
+    c.setFont("Helvetica-Bold",6.8); c.drawString(46,430,("GREEN PPR FILL" if L["edition"].startswith("EN") else "RIEMPIMENTO PPR VERDE"))
     # dimensions annotations
     c.setFillColor(MUTED); c.setFont("Helvetica",6.7)
-    c.drawString(72,494,"Overflow slot approx. 2-3 cm • Water/overflow level approx. +3.10 m above technical-room floor")
-    c.drawString(95,399,"Development used in calculations: 4.80 m from right wall = 4.50 m tank + 0.30 m absorbed offset")
+    c.drawString(72,494,("Overflow slot approx. 2-3 cm • Water/overflow level approx. +3.10 m above technical-room floor" if L["edition"].startswith("EN") else "Fessura sfioro circa 2-3 cm • Livello acqua/sfioro circa +3.10 m dal pavimento locale tecnico"))
+    c.drawString(95,399,("Development used in calculations: 4.80 m from right wall = 4.50 m tank + 0.30 m absorbed offset" if L["edition"].startswith("EN") else "Sviluppo usato nei calcoli: 4.80 m dalla parete destra = 4.50 m vasca + 0.30 m di scarto assorbito"))
     # two columns
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,115,245,205,9,fill=1,stroke=1)
     c.setFillColor(GREEN); c.setFont("Helvetica-Bold",9.5); c.drawString(58,296,L["confirmed"])
@@ -446,7 +446,7 @@ def page8(c,L,p):
     note=("FIELD RULE: photograph each connection with a scale/reference, record elevation from one common datum, and tag every pipe before any redesign."
           if L["edition"].startswith("EN") else
           "REGOLA DI RILIEVO: fotografare ogni attacco con una scala/riferimento, quotare tutto da un unico datum e identificare ogni linea prima di riprogettare.")
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8.5); c.drawString(58,158,"ACADEMY FIELD METHOD")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8.5); c.drawString(58,158,("ACADEMY FIELD METHOD" if L["edition"].startswith("EN") else "METODO ACADEMY DI RILIEVO"))
     draw_text(c,note,58,140,466,"Helvetica",8.3,11,TEXT,4)
     c.setFillColor(MUTED); c.setFont("Helvetica",5.8); draw_text(c,L["footer_note"],42,78,511,"Helvetica",5.8,7.5,MUTED,3)
     c.setFont("Helvetica",5.6); c.drawString(42,58,"[S1-S7] External references as listed in module source register   [S8] DB project handoff")
