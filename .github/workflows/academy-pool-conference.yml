@@ -1,0 +1,41 @@
+name: Academy Pool Conference Proof
+
+on:
+  push:
+    branches:
+      - academy-pool-conference-proof
+    paths:
+      - 'academy_pool_conference/**'
+      - '.github/workflows/academy-pool-conference.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install reportlab pillow requests
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Build conference proof
+        run: |
+          python academy_pool_conference/build.py
+          mkdir -p academy_pool_conference/render_it academy_pool_conference/render_en
+          pdftoppm -png -r 140 academy_pool_conference/output/ACADEMY_DB_POOL_SYSTEMS_CONFERENCE_VISUAL_STANDARD_REV03_IT.pdf academy_pool_conference/render_it/page >/dev/null 2>&1
+          pdftoppm -png -r 140 academy_pool_conference/output/ACADEMY_DB_POOL_SYSTEMS_CONFERENCE_VISUAL_STANDARD_REV03_EN.pdf academy_pool_conference/render_en/page >/dev/null 2>&1
+          cd academy_pool_conference/output
+          zip -9 ACADEMY_DB_POOL_SYSTEMS_CONFERENCE_VISUAL_STANDARD_REV03_IT_EN.zip *.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: academy-pool-conference-proof
+          path: |
+            academy_pool_conference/output/*
+            academy_pool_conference/render_it/*
+            academy_pool_conference/render_en/*
+          retention-days: 7
