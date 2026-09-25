@@ -89,7 +89,7 @@ def crop_box(path,out_name,frac_box):
     out=ASSET/out_name
     im.crop((l,t,r,b)).save(out,quality=96)
     return out
-ASSETS["balboa_specs_crop"]=crop_box(ASSETS["balboa_page"],"balboa_specs_crop.jpg",(0.03,0.02,0.97,0.57))
+ASSETS["balboa_specs_crop"]=crop_box(ASSETS["balboa_page"],"balboa_specs_crop.jpg",(0.03,0.02,0.97,0.43))
 
 def crop_nonwhite(path,out_name,margin=15):
     im=Image.open(path).convert("RGB")
@@ -280,15 +280,15 @@ def cover(c,L):
 def page2(c,L,p):
     header(c,L["k2"],p,L["edition"]); title(c,L["t2"],L["l2"])
     img_panel(c,ASSETS["balboa_specs_crop"],42,300,260,320,"BALBOA - VERIFIED SPECIFICATION EXTRACT",cover=False)
-    c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(322,350,231,270,10,fill=1,stroke=1)
+    c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(322,320,231,300,10,fill=1,stroke=1)
     c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",10.5); c.drawString(339,592,L["bench"])
     yy=562
     for a,b in L["balboa_specs"]:
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",9.6); c.drawString(339,yy,a)
         c.setFillColor(MUTED); c.setFont("Helvetica",8.4); c.drawString(339,yy-15,b); yy-=42
-    c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(322,125,231,205,10,fill=1,stroke=1)
-    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10.4); c.drawString(339,300,L["dbhold"])
-    draw_text(c,L["dbholdtxt"],339,278,197,"Helvetica",9.2,12.2,TEXT,12)
+    c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(322,105,231,195,10,fill=1,stroke=1)
+    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10.4); c.drawString(339,276,L["dbhold"])
+    draw_text(c,L["dbholdtxt"],339,255,197,"Helvetica",9.0,11.8,TEXT,12)
     source(c,"[S1] Balboa Water Group - Freedom Jets 10-FS711/10-FS715 official manual   [S5] DB project working dossier")
     c.showPage()
 
