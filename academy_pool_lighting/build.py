@@ -82,7 +82,7 @@ COPY={
 "l3":"La scheda tecnica assegna 20 VA al 75821. Tre unita' producono quindi 60 VA di carico nominale collegato. Il manuale richiede che il trasformatore di sicurezza sia dimensionato per i VA dei proiettori connessi.",
 "calc":[("1 faro","20 VA"),("3 fari","60 VA collegati"),("Tensione fari","12 Vca"),("Trasformatore finale","DA DIMENSIONARE")],
 "rule3":"NON inventare un margine percentuale. La taglia finale dipende dalla fornitura reale, dalla lunghezza dei cavi, dalla caduta di tensione e dalle regole elettriche applicabili.",
-"k4":"03 - TRE GUAINe SOSTITUIBILI",
+"k4":"03 - TRE GUAINE SOSTITUIBILI",
 "t4":"Una guaina dedicata per ogni luce: manutenzione futura senza demolire",
 "l4":"Il progetto DB conferma tre guaine dedicate e sostituibili, una per ciascuna luce. Il servizio elettrico della luce deve restare separato dalle tubazioni idrauliche; eventuali attraversamenti comuni devono mantenere separazione e guainatura corretta.",
 "steps4":[("L1","Guaina luce 1","percorso dedicato e sostituibile"),("L2","Guaina luce 2","percorso dedicato e sostituibile"),("L3","Guaina luce 3","percorso dedicato e sostituibile"),("LT","Locale tecnico","trasformatore e protezioni fuori dal circuito idraulico")],
@@ -96,9 +96,9 @@ COPY={
 ("PROGETTO ELETTRICO SEPARATO","Zone piscina, RCD, SELV, equipotenziale e dimensionamento finale restano competenza dell'elettricista qualificato.")],
 "k6":"05 - COMANDO PNEUMATICO HJ",
 "t6":"Il pulsante vicino alle scale trasmette un impulso d'aria, non la potenza delle pompe",
-"l6":"Nel progetto DB il pulsante HJ e' pneumatico e a filo pavimento vicino alle scale. Un tubo pneumatico in guaina dedicata e sostituibile raggiunge il locale tecnico, dove l'impulso viene ricevuto dall'air switch/logica di comando.",
-"chain6":["PULSANTE PNEUMATICO","TUBO IN GUAINA DEDICATA","AIR SWITCH / LOGICA","CIRCUITO DI COMANDO","POMPA HJ 1 + POMPA HJ 2"],
-"warn6":"Lo schema mostra la LOGICA FUNZIONALE confermata. Modello dell'air switch, contattori, protezioni, interblocchi e cablaggio finale NON sono ancora componenti congelati.",
+"l6":"Nel progetto DB il pulsante HJ e' pneumatico e a filo pavimento vicino alle scale. Un tubo pneumatico in guaina dedicata e sostituibile raggiunge il locale tecnico, dove l'impulso viene ricevuto dall'interruttore pneumatico/logica di comando.",
+"chain6":["PULSANTE PNEUMATICO","TUBO IN GUAINA DEDICATA","INTERRUTTORE PNEUMATICO / LOGICA","CIRCUITO DI COMANDO","POMPA HJ 1 + POMPA HJ 2"],
+"warn6":"Lo schema mostra la LOGICA FUNZIONALE confermata. Modello dell'interruttore pneumatico, contattori, protezioni, interblocchi e cablaggio finale NON sono ancora componenti confermati.",
 "k7":"06 - SEPARAZIONE DEI SERVIZI",
 "t7":"Acqua, elettrico e pneumatico possono attraversare la stessa zona, ma non la stessa tubazione",
 "l7":"Il progetto consente una zona comune di penetrazione per piccoli servizi solo se restano separati e correttamente inguainati. Le guaine luci e la guaina pneumatica restano indipendenti; nessun servizio elettrico o pneumatico viene fatto passare dentro una tubazione idraulica.",
@@ -108,15 +108,15 @@ COPY={
 ("POTENZA POMPE","Percorso elettrico separato","definito dal progetto elettrico")],
 "k8":"07 - MESSA IN SERVIZIO E PUNTI DA CONFERMARE",
 "t8":"Prima di consegnare: verificare prodotto, tensione, comando e manutenzione",
-"l8":"Il commissioning del sottosistema luci/comando deve dimostrare che i componenti reali corrispondono al progetto e che il sistema funziona in sicurezza senza trasformare dati candidati in fatti.",
+"l8":"La messa in servizio del sottosistema luci/comando deve dimostrare che i componenti reali corrispondono al progetto e che il sistema funziona in sicurezza senza trasformare dati candidati in fatti.",
 "checks":[("1","Identita fari","Confermare che i tre fari realmente forniti siano 75821 o documentare il modello equivalente."),
 ("2","Guaine","Verificare continuita, sostituibilita e separazione delle 3 guaine luci e della guaina pneumatica."),
 ("3","Trasformatore","Calcolare la taglia sul carico reale, sul percorso cavi e sulla caduta di tensione; nessuna taglia inventata."),
 ("4","Tensione ai fari","Verificare la tensione reale in esercizio secondo manuale e progetto elettrico."),
-("5","Pulsante HJ","Provare comando ON/OFF dal pulsante pneumatico e verificare la risposta delle due pompe."),
-("6","Logica di comando","Confermare air switch, contattori/interfacce e protezioni realmente installati."),
+("5","Pulsante HJ","Provare avvio/arresto dal pulsante pneumatico e verificare la risposta delle due pompe."),
+("6","Logica di comando","Confermare interruttore pneumatico, contattori/interfacce e protezioni realmente installati."),
 ("7","Sicurezza piscina","RCD, SELV, equipotenziale, zone e protezioni finali da verificare dall'elettricista qualificato."),
-("8","Documentazione","Registrare modelli, trasformatori, protezioni, prove e schema finale as-built.")],
+("8","Documentazione","Registrare modelli, trasformatori, protezioni, prove e schema finale come realizzato.")],
 "footer":"Fonti: AstralPool/Fluidra LumiPlus Essential Flat 75821, scheda tecnica 2024-11, manuale LumiPlus Essential; IEC 60364-7-702:2010; documento tecnico DB 22-09-2026."
 },
 "EN":{
@@ -264,7 +264,7 @@ def page2(c,L,p):
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,130,511,145,9,fill=1,stroke=1)
     c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10); c.drawString(60,245,L["cand"])
     draw_text(c,L["candtxt"],60,220,470,"Helvetica",9.5,12.5,TEXT,7)
-    source(c,"[S1] AstralPool LumiPlus Essential Flat official product page   [S2] Product datasheet Flat Projectors EN 2024-11   [S5] DB technical document.")
+    source(c,("[S1] AstralPool LumiPlus Essential Flat official product page   [S2] Product datasheet Flat Projectors EN 2024-11   [S5] DB technical document." if L["edition"].startswith("EN") else "[S1] Pagina prodotto ufficiale AstralPool LumiPlus Essential Flat   [S2] Scheda tecnica Flat Projectors 2024-11   [S5] Documento tecnico DB."))
     c.showPage()
 
 def page3(c,L,p):
@@ -279,7 +279,7 @@ def page3(c,L,p):
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,145,511,130,9,fill=1,stroke=1)
     c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10); c.drawString(60,245,("DESIGN BOUNDARY" if L["edition"].startswith("EN") else "LIMITE DI PROGETTO"))
     draw_text(c,L["rule3"],60,220,470,"Helvetica-Bold",9.7,12.7,NAVY,7)
-    source(c,"[S2] 75821: 14.5 W / 20 VA.   [S3] LumiPlus Essential manual: safety transformer sized for connected projector VA.")
+    source(c,("[S2] 75821: 14.5 W / 20 VA.   [S3] LumiPlus Essential manual: safety transformer sized for connected projector VA." if L["edition"].startswith("EN") else "[S2] 75821: 14,5 W / 20 VA.   [S3] Manuale LumiPlus Essential: trasformatore di sicurezza dimensionato sui VA dei proiettori collegati."))
     c.showPage()
 
 def page4(c,L,p):
@@ -296,7 +296,7 @@ def page4(c,L,p):
         y-=78
     c.setFillColor(PALE_GREEN); c.setStrokeColor(HexColor("#C8DFD5")); c.roundRect(42,135,511,85,9,fill=1,stroke=1)
     draw_text(c,L["note4"],60,190,470,"Helvetica",9.3,12.0,TEXT,5)
-    source(c,"[S2] Datasheet cable: 2.5 m H07RN-F 2 x 1 mm2.   [S5] DB project: 3 dedicated replaceable light conduits.")
+    source(c,("[S2] Datasheet cable: 2.5 m H07RN-F 2 x 1 mm2.   [S5] DB project: 3 dedicated replaceable light conduits." if L["edition"].startswith("EN") else "[S2] Scheda tecnica: cavo 2,5 m H07RN-F 2 x 1 mm2.   [S5] Progetto DB: 3 guaine luci dedicate e sostituibili."))
     c.showPage()
 
 def page5(c,L,p):
@@ -317,7 +317,7 @@ def page5(c,L,p):
          "Questo modulo Academy non dimensiona RCD, equipotenziale, zone piscina o protezioni di rete finali. Questi valori appartengono al progetto dell'elettricista qualificato secondo le regole applicabili a Malta/Europa.")
     c.setFillColor(RED); c.setFont("Helvetica-Bold",10); c.drawString(60,260,("ELECTRICAL BOUNDARY" if L["edition"].startswith("EN") else "LIMITE ELETTRICO"))
     draw_text(c,msg,60,235,470,"Helvetica-Bold",9.2,12,NAVY,7)
-    source(c,"[S3] LumiPlus Essential electrical manual.   [S4] IEC 60364-7-702:2010 - swimming pools and fountains.")
+    source(c,("[S3] LumiPlus Essential electrical manual.   [S4] IEC 60364-7-702:2010 - swimming pools and fountains." if L["edition"].startswith("EN") else "[S3] Manuale elettrico LumiPlus Essential.   [S4] IEC 60364-7-702:2010 - piscine e fontane."))
     c.showPage()
 
 def page6(c,L,p):
@@ -344,7 +344,7 @@ def page6(c,L,p):
     draw_text(c,mid,90,350,415,"Helvetica-Bold",9.6,12.4,NAVY,4)
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,135,511,90,9,fill=1,stroke=1)
     draw_text(c,L["warn6"],60,190,470,"Helvetica",9.3,12,TEXT,5)
-    source(c,"[S5] DB project: flush pneumatic HJ button near steps; dedicated replaceable tube to technical room; both HJ pumps controlled through air-switch/control logic.")
+    source(c,("[S5] DB project: flush pneumatic HJ button near steps; dedicated replaceable tube to technical room; both HJ pumps controlled through air-switch/control logic." if L["edition"].startswith("EN") else "[S5] Progetto DB: pulsante HJ pneumatico a filo pavimento vicino alle scale; tubo dedicato e sostituibile fino al locale tecnico; entrambe le pompe HJ comandate tramite interruttore pneumatico/logica."))
     c.showPage()
 
 def page7(c,L,p):
@@ -363,7 +363,7 @@ def page7(c,L,p):
         if L["edition"].startswith("EN") else
         "Mai far passare un cavo elettrico o un tubo pneumatico dentro una tubazione idraulica dell'acqua.")
     draw_text(c,no,60,140,470,"Helvetica-Bold",9.6,12,NAVY,3)
-    source(c,"[S5] DB technical document - service separation and replaceable conduit requirements.")
+    source(c,("[S5] DB technical document - service separation and replaceable conduit requirements." if L["edition"].startswith("EN") else "[S5] Documento tecnico DB - separazione dei servizi e requisiti delle guaine sostituibili."))
     c.showPage()
 
 def page8(c,L,p):
@@ -378,7 +378,7 @@ def page8(c,L,p):
         y-=50
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,87,511,45,8,fill=1,stroke=1)
     draw_text(c,L["footer"],57,116,480,"Helvetica",7.1,8.8,MUTED,3)
-    source(c,"Academy rule: manufacturer data, project-confirmed data and final electrical design are three different evidence layers.")
+    source(c,("Academy rule: manufacturer data, project-confirmed data and final electrical design are three different evidence layers." if L["edition"].startswith("EN") else "Regola Academy: dati del produttore, dati confermati del progetto e progetto elettrico finale sono tre livelli di evidenza distinti."))
     c.showPage()
 
 def build(lang):
