@@ -74,8 +74,8 @@ ASSETS["it_orp"]=render_pdf(RAW["manual"],30,"manual_it_orp.png",220,(0.03,0.02,
 COPY={
 "IT":{
 "edition":"EDIZIONE ITALIANA",
-"cover_title":"WATER CHEMISTRY + AUTOMATIC DOSING",
-"cover_sub":"pH, ORP, sonde, dosaggio e interlock di flusso",
+"cover_title":"CHIMICA DELL'ACQUA + DOSAGGIO AUTOMATICO",
+"cover_sub":"pH, ORP, sonde, dosaggio e interblocco di flusso",
 "cover_desc":"Control Basic Next 66162 / 66163 - principi corretti per studenti e case study DB Plumbing Services",
 "k2":"01 - DUE MISURE DIVERSE",
 "t2":"pH e ORP non sono la stessa cosa e non vanno letti allo stesso modo",
@@ -103,39 +103,39 @@ COPY={
 "flowsteps":[("1","RICIRCOLO ATTIVO","La pompa di filtrazione e' in servizio e la portata e' disponibile."),
 ("2","CONSENSO FLUSSO","Il controller riceve il segnale previsto dal sistema."),
 ("3","MISURA","La sonda legge pH oppure ORP."),
-("4","CONFRONTO SETPOINT","Il controller confronta misura e valore impostato."),
+("4","CONFRONTO VALORE IMPOSTATO","Il controller confronta misura e valore impostato."),
 ("5","DOSAGGIO","La pompa peristaltica dosa solo quando la logica lo richiede.")],
-"flowhold":"HOLD: posizione esatta di sonde, punti di prelievo e punti di iniezione del progetto DB deve essere congelata solo dopo verifica del kit realmente fornito e del manuale di installazione.",
-"k6":"05 - SETPOINT E CHIMICA",
+"flowhold":"DA CONFERMARE: la posizione esatta di sonde, punti di prelievo e punti di iniezione del progetto DB deve essere definita solo dopo verifica del kit realmente fornito e del manuale di installazione.",
+"k6":"05 - VALORI IMPOSTATI E CHIMICA",
 "t6":"Il valore di fabbrica non e' automaticamente il valore di progetto",
 "l6":"Il manuale riporta come default 7.4 pH e 750 mV (Rx), ma sono parametri iniziali del controller, non una prescrizione universale. La chimica reale dipende da acqua, disinfettante, stabilizzante, temperatura, carico bagnanti e obiettivi operativi.",
 "facts6":[("CDC - piscina domestica","pH 7.0-7.8; almeno 1 ppm cloro libero senza acido cianurico, almeno 2 ppm se si usa acido cianurico/stabilizzato."),
 ("WHO - piscine a cloro","pH 7.2-7.8 come guida generale."),
 ("WHO - ORP","Valori >720 mV con elettrodo Ag/AgCl o >680 mV con calomel possono indicare buona condizione microbiologica, ma il valore appropriato va definito caso per caso."),
 ("AstralPool - default controller","7.4 pH e 750 mV; impostabili, quindi non confondere default software con target obbligatorio.")],
-"k7":"06 - CASE STUDY DB",
+"k7":"06 - CASO REALE DB",
 "t7":"Dove entra il trattamento nella catena reale della piscina",
 "l7":"Nel progetto DB la filtrazione e' separata dall'idromassaggio. Il trattamento pH/ORP e' previsto dopo Victoria + valvola 6 vie/Vesubio e prima del collettore ritorni C-F-RET.",
 "confirmed":"CONFERMATO",
-"conf7":["Control Basic Next pH 1.5 L/h - 66162.","Control Basic Next ORP 1.5 L/h - 66163.","Zona trattamento sulla parete destra, circa X 4300-5200 mm.","Catena: Victoria -> 6 vie/Vesubio -> pH/ORP -> C-F-RET -> R1-R4.","Flow switch/interlock considerato importante.","Vaschetta di contenimento chimici considerata prudente."],
-"hold":"DA VERIFICARE / NON CONGELARE",
-"hold7":["Cella bypass sonde: opzione da confermare, non componente definitivo.","Posizione esatta dei porta-sonda e dei punti di iniezione.","Prodotti chimici finali e concentrazioni fornite.","Setpoint operativi definitivi.","Sequenza/spacing fisico dei punti di iniezione secondo kit e manuali reali."],
-"k8":"07 - COMMISSIONING",
+"conf7":["Control Basic Next pH 1.5 L/h - 66162.","Control Basic Next ORP 1.5 L/h - 66163.","Zona trattamento sulla parete destra, circa X 4300-5200 mm.","Catena: Victoria -> 6 vie/Vesubio -> pH/ORP -> C-F-RET -> R1-R4.","Flussostato/interblocco considerato importante.","Vaschetta di contenimento chimici considerata prudente."],
+"hold":"DA VERIFICARE / NON CONFERMARE",
+"hold7":["Cella di derivazione sonde: opzione da confermare, non componente definitivo.","Posizione esatta dei porta-sonda e dei punti di iniezione.","Prodotti chimici finali e concentrazioni fornite.","Valori operativi definitivi.","Sequenza e distanze fisiche dei punti di iniezione secondo kit e manuali reali."],
+"k8":"07 - MESSA IN SERVIZIO",
 "t8":"Avviamento e manutenzione: misurare con un riferimento indipendente",
 "l8":"L'automazione non elimina il controllo umano. Durante avviamento e manutenzione le letture delle sonde devono essere confrontate con un metodo indipendente appropriato, e gli allarmi non devono essere ignorati.",
 "checks8":[("1","Identita apparecchi","Confermare 66162 e 66163 e il contenuto reale dei kit."),
 ("2","Installazione sonde","Verificare immersione, tenuta, cablaggio e orientamento secondo manuale."),
-("3","Calibrazione","pH con buffer pH7/pH4 secondo configurazione; ORP con 465 mV."),
-("4","Flusso","Provare l'interlock: perdita di ricircolo deve impedire il dosaggio previsto."),
+("3","Calibrazione","pH con soluzioni tampone pH7/pH4 secondo configurazione; ORP con 465 mV."),
+("4","Flusso","Provare l'interblocco: la perdita di ricircolo deve impedire il dosaggio previsto."),
 ("5","Dosaggio","Controllare tubi peristaltici, aspirazione, iniezione e assenza di perdite."),
-("6","Confronto indipendente","Verificare pH e disinfettante con strumento/test adeguato."),
+("6","Confronto indipendente","Verificare pH e disinfettante con strumento o prova adeguata."),
 ("7","Allarmi e OFA","Provare gli allarmi previsti e registrare gli interventi."),
 ("8","Sicurezza chimica","Mai miscelare prodotti; seguire SDS, etichette e istruzioni del produttore.")],
 "footer":"Fonti: AstralPool/Fluidra Control Basic Next, manuale 0000137847 Rev 2.0, brochure Fluidra, CDC Healthy Swimming, WHO recreational-water guidance, DB handoff 22-09-2026."
 },
 "EN":{
 "edition":"ENGLISH EDITION",
-"cover_title":"WATER CHEMISTRY + AUTOMATIC DOSING",
+"cover_title":"CHIMICA DELL'ACQUA + DOSAGGIO AUTOMATICO",
 "cover_sub":"pH, ORP, probes, dosing and flow interlock",
 "cover_desc":"Control Basic Next 66162 / 66163 - technically verified principles and DB Plumbing Services case study",
 "k2":"01 - TWO DIFFERENT MEASUREMENTS",
@@ -181,7 +181,7 @@ COPY={
 "conf7":["Control Basic Next pH 1.5 L/h - 66162.","Control Basic Next ORP 1.5 L/h - 66163.","Treatment zone on the right wall, approximately X 4300-5200 mm.","Chain: Victoria -> six-way/Vesubio -> pH/ORP -> C-F-RET -> R1-R4.","Flow switch/interlock is considered important.","Chemical containment tray is considered prudent."],
 "hold":"TO VERIFY / DO NOT FREEZE",
 "hold7":["Probe bypass cell is optional and not a frozen project component.","Exact probe-holder and injection-point positions.","Final chemical products and supplied concentrations.","Final operating setpoints.","Physical spacing/order of injection points per actual kit and manuals."],
-"k8":"07 - COMMISSIONING",
+"k8":"07 - MESSA IN SERVIZIO",
 "t8":"Start-up and maintenance: compare automation with an independent reference",
 "l8":"Automation does not remove operator verification. During commissioning and maintenance, probe readings should be compared with an appropriate independent method, and alarms must not be ignored.",
 "checks8":[("1","Equipment identity","Confirm 66162 and 66163 and the actual kit contents."),
@@ -237,7 +237,7 @@ def img_panel(c,path,x,y,w,h,label=None,cover=False):
 
 def header(c,k,page,edition):
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold",8.5); c.drawString(42,H-30,"ACADEMY DB PLUMBING SERVICES")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7.8); c.drawRightString(W-42,H-30,"POOL SYSTEMS - WATER CHEMISTRY / DOSING - REV06")
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",7.8); c.drawRightString(W-42,H-30,("POOL SYSTEMS - WATER CHEMISTRY / DOSING - REV06" if edition.startswith("EN") else "SISTEMI PISCINA - CHIMICA ACQUA / DOSAGGIO - REV06"))
     c.setStrokeColor(MID); c.line(42,H-38,W-42,H-38)
     c.setFillColor(CYAN); c.setFont("Helvetica-Bold",10.2); c.drawString(42,H-62,k)
     c.setFillColor(MUTED); c.setFont("Helvetica",7.6); c.drawRightString(W-42,24,f"{edition} - {page}")
@@ -265,8 +265,8 @@ def cover(c,L):
     draw_text(c,L["cover_title"],48,H-125,245,"Helvetica-Bold",29,32,WHITE,4)
     draw_text(c,L["cover_sub"],48,H-260,245,"Helvetica-Bold",13.5,17,CYAN,3)
     draw_text(c,L["cover_desc"],48,H-324,240,"Helvetica",11.5,15,WHITE,6)
-    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",9.2); c.drawString(48,80,"VISUAL STANDARD REV06")
-    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",8.2); c.drawString(48,60,"VERIFIED DATA - SOURCE CONTEXT - PROJECT HOLD POINTS")
+    c.setFillColor(WHITE); c.setFont("Helvetica-Bold",9.2); c.drawString(48,80,("VISUAL STANDARD REV06" if L["edition"].startswith("EN") else "STANDARD VISIVO REV06"))
+    c.setFillColor(MUTED); c.setFont("Helvetica-Bold",8.2); c.drawString(48,60,("VERIFIED DATA - SOURCE CONTEXT - PROJECT HOLD POINTS" if L["edition"].startswith("EN") else "DATI VERIFICATI - CONTESTO DELLE FONTI - PUNTI DA CONFERMARE"))
     c.showPage()
 
 def page2(c,L,p):
@@ -274,14 +274,14 @@ def page2(c,L,p):
     card(c,42,315,240,250,L["ph_box"],L["ph_body"],CYAN_D)
     card(c,313,315,240,250,L["orp_box"],L["orp_body"],GREEN)
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,160,511,115,10,fill=1,stroke=1)
-    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10.2); c.drawString(60,245,"KEY TEACHING POINT" if L["edition"].startswith("EN") else "PUNTO DIDATTICO CHIAVE")
+    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",10.2); c.drawString(60,245,("KEY TEACHING POINT" if L["edition"].startswith("EN") else "PUNTO DIDATTICO CHIAVE"))
     draw_text(c,L["rule2"],60,220,470,"Helvetica-Bold",10.5,14,NAVY,5)
     source(c,"[S4] CDC Healthy Swimming 2024-2025   [S5] WHO Guidelines for Safe Recreational Water Environments, Vol. 2")
     c.showPage()
 
 def page3(c,L,p):
     header(c,L["k3"],p,L["edition"]); title(c,L["t3"],L["l3"])
-    img_panel(c,ASSETS["product"],42,300,230,315,"REAL PRODUCT - CONTROL BASIC NEXT")
+    img_panel(c,ASSETS["product"],42,300,230,315,("REAL PRODUCT - CONTROL BASIC NEXT" if L["edition"].startswith("EN") else "PRODOTTO REALE - CONTROL BASIC NEXT"))
     x=292; y=565
     for row in L["rows3"]:
         c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(x,y-105,261,95,8,fill=1,stroke=1)
@@ -290,7 +290,7 @@ def page3(c,L,p):
         c.setFillColor(TEXT); c.setFont("Helvetica-Bold",9.5); c.drawString(x+14,y-55,row[2]+"  |  "+row[3])
         draw_text(c,row[4],x+14,y-76,230,"Helvetica",8.4,10.5,MUTED,2); y-=115
     c.setFillColor(PALE_GREEN); c.setStrokeColor(HexColor("#C8DFD5")); c.roundRect(42,140,511,115,9,fill=1,stroke=1)
-    c.setFillColor(GREEN); c.setFont("Helvetica-Bold",9.7); c.drawString(60,230,"MODEL-SPECIFIC DATA" if L["edition"].startswith("EN") else "DATI SPECIFICI DEL MODELLO")
+    c.setFillColor(GREEN); c.setFont("Helvetica-Bold",9.7); c.drawString(60,230,("MODEL-SPECIFIC DATA" if L["edition"].startswith("EN") else "DATI SPECIFICI DEL MODELLO"))
     draw_text(c,L["note3"],60,208,470,"Helvetica",9.4,12.5,TEXT,6)
     source(c,"[S1] AstralPool Control Basic Next product page   [S2] AstralPool/Fluidra dosing brochure   [S3] Fluidra 2025 catalogue")
     c.showPage()
@@ -346,9 +346,9 @@ def page5(c,L,p):
             c.setStrokeColor(CYAN); c.setLineWidth(1.4); c.line(67,yy-25,67,yy-55)
         yy-=62
     c.setFillColor(PALE_ORANGE); c.setStrokeColor(HexColor("#F1D5AE")); c.roundRect(42,125,511,90,9,fill=1,stroke=1)
-    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9.5); c.drawString(60,190,"PROJECT HOLD")
+    c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",9.5); c.drawString(60,190,("PROJECT HOLD" if L["edition"].startswith("EN") else "PUNTO DI PROGETTO DA CONFERMARE"))
     draw_text(c,L["flowhold"],60,170,470,"Helvetica",9.0,11.8,TEXT,5)
-    source(c,"[S2] Manual: pH/Redox probe input, flow input, 230 Vac supply; flow alarm restores when circulation flow is restored.   [S6] DB handoff.")
+    source(c,("[S2] Manual: pH/Redox probe input, flow input, 230 Vac supply; flow alarm restores when circulation flow is restored.   [S6] DB handoff." if L["edition"].startswith("EN") else "[S2] Manuale: ingresso sonda pH/Redox, ingresso flusso, alimentazione 230 Vca; l'allarme di flusso si ripristina quando torna la circolazione.   [S6] Documento tecnico DB."))
     c.showPage()
 
 def page6(c,L,p):
@@ -361,13 +361,13 @@ def page6(c,L,p):
         c.setFillColor(NAVY); c.setFont("Helvetica-Bold",10.2); c.drawString(62,y-36,head)
         draw_text(c,body,62,y-57,470,"Helvetica",9.1,11.6,TEXT,4)
         y-=104
-    source(c,"[S2] AstralPool manual factory defaults   [S4] CDC home pool guidance   [S5] WHO pool pH and ORP guidance. Contexts differ; do not merge them into one universal target.")
+    source(c,("[S2] AstralPool manual factory defaults   [S4] CDC home pool guidance   [S5] WHO pool pH and ORP guidance. Contexts differ; do not merge them into one universal target." if L["edition"].startswith("EN") else "[S2] Valori predefiniti del manuale AstralPool   [S4] Indicazioni CDC per piscine domestiche   [S5] Indicazioni WHO su pH e ORP. I contesti sono diversi: non unirli in un unico obiettivo universale."))
     c.showPage()
 
 def page7(c,L,p):
     header(c,L["k7"],p,L["edition"]); title(c,L["t7"],L["l7"])
     # flow chain
-    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8.8); c.drawString(42,570,"CONFIRMED DB FILTRATION CHAIN")
+    c.setFillColor(CYAN_D); c.setFont("Helvetica-Bold",8.8); c.drawString(42,570,("CONFIRMED DB FILTRATION CHAIN" if L["edition"].startswith("EN") else "CATENA FILTRAZIONE DB CONFERMATA"))
     labels=["VICTORIA","6-WAY","VESUBIO","pH 66162","ORP 66163","C-F-RET","R1-R4"]
     widths=[70,65,72,78,78,72,60]
     x=42; yy=530
@@ -391,7 +391,7 @@ def page7(c,L,p):
     for item in L["hold7"]:
         c.setFillColor(ORANGE); c.circle(327,y+2,2.5,fill=1,stroke=0)
         y=draw_text(c,item,340,y+5,194,"Helvetica",8.9,11.4,TEXT,3)-14
-    source(c,"[S6] DB Plumbing Services - Handoff completo progetto piscina 22-09-2026.")
+    source(c,("[S6] DB Plumbing Services - Handoff completo progetto piscina 22-09-2026." if L["edition"].startswith("EN") else "[S6] DB Plumbing Services - documento tecnico completo progetto piscina 22-09-2026."))
     c.showPage()
 
 def page8(c,L,p):
@@ -406,7 +406,7 @@ def page8(c,L,p):
         y-=47
     c.setFillColor(LIGHT); c.setStrokeColor(MID); c.roundRect(42,102,511,50,8,fill=1,stroke=1)
     draw_text(c,L["footer"],57,132,480,"Helvetica",7.3,9,MUTED,3)
-    source(c,"Academy rule: distinguish manufacturer data, public-health guidance and DB project-specific decisions.")
+    source(c,("Academy rule: distinguish manufacturer data, public-health guidance and DB project-specific decisions." if L["edition"].startswith("EN") else "Regola Academy: distinguere dati del produttore, indicazioni sanitarie pubbliche e decisioni specifiche del progetto DB."))
     c.showPage()
 
 def build(lang):
